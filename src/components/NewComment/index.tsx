@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import Submit from '@/assets/images/submit.png';
 import addComment from '@/firebase/api/addComment';
 import { selectUser } from '@/store/slices/userSlice';
-import Avatar from '@/UI/Avatar';
+import CurrentAvatar from '@/UI/Avatars/CurrentAvatar';
 
 import * as S from './styled';
 import { NewCommentProps } from './types';
@@ -36,7 +36,7 @@ const NewComment = ({ postId }: NewCommentProps) => {
 
   return (
     <S.CommentSection>
-      <Avatar />
+      <CurrentAvatar />
       <S.CommentForm onSubmit={handleCreateComment}>
         <S.CommentInput
           placeholder={isLoading ? 'Загрузка...' : 'Написать комментарий'}

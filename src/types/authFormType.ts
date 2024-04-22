@@ -1,13 +1,12 @@
 export type FormInput = {
   placeholder: string;
   type: 'text' | 'password' | 'email';
-  name: 'name' | 'secondName' | 'phone' | 'email' | 'password';
+  name: 'name' | 'secondName' | 'email' | 'password';
 };
 
 export type SignupFormType = {
   name: string;
   secondName: string;
-  phone: string;
   email: string;
   password: string;
 };

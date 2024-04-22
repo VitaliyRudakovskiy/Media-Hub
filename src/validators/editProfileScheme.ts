@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { DATE, FAVOURITES, PHONE_NUMBER } from '@/constants/regulars';
+import { DATE, FAVOURITES } from '@/constants/regulars';
 
 export const editProfileScheme = z.object({
   name: z
@@ -22,7 +22,6 @@ export const editProfileScheme = z.object({
     .regex(DATE, 'Date of birth should be in format: DD.MM.YYYY')
     .optional()
     .or(z.literal('')),
-  phone: z.string().regex(PHONE_NUMBER, 'Phone number should be in format: +375xxxxxxxxx'),
   favourites: z
     .string()
     .regex(FAVOURITES, 'This field should contain only Cyrillic and Latin letters and comma')

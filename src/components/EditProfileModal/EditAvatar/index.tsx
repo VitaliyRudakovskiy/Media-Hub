@@ -2,7 +2,7 @@
 
 import React, { ChangeEvent } from 'react';
 
-import Avatar from '@/UI/Avatar';
+import CurrentAvatar from '@/UI/Avatars/CurrentAvatar';
 import Button from '@/UI/Button';
 
 import * as S from './styled';
@@ -16,7 +16,7 @@ const EditAvatar = ({ setFile }: EditAvatarProps) => {
 
   return (
     <S.EditAvatarContainer>
-      <Avatar width={150} height={150} initialsFontSize='62px' />
+      <CurrentAvatar width={150} height={150} initialsFontSize='62px' />
       <Button variant='primary'>
         <S.UploadFileLabel>
           Update photo

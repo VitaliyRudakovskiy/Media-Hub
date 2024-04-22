@@ -17,11 +17,12 @@ import searchOptionsSlice from './slices/searchOptionsSlice';
 import sortPostsSlice from './slices/sortPostsSlice';
 import themeSlice from './slices/themeSlice';
 import userSlice from './slices/userSlice';
+import usersSlice from './slices/usersSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  blackList: ['posts', 'searchOptions', 'sortPosts'],
+  blackList: ['posts', 'searchOptions', 'sortPosts', 'users'],
 };
 
 const rootReducer = combineReducers({
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   sortPosts: sortPostsSlice,
   theme: themeSlice,
   user: userSlice,
+  users: usersSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

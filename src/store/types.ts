@@ -1,4 +1,5 @@
 import { PostWithId } from '@/types/postType';
+import { UserWithId } from '@/types/user';
 
 export type IThemeState = {
   mode: 'dark' | 'light';
@@ -24,4 +25,9 @@ export type SortPostsType = {
   isWithComments: boolean;
   isLikedByMe: boolean;
   rating: string | null;
+};
+
+export type UsersType = {
+  users: UserWithId[];
+  readonlyUsers: UserWithId[];
 };

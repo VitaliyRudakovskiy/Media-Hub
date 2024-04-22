@@ -14,14 +14,6 @@ export const editProfileElements: EditProfileElementsType[] = [
     name: 'description',
   },
   {
-    placeholder: 'Enter date of birth',
-    name: 'birthday',
-  },
-  {
-    placeholder: 'Enter phone number',
-    name: 'phone',
-  },
-  {
     placeholder: 'Enter your favourite content',
     name: 'favourites',
   },

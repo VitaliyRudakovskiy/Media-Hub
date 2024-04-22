@@ -6,19 +6,19 @@ const createUser = (
   credentials: UserCredential,
   name: string,
   secondName: string,
-  phone: string,
   email: string
-): Partial<UserType> => {
+): Omit<UserType, 'token'> => {
   return {
     id: credentials.user.uid,
     name,
     secondName,
-    phone,
     email,
     avatarName: null,
-    birthday: '',
     description: '',
     favourites: '',
+    requests: [],
+    sentRequests: [],
+    friends: [],
     role: 'user',
   };
 };

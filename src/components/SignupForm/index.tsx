@@ -12,6 +12,7 @@ import setUserToFirestore from '@/firebase/api/setUserToFirestore';
 import { useAppDispatch } from '@/store/hooks';
 import { setCurrentUser } from '@/store/slices/userSlice';
 import { SignupFormType } from '@/types/authFormType';
+import { UserWithId } from '@/types/user';
 import Button from '@/UI/Button';
 import Input from '@/UI/Input';
 import { signupScheme } from '@/validators/signupScheme';
@@ -34,12 +35,16 @@ const SignupForm = () => {
   const onSubmit: SubmitHandler<SignupFormType> = async ({
     name,
     secondName,
-    phone,
     email,
     password,
   }: SignupFormType) => {
     try {
-      const { userData } = await setUserToFirestore(name, secondName, phone, email, password);
+      const { userData }: Partial<UserWithId> = await setUserToFirestore(
+        name,
+        secondName,
+        email,
+        password
+      );
       dispatch(setCurrentUser({ ...userData }));
       router.push(ROUTES.HOME);
     } catch (error) {

@@ -7,12 +7,13 @@ const initialState: UserType = {
   name: '',
   secondName: '',
   email: '',
-  phone: '',
   avatarName: null,
-  birthday: '',
   description: '',
   favourites: '',
   role: 'user',
+  requests: [],
+  sentRequests: [],
+  friends: [],
   token: null,
 };
 

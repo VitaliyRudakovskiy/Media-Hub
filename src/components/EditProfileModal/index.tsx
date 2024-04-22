@@ -5,20 +5,19 @@ import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { zodResolver } from '@hookform/resolvers/zod';
-import dynamic from 'next/dynamic';
 
 import { editProfileElements } from '@/constants/editProfileElements';
 import updateProfile from '@/firebase/api/updateProfile';
 import useOnClickOutside from '@/hooks/useClickOutside';
 import { useAppDispatch } from '@/store/hooks';
-import { selectUser, updateCurrentUser } from '@/store/slices/userSlice';
+import { selectUser } from '@/store/slices/userSlice';
 import { EditProfileType } from '@/types/editProfileElements';
 import { FileType } from '@/types/fileType';
 import Button from '@/UI/Button';
 import Input from '@/UI/Input';
 import { editProfileScheme } from '@/validators/editProfileScheme';
 
-const EditAvatar = dynamic(() => import('./EditAvatar'));
+import EditAvatar from './EditAvatar';
 import * as S from './styled';
 import { EditProfileModalProps } from './types';
 
@@ -32,8 +31,6 @@ const EditProfileModal = ({ onClose }: EditProfileModalProps) => {
     secondName: user.secondName,
     description: user.description,
     favourites: user.favourites,
-    birthday: user.birthday,
-    phone: user.phone,
   };
 
   const {

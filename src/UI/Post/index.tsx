@@ -2,13 +2,14 @@
 
 import { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 
 import Comment from '@/assets/images/comment.png';
 import Goto from '@/assets/images/goto.png';
 import Remove from '@/assets/images/remove.png';
 import Repost from '@/assets/images/repost.png';
+import CommentsSection from '@/components/CommentsSection';
+import NewComment from '@/components/NewComment';
 import deletePost from '@/firebase/api/deletePost';
 import convertCreationDate from '@/helpers/convertCreationDate';
 import usePhotosFromFirestore from '@/hooks/usePhotosFromFirestore';
@@ -20,10 +21,7 @@ import PostLikes from '@/UI/PostLikes';
 import PostReaction from '@/UI/PostReaction';
 import PostViews from '@/UI/PostViews';
 
-const CommentsSection = dynamic(() => import('@/components/CommentsSection'));
-const NewComment = dynamic(() => import('@/components/NewComment'));
-
-import Avatar from '../Avatar';
+import DynamicAvatar from '../Avatars/DynamicAvatar';
 
 import * as S from './styled';
 
@@ -63,7 +61,7 @@ const Post = ({ id, postData }: PostWithId) => {
     <>
       <S.PostWrapper>
         <S.TopSection>
-          <Avatar width={50} height={50} initialsFontSize='20px' />
+          <DynamicAvatar email={email} width={50} height={50} initialsFontSize='20px' />
           <S.PostInfo>
             <S.UserName>{name}</S.UserName>
             <S.Date>{convertCreationDate(createdAt)}</S.Date>

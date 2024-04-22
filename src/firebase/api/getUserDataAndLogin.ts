@@ -1,13 +1,11 @@
-import { getDocs, query, where } from 'firebase/firestore';
+import { getDocs } from 'firebase/firestore';
 
 import { signin } from '@/firebase';
 
-import { USERS } from '../collections';
+import { singleUserQuery } from '../queries';
 
 const getUserDataAndLogin = async (email: string, password: string) => {
-  const userQuery = query(USERS, where('email', '==', email));
-
-  const querySnapshot = await getDocs(userQuery);
+  const querySnapshot = await getDocs(singleUserQuery(email));
 
   if (querySnapshot.empty) return {};
 

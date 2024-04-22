@@ -22,7 +22,7 @@ const HomeContainer = ({ locale, messages, timeZone }: ContainerProps) => {
 
   useEffect(() => {
     if (!isAuth) router.push(ROUTES.LOGIN);
-  });
+  }, [isAuth, router]);
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages} timeZone={timeZone}>

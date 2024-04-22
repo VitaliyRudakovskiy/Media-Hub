@@ -10,7 +10,7 @@ import defineLikeIcon from '@/helpers/defineLikeIcon';
 import isLikedByMe from '@/helpers/isLikedByMe';
 import { selectTheme } from '@/store/slices/themeSlice';
 import { selectUser } from '@/store/slices/userSlice';
-import Avatar from '@/UI/Avatar';
+import DynamicAvatar from '@/UI/Avatars/DynamicAvatar';
 import ConfirmForm from '@/UI/ConfirmForm';
 
 import * as S from './styled';
@@ -37,7 +37,7 @@ const Comment = ({ id, commentData, postId }: CommentProps) => {
   return (
     <>
       <S.CommentContainer>
-        <Avatar />
+        <DynamicAvatar email={commentData.email} />
         <S.MainContent>
           <S.UserName>{name}</S.UserName>
           <S.CommentText>{text}</S.CommentText>

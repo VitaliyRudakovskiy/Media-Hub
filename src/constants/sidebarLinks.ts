@@ -29,6 +29,11 @@ const sidebarLinks = [
     path: '/profile',
     icon: '',
   },
+  {
+    title: 'Support',
+    path: '/support',
+    icon: '',
+  },
 ];
 
 export default sidebarLinks;

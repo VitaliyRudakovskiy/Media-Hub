@@ -1,3 +1,5 @@
+import { UserType } from '@/types/user';
+
 export type AvatarProps = {
   width?: number;
   height?: number;
@@ -5,6 +7,10 @@ export type AvatarProps = {
   isBordered?: boolean;
   unoptimized?: boolean;
 };
+
+export type DynamicAvatarProps = AvatarProps & { email: string };
+
+export type DynamicUserType = Pick<UserType, 'name' | 'secondName' | 'avatarName'>;
 
 export type StyledAvatarContainerProps = {
   $width: number;

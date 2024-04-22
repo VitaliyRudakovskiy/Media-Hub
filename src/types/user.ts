@@ -3,11 +3,17 @@ export type UserType = {
   name: string;
   secondName: string;
   email: string;
-  phone: string;
-  birthday: string;
   avatarName: string | null;
   description: string;
   favourites: string;
+  requests: Array<string>;
+  sentRequests: Array<string>;
+  friends: Array<string>;
   role: string;
   token: string | null;
+};
+
+export type UserWithId = {
+  id: string;
+  userData: UserType;
 };

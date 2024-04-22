@@ -15,7 +15,7 @@ import useOnClickOutside from '@/hooks/useClickOutside';
 import { selectUser } from '@/store/slices/userSlice';
 import { CreatePostFormType } from '@/types/authFormType';
 import { VisibilityType } from '@/types/visibilityType';
-import Avatar from '@/UI/Avatar';
+import CurrentAvatar from '@/UI/Avatars/CurrentAvatar';
 import Select from '@/UI/Select';
 import StarRating from '@/UI/StarRating';
 import { createPostScheme } from '@/validators/createPostScheme';
@@ -120,7 +120,7 @@ const CreatePostForm = () => {
   return (
     <S.CreateForm onSubmit={handleSubmit(onSubmit)} ref={formRef}>
       <S.MainContent $isFormFocused={isFormFocused}>
-        <Avatar />
+        <CurrentAvatar />
         <S.InfoContainer>
           <S.TitleInput
             {...register('title')}
