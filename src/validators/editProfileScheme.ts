@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { DATE, FAVOURITES } from '@/constants/regulars';
+import { FAVOURITES } from '@/constants/regulars';
 
 export const editProfileScheme = z.object({
   name: z
@@ -15,11 +15,6 @@ export const editProfileScheme = z.object({
     .string()
     .min(10, 'Description should have at least 10 symbols')
     .max(300, 'Description should be not more than 300 symbols')
-    .optional()
-    .or(z.literal('')),
-  birthday: z
-    .string()
-    .regex(DATE, 'Date of birth should be in format: DD.MM.YYYY')
     .optional()
     .or(z.literal('')),
   favourites: z

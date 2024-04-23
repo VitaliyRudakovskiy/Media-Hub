@@ -14,6 +14,7 @@ import storage from 'redux-persist/lib/storage';
 import authSlice from './slices/authSlice';
 import postsSlice from './slices/postsSlice';
 import searchOptionsSlice from './slices/searchOptionsSlice';
+import searchUsersSlice from './slices/searchUsersSlice';
 import sortPostsSlice from './slices/sortPostsSlice';
 import themeSlice from './slices/themeSlice';
 import userSlice from './slices/userSlice';
@@ -22,13 +23,14 @@ import usersSlice from './slices/usersSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  blackList: ['posts', 'searchOptions', 'sortPosts', 'users'],
+  blackList: ['posts', 'searchOptions', 'sortPosts', 'users', 'searchUsers'],
 };
 
 const rootReducer = combineReducers({
   auth: authSlice,
   posts: postsSlice,
   searchOptions: searchOptionsSlice,
+  searchUsers: searchUsersSlice,
   sortPosts: sortPostsSlice,
   theme: themeSlice,
   user: userSlice,

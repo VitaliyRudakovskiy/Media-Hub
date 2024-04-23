@@ -1,3 +1,4 @@
+import { UsersVariants } from '@/constants/usersSortTiles';
 import { PostWithId } from '@/types/postType';
 import { UserWithId } from '@/types/user';
 
@@ -30,4 +31,9 @@ export type SortPostsType = {
 export type UsersType = {
   users: UserWithId[];
   readonlyUsers: UserWithId[];
+};
+
+export type SearchUsersType = {
+  searchUsersText: string;
+  activeTile: string;
 };

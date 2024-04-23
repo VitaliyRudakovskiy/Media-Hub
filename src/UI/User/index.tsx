@@ -1,13 +1,36 @@
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import getUserByEmail from '@/firebase/api/getUserByEmail';
+import sendFriendRequest from '@/firebase/api/sendFriendRequest';
+import defineUserFriend from '@/helpers/defineUserFriend';
+import { selectUser } from '@/store/slices/userSlice';
+import { UserWithId } from '@/types/user';
 
 import DynamicAvatar from '../Avatars/DynamicAvatar';
 
 import * as S from './styled';
-import { UserProps } from './types';
 import UserButtons from './UserButtons';
 
-const User = ({ id, userData, userType }: UserProps) => {
-  const { email, name, secondName, description } = userData;
+const User = ({ id, userData }: UserWithId) => {
+  const [userType, setUserType] = useState('');
+  const { email: myEmail } = useSelector(selectUser);
+  const { id: userId, email, name, secondName, description } = userData;
+
+  useEffect(() => {
+    if (myEmail) {
+      const fetchUser = async () => {
+        const userData = await getUserByEmail(myEmail);
+        const userAttitude = defineUserFriend(userData, userId);
+        setUserType(userAttitude);
+      };
+      fetchUser();
+    }
+  }, [myEmail, userId]);
+
+  const handleSendFriendRequest = async () => {
+    await sendFriendRequest(myEmail, id, email);
+  };
 
   return (
     <S.UserWrapper>
@@ -18,7 +41,7 @@ const User = ({ id, userData, userType }: UserProps) => {
         </S.UserName>
         <S.UserDescription>{description}</S.UserDescription>
       </S.TextContainer>
-      <UserButtons userType={userType} />
+      <UserButtons userType={userType} handleSendFriendRequest={handleSendFriendRequest} />
     </S.UserWrapper>
   );
 };
