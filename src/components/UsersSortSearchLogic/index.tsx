@@ -26,15 +26,14 @@ const UsersSearchSortLogic = () => {
   const { email } = useSelector(selectUser);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    if (email) {
-      const fetchUser = async () => {
-        const userData = await getUserByEmail(email);
-        setCurrentUser(userData);
-      };
-      fetchUser();
-    }
+  const fetchUser = useCallback(async () => {
+    const userData = await getUserByEmail(email);
+    setCurrentUser(userData);
   }, [email]);
+
+  useEffect(() => {
+    if (email) fetchUser();
+  }, [email, fetchUser]);
 
   const handleSearch = useCallback(
     (users: UserWithId[]) => {
@@ -53,11 +52,12 @@ const UsersSearchSortLogic = () => {
   );
 
   useEffect(() => {
+    fetchUser();
     const searchedUsers = handleSearch(readonlyUsers);
     const sortedUsers = handleSort(searchedUsers);
 
     dispatch(setUsers(sortedUsers));
-  }, [handleSearch, handleSort, readonlyUsers, dispatch]);
+  }, [handleSearch, handleSort, readonlyUsers, dispatch, fetchUser]);
 
   return (
     <SortSearchContainer>

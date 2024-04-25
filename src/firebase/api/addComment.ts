@@ -12,6 +12,7 @@ const addComment = async (postId: string, text: string, name: string, email: str
 
     const commentId = commentRef.id;
     const postRef = doc(POSTS, postId);
+
     await updateDoc(postRef, {
       comments: arrayUnion(commentId),
     });

@@ -20,7 +20,7 @@ const usersSortTiles = [
   },
   {
     id: UsersVariants.ALL_USERS,
-    text: 'Все польззователи',
+    text: 'Все пользователи',
   },
 ];
 

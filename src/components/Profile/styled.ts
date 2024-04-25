@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import styled from 'styled-components';
 
 import { flexBetween } from '@/theme/styles/mixins';
@@ -11,17 +10,12 @@ export const ProfileWrapper = styled.div`
   margin-bottom: 10px;
 `;
 
-export const BackgroundImageWrapper = styled.div`
+export const BackgroundColorWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 250px;
-`;
-
-export const BackgroundImage = styled(Image)`
-  position: absolute;
   border-radius: 12px 12px 0 0;
-  width: 100%;
-  height: 250px;
+  background: linear-gradient(188deg, rgba(30, 159, 102, 1) 0%, rgba(15, 66, 73, 1) 100%);
 `;
 
 export const ProfileInfo = styled.div`

@@ -40,7 +40,6 @@ const UsersFeed = () => {
         userData: doc.data(),
       })) as UserWithId[];
 
-      console.warn('Вызывается onSnapshot');
       dispatch(setUsers(userData));
       dispatch(setReadonlyUsers(userData));
       setIsLoading(false);

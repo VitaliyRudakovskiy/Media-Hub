@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import Background from '@/assets/images/profileBackground.jpg';
 import { selectUser } from '@/store/slices/userSlice';
 import CurrentAvatar from '@/UI/Avatars/CurrentAvatar';
 import Button from '@/UI/Button';
@@ -26,9 +25,7 @@ const Profile = () => {
   return (
     <>
       <S.ProfileWrapper>
-        <S.BackgroundImageWrapper>
-          <S.BackgroundImage src={Background} alt='profile background picture' />
-        </S.BackgroundImageWrapper>
+        <S.BackgroundColorWrapper />
         <S.ProfileInfo>
           <S.AvatarContainer>
             <CurrentAvatar
