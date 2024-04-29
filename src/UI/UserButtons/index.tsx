@@ -11,10 +11,11 @@ import getUserByEmail from '@/firebase/api/getUserByEmail';
 import sendFriendRequest from '@/firebase/api/sendFriendRequest';
 import defineUserFriend from '@/helpers/defineUserFriend';
 import { selectUser } from '@/store/slices/userSlice';
-import { UserWithId } from '@/types/user';
 import Button from '@/UI/Button';
 
-const UserButtons = ({ id, userData }: UserWithId) => {
+import { UserButtonsProps } from './types';
+
+const UserButtons = ({ id, userData, isSmall = false }: UserButtonsProps) => {
   const [userType, setUserType] = useState('');
   const { email: myEmail } = useSelector(selectUser);
   const { id: userId, email } = userData;
@@ -76,7 +77,7 @@ const UserButtons = ({ id, userData }: UserWithId) => {
   }
 
   return (
-    <Button variant='secondary' onClick={handleClick}>
+    <Button variant='secondary' onClick={handleClick} isSmall={isSmall}>
       {buttonText}
     </Button>
   );

@@ -7,10 +7,10 @@ import { StyledButtonProps } from './types';
 const StyledButton = styled.button<StyledButtonProps>`
   ${flexCenter};
   gap: 10px;
-  width: ${({ $width }) => $width};
+  width: ${({ $width, $isSmall }) => ($isSmall ? '90px' : $width)};
   font-family: inherit;
-  font-size: 16px;
-  padding: 8px 16px;
+  font-size: ${({ $isSmall }) => ($isSmall ? 13 : 16)}px;
+  padding: ${({ $isSmall }) => ($isSmall ? '6px 12px' : '8px 16px')};
   border: none;
   border-radius: 8px;
   background-color: ${({ theme, $variant }) =>

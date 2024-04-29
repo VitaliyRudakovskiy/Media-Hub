@@ -9,3 +9,10 @@ export const UserProfileWrapper = styled.section`
 export const CenterSection = styled.div`
   width: 100%;
 `;
+
+export const PostsContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+`;

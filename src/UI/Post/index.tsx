@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation';
 import Comment from '@/assets/images/comment.png';
 import Goto from '@/assets/images/goto.png';
 import Remove from '@/assets/images/remove.png';
-import Repost from '@/assets/images/repost.png';
 import CommentsSection from '@/components/CommentsSection';
 import NewComment from '@/components/NewComment';
 import deletePost from '@/firebase/api/deletePost';
@@ -39,7 +38,6 @@ const Post = ({ id, postData }: PostWithId) => {
     likedBy,
     bookmarks,
     views,
-    repostTimes,
     comments,
     visibility,
   } = postData;
@@ -93,7 +91,6 @@ const Post = ({ id, postData }: PostWithId) => {
               reactionsCount={comments.length}
               onClick={handleToggleComments}
             />
-            <PostReaction icon={Repost} reactionsCount={repostTimes} />
           </S.ReactionsSection>
           <PostViews visibility={visibility} views={views} />
         </S.NumbersSection>

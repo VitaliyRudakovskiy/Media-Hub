@@ -13,11 +13,13 @@ const Button = ({
   width = 'fit-content',
   icon,
   onClick,
+  isSmall = false,
 }: ButtonProps) => {
   return (
     <StyledButton
       $variant={variant}
       $width={width}
+      $isSmall={isSmall}
       disabled={disabled}
       type={type}
       onClick={onClick}

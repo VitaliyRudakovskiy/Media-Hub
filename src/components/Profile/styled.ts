@@ -4,8 +4,8 @@ import { flexBetween } from '@/theme/styles/mixins';
 
 export const ProfileWrapper = styled.div`
   background-color: ${({ theme }) => theme.sectionColor};
-  border: 1px solid ${({ theme }) => theme.sectionBorderColor};
   border-radius: 12px;
+  border: 1px solid ${({ theme }) => theme.sectionBorderColor};
   width: 100%;
   margin: 0 10px 10px 0;
 `;

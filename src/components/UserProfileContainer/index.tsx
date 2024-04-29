@@ -11,10 +11,11 @@ import getUserById from '@/firebase/api/getUserById';
 import { selectIsAuth } from '@/store/slices/authSlice';
 import Sidebar from '@/UI/Sidebar';
 
+import MayBeFriends from '../MayBeFriends';
 import UserPosts from '../UserPosts';
 import UserProfile from '../UserProfile';
 
-import { CenterSection, UserProfileWrapper } from './styled';
+import * as S from './styled';
 import { UserProfileContainerProps } from './types';
 
 const UserProfileContainer = ({
@@ -50,19 +51,22 @@ const UserProfileContainer = ({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages} timeZone={timeZone}>
-      <UserProfileWrapper>
+      <S.UserProfileWrapper>
         <Sidebar />
-        <CenterSection>
+        <S.CenterSection>
           {loadingUser ? (
             <div>Loading...</div>
           ) : (
             <>
               <UserProfile userData={userData} userId={userId} />
-              <UserPosts userEmail={userData?.email} />
+              <S.PostsContainer>
+                <UserPosts userEmail={userData?.email} />
+                <MayBeFriends />
+              </S.PostsContainer>
             </>
           )}
-        </CenterSection>
-      </UserProfileWrapper>
+        </S.CenterSection>
+      </S.UserProfileWrapper>
     </NextIntlClientProvider>
   );
 };

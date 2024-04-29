@@ -9,9 +9,11 @@ export type ButtonProps = {
   width?: string;
   icon?: StaticImageData;
   onClick?: () => void;
+  isSmall?: boolean;
 };
 
 export type StyledButtonProps = {
   $variant: 'primary' | 'secondary';
   $width: string;
+  $isSmall: boolean;
 };
