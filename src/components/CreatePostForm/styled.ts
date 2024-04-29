@@ -14,6 +14,7 @@ export const CreateForm = styled.form`
   padding: 12px 16px 12px 12px;
   width: 100%;
   max-width: ${({ theme }) => theme.sizes.maxMainSectionWidth};
+  margin-bottom: 10px;
 `;
 
 export const MainContent = styled.div<FormFocused>`
@@ -89,7 +90,7 @@ export const FilesContainer = styled.div`
 `;
 
 export const UploadFileLabel = styled.label`
-  margin-right: 5px;
+  margin: 5px 5px 0 0;
 `;
 
 export const InputForFile = styled.input`
@@ -99,10 +100,6 @@ export const InputForFile = styled.input`
 `;
 
 export const UploadFile = styled(Image)`
-  cursor: pointer;
-`;
-
-export const SmileImage = styled(Image)`
   cursor: pointer;
 `;
 

@@ -7,6 +7,7 @@ const initialState: SortPostsType = {
   isWithPictures: false,
   isWithComments: false,
   isLikedByMe: false,
+  isBookmarkedByMe: false,
   rating: null,
 };
 
@@ -29,6 +30,9 @@ const sortPostsSlice = createSlice({
     setIsLikedByMe: (state, action: PayloadAction<boolean>) => {
       state.isLikedByMe = action.payload;
     },
+    setIsBookmarkedByMe: (state, action: PayloadAction<boolean>) => {
+      state.isBookmarkedByMe = action.payload;
+    },
     setRating: (state, action: PayloadAction<string | null>) => {
       state.rating = action.payload;
     },
@@ -41,6 +45,7 @@ export const {
   setIsWithPictures,
   setIsWithComments,
   setIsLikedByMe,
+  setIsBookmarkedByMe,
   setRating,
 } = sortPostsSlice.actions;
 
@@ -52,6 +57,8 @@ export const selectIsWithComments = (state: { sortPosts: SortPostsType }): boole
   state.sortPosts.isWithComments;
 export const selectIsLikedByMe = (state: { sortPosts: SortPostsType }): boolean =>
   state.sortPosts.isLikedByMe;
+export const selectIsBookmarkedByMe = (state: { sortPosts: SortPostsType }): boolean =>
+  state.sortPosts.isBookmarkedByMe;
 export const selectRatingSort = (state: { sortPosts: SortPostsType }): string | null =>
   state.sortPosts.rating;
 

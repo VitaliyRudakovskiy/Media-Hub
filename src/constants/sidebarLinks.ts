@@ -5,11 +5,6 @@ const sidebarLinks = [
     icon: '',
   },
   {
-    title: 'Messages',
-    path: '/messages',
-    icon: '',
-  },
-  {
     title: 'Friends',
     path: '/friends',
     icon: '',
@@ -17,11 +12,6 @@ const sidebarLinks = [
   {
     title: 'Bookmarks',
     path: '/bookmarks',
-    icon: '',
-  },
-  {
-    title: 'Settings',
-    path: '/settings',
     icon: '',
   },
   {

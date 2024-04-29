@@ -6,21 +6,25 @@ import { useRouter } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 
 import ROUTES from '@/constants/routes';
+import { useAppDispatch } from '@/store/hooks';
 import { selectIsAuth } from '@/store/slices/authSlice';
-import { selectUser } from '@/store/slices/userSlice';
+import { setIsBookmarkedByMe } from '@/store/slices/sortPostsSlice';
 import { ContainerProps } from '@/types/nextIntlContainerProps';
 import Sidebar from '@/UI/Sidebar';
 
-import CreatePostForm from '../CreatePostForm';
-import Profile from '../Profile';
-import UserPosts from '../UserPosts';
+import Feed from '../Feed';
+import SearchSortLogic from '../SearchSortLogic';
 
-import { MainContent, ProfileSectionWrapper } from './styled';
+import { BookmarksWrapper, CenterSection } from './styled';
 
-const ProfileContainer = ({ locale, messages, timeZone }: ContainerProps) => {
+const BookmarksContainer = ({ locale, messages, timeZone }: ContainerProps) => {
   const isAuth = useSelector(selectIsAuth);
-  const { email } = useSelector(selectUser);
   const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setIsBookmarkedByMe(true));
+  }, [dispatch]);
 
   useEffect(() => {
     if (!isAuth) router.push(ROUTES.LOGIN);
@@ -28,16 +32,15 @@ const ProfileContainer = ({ locale, messages, timeZone }: ContainerProps) => {
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages} timeZone={timeZone}>
-      <ProfileSectionWrapper>
+      <BookmarksWrapper>
         <Sidebar />
-        <MainContent>
-          <Profile />
-          <CreatePostForm />
-          <UserPosts userEmail={email} />
-        </MainContent>
-      </ProfileSectionWrapper>
+        <CenterSection>
+          <Feed />
+        </CenterSection>
+        <SearchSortLogic />
+      </BookmarksWrapper>
     </NextIntlClientProvider>
   );
 };
 
-export default memo(ProfileContainer);
+export default memo(BookmarksContainer);

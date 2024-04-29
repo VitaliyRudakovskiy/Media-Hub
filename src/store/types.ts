@@ -1,4 +1,3 @@
-import { UsersVariants } from '@/constants/usersSortTiles';
 import { PostWithId } from '@/types/postType';
 import { UserWithId } from '@/types/user';
 
@@ -25,6 +24,7 @@ export type SortPostsType = {
   isWithPictures: boolean;
   isWithComments: boolean;
   isLikedByMe: boolean;
+  isBookmarkedByMe: boolean;
   rating: string | null;
 };
 

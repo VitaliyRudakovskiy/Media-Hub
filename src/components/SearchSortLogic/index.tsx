@@ -4,6 +4,7 @@ import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import fetchPostsBySearch from '@/helpers/fetchPostsBySearch';
+import filterPostsByBookmarks from '@/helpers/filterPostsByBookmarks';
 import filterPostsByCategories from '@/helpers/filterPostsByCategories';
 import filterPostsByComments from '@/helpers/filterPostsByComments';
 import filterPostsByLikes from '@/helpers/filterPostsByLikes';
@@ -14,6 +15,7 @@ import { selectReadonlyPosts, setPosts } from '@/store/slices/postsSlice';
 import { selectOptions, selectSearchText } from '@/store/slices/searchOptionsSlice';
 import {
   selectCategories,
+  selectIsBookmarkedByMe,
   selectIsLikedByMe,
   selectIsWithComments,
   selectIsWithPictures,
@@ -33,6 +35,7 @@ const SearchSortLogic = () => {
   const isWithPictures = useSelector(selectIsWithPictures);
   const isWithComments = useSelector(selectIsWithComments);
   const isLikedByMe = useSelector(selectIsLikedByMe);
+  const isBookmarkedByMe = useSelector(selectIsBookmarkedByMe);
   const ratingSort = useSelector(selectRatingSort);
   const searchText = useSelector(selectSearchText);
   const searchOptions = useSelector(selectOptions);
@@ -55,11 +58,12 @@ const SearchSortLogic = () => {
       if (isWithPictures) sortedPosts = filterPostsByPicture(sortedPosts);
       if (isWithComments) sortedPosts = filterPostsByComments(sortedPosts);
       if (isLikedByMe) sortedPosts = filterPostsByLikes(sortedPosts, userId);
+      if (isBookmarkedByMe) sortedPosts = filterPostsByBookmarks(sortedPosts, userId);
       if (ratingSort) sortedPosts = filterPostsByRating(sortedPosts, ratingSort);
 
       return sortedPosts;
     },
-    [categories, isWithPictures, isWithComments, isLikedByMe, userId, ratingSort]
+    [categories, isWithPictures, isWithComments, isLikedByMe, isBookmarkedByMe, userId, ratingSort]
   );
 
   useEffect(() => {

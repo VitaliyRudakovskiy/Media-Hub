@@ -7,7 +7,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import Clip from '@/assets/images/clip.png';
 import Exchange from '@/assets/images/exchange.png';
-import Smile from '@/assets/images/smile.png';
 import CATEGORIES from '@/constants/categories';
 import { createPostDefaultValues } from '@/constants/createPostDefaultValues';
 import uploadPost from '@/firebase/api/uploadPost';
@@ -155,7 +154,6 @@ const CreatePostForm = () => {
             onChange={handleFileChange}
           />
         </S.UploadFileLabel>
-        <S.SmileImage src={Smile} alt='smile face' width={20} height={20} />
       </S.MainContent>
 
       {isFormFocused && (

@@ -6,7 +6,9 @@ import { useRouter } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 
 import ROUTES from '@/constants/routes';
+import { useAppDispatch } from '@/store/hooks';
 import { selectIsAuth } from '@/store/slices/authSlice';
+import { setIsBookmarkedByMe } from '@/store/slices/sortPostsSlice';
 import { ContainerProps } from '@/types/nextIntlContainerProps';
 import Sidebar from '@/UI/Sidebar';
 
@@ -19,6 +21,11 @@ import { CenterSection, HomeWrapper } from './styled';
 const HomeContainer = ({ locale, messages, timeZone }: ContainerProps) => {
   const isAuth = useSelector(selectIsAuth);
   const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setIsBookmarkedByMe(false));
+  }, [dispatch]);
 
   useEffect(() => {
     if (!isAuth) router.push(ROUTES.LOGIN);

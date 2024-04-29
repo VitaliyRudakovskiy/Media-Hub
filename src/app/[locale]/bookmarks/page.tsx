@@ -1,19 +1,19 @@
 import { useMessages, useTimeZone } from 'next-intl';
 import { unstable_setRequestLocale as setLocale } from 'next-intl/server';
 
-import FriendsContainer from '@/components/FriendsContainer';
+import BookmarksContainer from '@/components/BookmarksContainer';
 import { LocaleParams } from '@/types/locale';
 
-const Friends = ({ params: { locale } }: LocaleParams) => {
+const Bookmarks = ({ params: { locale } }: LocaleParams) => {
   setLocale(locale);
   const messages = useMessages();
   const timeZone = useTimeZone() as string;
 
   return (
     <main>
-      <FriendsContainer locale={locale} timeZone={timeZone} messages={messages} />
+      <BookmarksContainer locale={locale} timeZone={timeZone} messages={messages} />
     </main>
   );
 };
 
-export default Friends;
+export default Bookmarks;
