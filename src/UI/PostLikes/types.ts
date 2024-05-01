@@ -1,4 +1,4 @@
 export type PostLikesProps = {
-  id: string;
-  likedBy: string[];
-};
+  id: string
+  likedBy: string[]
+}

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { StyledCategoryCardProps } from './types';
+import { StyledCategoryCardProps } from './types'
 
 export const Card = styled.div<StyledCategoryCardProps>`
   padding: 8px 12px;
@@ -11,4 +11,4 @@ export const Card = styled.div<StyledCategoryCardProps>`
   background-color: ${({ theme, $isActive }) =>
     $isActive ? theme.activeButtonColor : 'transparent'};
   cursor: pointer;
-`;
+`

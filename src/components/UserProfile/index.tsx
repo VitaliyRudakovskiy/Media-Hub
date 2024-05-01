@@ -1,14 +1,14 @@
-import { UserType } from '@/types/user';
-import DynamicAvatar from '@/UI/Avatars/DynamicAvatar';
-import UserButtons from '@/UI/UserButtons';
+import { UserType } from '@/types/user'
+import DynamicAvatar from '@/UI/Avatars/DynamicAvatar'
+import UserButtons from '@/UI/UserButtons'
 
-import * as S from './styled';
-import { UserProfileProps } from './types';
+import * as S from './styled'
+import { UserProfileProps } from './types'
 
 const UserProfile = ({ userData, userId }: UserProfileProps) => {
-  if (!userData) return null;
+  if (!userData) return null
 
-  const { email, name, secondName } = userData;
+  const { email, name, secondName } = userData
 
   return (
     <S.UserProfileWrapper>
@@ -30,7 +30,7 @@ const UserProfile = ({ userData, userId }: UserProfileProps) => {
         <UserButtons id={userId} userData={userData as UserType} />
       </S.ProfileInfo>
     </S.UserProfileWrapper>
-  );
-};
+  )
+}
 
-export default UserProfile;
+export default UserProfile

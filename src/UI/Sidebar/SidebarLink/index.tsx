@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import { StyledLink } from './styled';
-import { SidebarLinkProps } from './types';
+import { StyledLink } from './styled'
+import { SidebarLinkProps } from './types'
 
 const SidebarLink = ({ title, path }: SidebarLinkProps) => {
   return (
@@ -9,7 +9,7 @@ const SidebarLink = ({ title, path }: SidebarLinkProps) => {
       {/* <StyledImage src={icon} alt={`sidebar link for ${title}`} /> */}
       {title}
     </StyledLink>
-  );
-};
+  )
+}
 
-export default SidebarLink;
+export default SidebarLink

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { PostWithId } from '@/types/postType';
+import { PostWithId } from '@/types/postType'
 
 const fetchPostsBySearch = (posts: PostWithId[], searchOptions: string[], searchText: string) => {
   const filteredPosts = posts.filter(({ postData }) =>
@@ -7,8 +7,8 @@ const fetchPostsBySearch = (posts: PostWithId[], searchOptions: string[], search
       // @ts-ignore
       postData[option]?.toLowerCase().includes(searchText.toLowerCase())
     )
-  );
-  return filteredPosts;
-};
+  )
+  return filteredPosts
+}
 
-export default fetchPostsBySearch;
+export default fetchPostsBySearch

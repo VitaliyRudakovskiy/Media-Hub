@@ -1,15 +1,15 @@
-'use client';
+'use client'
 
-import { forwardRef } from 'react';
+import { forwardRef } from 'react'
 
-import StyledInput from './styled';
-import { IInputProps } from './types';
+import StyledInput from './styled'
+import { IInputProps } from './types'
 
 const Input = forwardRef<HTMLInputElement, IInputProps>(
   ({ placeholder, type = 'text', ...props }, ref) => (
     <StyledInput placeholder={placeholder} ref={ref} type={type} {...props} />
   )
-);
-Input.displayName = 'Input';
+)
+Input.displayName = 'Input'
 
-export default Input;
+export default Input

@@ -1,3 +1,3 @@
-const LOCALES = ['en', 'ru'];
+const LOCALES = ['en', 'ru']
 
-export default LOCALES;
+export default LOCALES

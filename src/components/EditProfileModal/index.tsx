@@ -1,37 +1,37 @@
-'use client';
+'use client'
 
-import { memo, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { memo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { useForm } from 'react-hook-form'
+import { useSelector } from 'react-redux'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-import { editProfileElements } from '@/constants/editProfileElements';
-import updateProfile from '@/firebase/api/updateProfile';
-import useOnClickOutside from '@/hooks/useClickOutside';
-import { useAppDispatch } from '@/store/hooks';
-import { selectUser } from '@/store/slices/userSlice';
-import { EditProfileType } from '@/types/editProfileElements';
-import { FileType } from '@/types/fileType';
-import Button from '@/UI/Button';
-import Input from '@/UI/Input';
-import { editProfileScheme } from '@/validators/editProfileScheme';
+import { editProfileElements } from '@/constants/editProfileElements'
+import updateProfile from '@/firebase/api/updateProfile'
+import useOnClickOutside from '@/hooks/useClickOutside'
+import { useAppDispatch } from '@/store/hooks'
+import { selectUser } from '@/store/slices/userSlice'
+import { EditProfileType } from '@/types/editProfileElements'
+import { FileType } from '@/types/fileType'
+import Button from '@/UI/Button'
+import Input from '@/UI/Input'
+import { editProfileScheme } from '@/validators/editProfileScheme'
 
-import EditAvatar from './EditAvatar';
-import * as S from './styled';
-import { EditProfileModalProps } from './types';
+import EditAvatar from './EditAvatar'
+import * as S from './styled'
+import { EditProfileModalProps } from './types'
 
 const EditProfileModal = ({ onClose }: EditProfileModalProps) => {
-  const [file, setFile] = useState<FileType | null>(null);
-  const user = useSelector(selectUser);
-  const dispatch = useAppDispatch();
+  const [file, setFile] = useState<FileType | null>(null)
+  const user = useSelector(selectUser)
+  const dispatch = useAppDispatch()
 
   const editProfileDefaultValues = {
     name: user.name,
     secondName: user.secondName,
     description: user.description,
     favourites: user.favourites,
-  };
+  }
 
   const {
     register,
@@ -41,20 +41,20 @@ const EditProfileModal = ({ onClose }: EditProfileModalProps) => {
     resolver: zodResolver(editProfileScheme),
     defaultValues: editProfileDefaultValues,
     mode: 'onChange',
-  });
+  })
 
-  const formRef = useRef(null);
-  useOnClickOutside(formRef, onClose);
+  const formRef = useRef(null)
+  useOnClickOutside(formRef, onClose)
 
   const onSubmit = async (newData: Partial<EditProfileType>) => {
     try {
-      await updateProfile(user.id, newData, file, dispatch);
+      await updateProfile(user.id, newData, file, dispatch)
     } catch (error) {
-      throw Error(`An error occured while changing profile data: ${error}`);
+      throw Error(`An error occured while changing profile data: ${error}`)
     } finally {
-      onClose();
+      onClose()
     }
-  };
+  }
 
   return createPortal(
     <S.ModalOverlay>
@@ -80,7 +80,7 @@ const EditProfileModal = ({ onClose }: EditProfileModalProps) => {
     </S.ModalOverlay>,
 
     document.body
-  );
-};
+  )
+}
 
-export default memo(EditProfileModal);
+export default memo(EditProfileModal)

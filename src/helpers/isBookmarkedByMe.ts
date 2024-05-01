@@ -1,3 +1,3 @@
-const isBookmarkedByMe = (bookmarks: string[], userId: string) => bookmarks.includes(userId);
+const isBookmarkedByMe = (bookmarks: string[], userId: string) => bookmarks.includes(userId)
 
-export default isBookmarkedByMe;
+export default isBookmarkedByMe

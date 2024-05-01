@@ -1,7 +1,7 @@
 export type CategoryCardProps = {
-  category: string;
-};
+  category: string
+}
 
 export type StyledCategoryCardProps = {
-  $isActive: boolean;
-};
+  $isActive: boolean
+}

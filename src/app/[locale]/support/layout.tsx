@@ -1,5 +1,5 @@
-import { ChildrenProps } from '@/types/childrenType';
-import Header from '@/UI/Header';
+import { ChildrenProps } from '@/types/childrenType'
+import Header from '@/UI/Header'
 
 const SupportLayout = ({ children }: ChildrenProps) => {
   return (
@@ -7,7 +7,7 @@ const SupportLayout = ({ children }: ChildrenProps) => {
       <Header />
       {children}
     </>
-  );
-};
+  )
+}
 
-export default SupportLayout;
+export default SupportLayout

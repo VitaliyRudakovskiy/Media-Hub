@@ -1,3 +1,3 @@
-import { ContainerProps } from '@/types/nextIntlContainerProps';
+import { ContainerProps } from '@/types/nextIntlContainerProps'
 
-export type UserProfileContainerProps = ContainerProps & { userId: string };
+export type UserProfileContainerProps = ContainerProps & { userId: string }

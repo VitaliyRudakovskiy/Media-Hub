@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import Logo from '@/assets/images/logo.png';
-import ThemeToggler from '@/UI/ThemeToggler';
+import Logo from '@/assets/images/logo.png'
+import ThemeToggler from '@/UI/ThemeToggler'
 
-import LogoutButton from '../LogoutButton';
+import LogoutButton from '../LogoutButton'
 
-import { HeaderWrapper, LeftPart, RightPart, StyledImage } from './styled';
+import { HeaderWrapper, LeftPart, RightPart, StyledImage } from './styled'
 
 const Header = () => {
   return (
@@ -19,7 +19,7 @@ const Header = () => {
         <ThemeToggler />
       </RightPart>
     </HeaderWrapper>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

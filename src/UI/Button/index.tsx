@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
+import Image from 'next/image'
 
-import StyledButton from './styled';
-import { ButtonProps } from './types';
+import StyledButton from './styled'
+import { ButtonProps } from './types'
 
 const Button = ({
   variant,
@@ -27,7 +27,7 @@ const Button = ({
       {children}
       {icon && <Image src={icon} alt={`button picture ${icon}`} width={20} height={20} />}
     </StyledButton>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

@@ -1,14 +1,14 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { UserWithId } from '@/types/user';
+import { UserWithId } from '@/types/user'
 
-import DynamicAvatar from '../Avatars/DynamicAvatar';
-import UserButtons from '../UserButtons';
+import DynamicAvatar from '../Avatars/DynamicAvatar'
+import UserButtons from '../UserButtons'
 
-import * as S from './styled';
+import * as S from './styled'
 
 const User = ({ id, userData }: UserWithId) => {
-  const { email, name, secondName, description } = userData;
+  const { email, name, secondName, description } = userData
 
   return (
     <S.UserWrapper>
@@ -23,7 +23,7 @@ const User = ({ id, userData }: UserWithId) => {
       </S.LeftContainer>
       <UserButtons id={id} userData={userData} />
     </S.UserWrapper>
-  );
-};
+  )
+}
 
-export default memo(User);
+export default memo(User)

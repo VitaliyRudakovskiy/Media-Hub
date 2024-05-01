@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { flexCenter } from '@/theme/styles/mixins';
+import { flexCenter } from '@/theme/styles/mixins'
 
 export const ToggleContainer = styled.div`
   ${flexCenter};
   position: relative;
   width: 60px;
   height: 32px;
-`;
+`
 
 export const Label = styled.label`
   position: absolute;
@@ -16,7 +16,7 @@ export const Label = styled.label`
   background-color: ${({ theme }) => theme.inputBackgroundColor};
   border-radius: 32px;
   cursor: pointer;
-`;
+`
 
 export const Slider = styled.span`
   position: absolute;
@@ -36,7 +36,7 @@ export const Slider = styled.span`
     box-shadow: inset 8px -3px 0px 0px yellow;
     transition: 0.3s;
   }
-`;
+`
 
 export const Input = styled.input`
   position: absolute;
@@ -47,4 +47,4 @@ export const Input = styled.input`
     background-color: ${({ theme }) => theme.inputPlaceholderColor};
     box-shadow: none;
   }
-`;
+`

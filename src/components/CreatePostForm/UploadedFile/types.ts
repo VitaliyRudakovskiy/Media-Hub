@@ -1,5 +1,5 @@
 export type UploadedFileProps = {
-  filename: string;
-  index: number;
-  onRemove: (index: number) => void;
-};
+  filename: string
+  index: number
+  onRemove: (index: number) => void
+}

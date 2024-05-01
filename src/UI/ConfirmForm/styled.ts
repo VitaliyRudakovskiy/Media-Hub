@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { flexCenter } from '@/theme/styles/mixins';
+import { flexCenter } from '@/theme/styles/mixins'
 
 export const ModalOverlay = styled.div`
   ${flexCenter};
@@ -11,7 +11,7 @@ export const ModalOverlay = styled.div`
   height: 100dvh;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
-`;
+`
 
 export const ModalContainer = styled.div`
   ${flexCenter};
@@ -24,15 +24,15 @@ export const ModalContainer = styled.div`
   border-radius: 12px;
   box-shadow: ${({ theme }) => theme.backgroundColor} 3px 3px 15px 3px;
   background-color: ${({ theme }) => theme.sectionColor};
-`;
+`
 
 export const ModalTitle = styled.h2`
   text-align: center;
-`;
+`
 
 export const ModalSubtitle = styled.p`
   text-align: center;
-`;
+`
 
 export const CloseButton = styled.button`
   position: absolute;
@@ -48,12 +48,12 @@ export const CloseButton = styled.button`
   &:hover {
     color: ${({ theme }) => theme.redButtonColor};
   }
-`;
+`
 
 export const ButtonsContainer = styled.div`
   ${flexCenter}
   gap: 20px;
-`;
+`
 
 export const ConfirmButton = styled.button`
   ${flexCenter};
@@ -74,4 +74,4 @@ export const ConfirmButton = styled.button`
   &:active {
     filter: brightness(90%);
   }
-`;
+`

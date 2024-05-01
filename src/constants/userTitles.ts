@@ -3,4 +3,4 @@ export const UserTitles = {
   Requests: 'Friend Request',
   SentRequests: 'My sent requests',
   AllUsers: 'All users',
-};
+}

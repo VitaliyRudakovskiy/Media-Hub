@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 export const signupScheme = z
   .object({
@@ -13,6 +13,6 @@ export const signupScheme = z
     email: z.string().email("This email doesn't exist"),
     password: z.string().min(8, 'Password should have at least 8 symbols'),
   })
-  .required();
+  .required()
 
-export type SignupSchemeType = z.infer<typeof signupScheme>;
+export type SignupSchemeType = z.infer<typeof signupScheme>

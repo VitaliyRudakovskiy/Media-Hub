@@ -1,30 +1,29 @@
-'use client';
+'use client'
 
-import { ChangeEvent } from 'react';
-import { useSelector } from 'react-redux';
+import { ChangeEvent } from 'react'
+import { useSelector } from 'react-redux'
 
-import Cross from '@/assets/images/cross.png';
-import Lupa from '@/assets/images/lupa.png';
-import { useAppDispatch } from '@/store/hooks';
-import { selectReadonlyPosts, setPosts } from '@/store/slices/postsSlice';
-import { selectSearchText, setSearchText } from '@/store/slices/searchOptionsSlice';
+import Cross from '@/assets/images/cross.png'
+import Lupa from '@/assets/images/lupa.png'
+import { useAppDispatch } from '@/store/hooks'
+import { selectReadonlyPosts, setPosts } from '@/store/slices/postsSlice'
+import { selectSearchText, setSearchText } from '@/store/slices/searchOptionsSlice'
 
-import SearchOptions from '../SearchOptions';
+import SearchOptions from '../SearchOptions'
 
-import * as S from './styled';
+import * as S from './styled'
 
 const PostsSearch = () => {
-  const searchText = useSelector(selectSearchText);
-  const readOnlyPosts = useSelector(selectReadonlyPosts);
-  const dispatch = useAppDispatch();
+  const searchText = useSelector(selectSearchText)
+  const readOnlyPosts = useSelector(selectReadonlyPosts)
+  const dispatch = useAppDispatch()
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
-    dispatch(setSearchText(e.target.value));
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => dispatch(setSearchText(e.target.value))
 
   const handleClearSearch = () => {
-    dispatch(setSearchText(''));
-    dispatch(setPosts(readOnlyPosts));
-  };
+    dispatch(setSearchText(''))
+    dispatch(setPosts(readOnlyPosts))
+  }
 
   return (
     <S.SearchContainer>
@@ -45,7 +44,7 @@ const PostsSearch = () => {
       </S.InputContainer>
       <SearchOptions />
     </S.SearchContainer>
-  );
-};
+  )
+}
 
-export default PostsSearch;
+export default PostsSearch

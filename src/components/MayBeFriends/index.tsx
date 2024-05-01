@@ -1,30 +1,30 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useRouter } from 'next/navigation'
 
-import getPotentialFriends from '@/helpers/getPotentialFriends';
-import { selectUser } from '@/store/slices/userSlice';
-import { selectReadonlyUsers } from '@/store/slices/usersSlice';
-import { UserWithId } from '@/types/user';
-import Button from '@/UI/Button';
+import getPotentialFriends from '@/helpers/getPotentialFriends'
+import { selectUser } from '@/store/slices/userSlice'
+import { selectReadonlyUsers } from '@/store/slices/usersSlice'
+import { UserWithId } from '@/types/user'
+import Button from '@/UI/Button'
 
-import PotentialFriend from './PotentialFriend';
-import { MayBeFriendsContainer, MayBeFriendsTitle, PotentialFriendsContainer } from './styled';
+import PotentialFriend from './PotentialFriend'
+import { MayBeFriendsContainer, MayBeFriendsTitle, PotentialFriendsContainer } from './styled'
 
 const MayBeFriends = () => {
-  const users = useSelector(selectReadonlyUsers);
-  const { id: myId, email: myEmail } = useSelector(selectUser);
-  const [recommendedFriends, setRecommendedFriends] = useState<UserWithId[]>([]);
-  const router = useRouter();
+  const users = useSelector(selectReadonlyUsers)
+  const { id: myId, email: myEmail } = useSelector(selectUser)
+  const [recommendedFriends, setRecommendedFriends] = useState<UserWithId[]>([])
+  const router = useRouter()
 
   useEffect(() => {
-    const potentialFriends = getPotentialFriends(users, myId, myEmail);
-    setRecommendedFriends(potentialFriends);
-  }, [users, myId, myEmail]);
+    const potentialFriends = getPotentialFriends(users, myId, myEmail)
+    setRecommendedFriends(potentialFriends)
+  }, [users, myId, myEmail])
 
-  const redirectToFriends = () => router.push(`/friends`);
+  const redirectToFriends = () => router.push(`/friends`)
 
   return (
     <MayBeFriendsContainer>
@@ -38,7 +38,7 @@ const MayBeFriends = () => {
         Show all
       </Button>
     </MayBeFriendsContainer>
-  );
-};
+  )
+}
 
-export default MayBeFriends;
+export default MayBeFriends

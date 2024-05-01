@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import BooleanSorts from './BooleanSorts';
-import CategoriesSort from './CategoriesSort';
-import RatingSort from './RatingSort';
-import * as S from './styled';
+import BooleanSorts from './BooleanSorts'
+import CategoriesSort from './CategoriesSort'
+import RatingSort from './RatingSort'
+import * as S from './styled'
 
 const PostsSort = () => {
   return (
@@ -13,7 +13,7 @@ const PostsSort = () => {
       <BooleanSorts />
       <RatingSort />
     </S.SortContainer>
-  );
-};
+  )
+}
 
-export default PostsSort;
+export default PostsSort

@@ -1,28 +1,28 @@
-'use client';
+'use client'
 
-import { memo, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useRouter } from 'next/navigation';
+import { memo, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useRouter } from 'next/navigation'
 
-import Comment from '@/assets/images/comment.png';
-import Goto from '@/assets/images/goto.png';
-import Remove from '@/assets/images/remove.png';
-import CommentsSection from '@/components/CommentsSection';
-import NewComment from '@/components/NewComment';
-import deletePost from '@/firebase/api/deletePost';
-import convertCreationDate from '@/helpers/convertCreationDate';
-import usePhotosFromFirestore from '@/hooks/usePhotosFromFirestore';
-import { selectUser } from '@/store/slices/userSlice';
-import { PostWithId } from '@/types/postType';
-import ConfirmForm from '@/UI/ConfirmForm';
-import PostBookmark from '@/UI/PostBookmark';
-import PostLikes from '@/UI/PostLikes';
-import PostReaction from '@/UI/PostReaction';
-import PostViews from '@/UI/PostViews';
+import Comment from '@/assets/images/comment.png'
+import Goto from '@/assets/images/goto.png'
+import Remove from '@/assets/images/remove.png'
+import CommentsSection from '@/components/CommentsSection'
+import NewComment from '@/components/NewComment'
+import deletePost from '@/firebase/api/deletePost'
+import convertCreationDate from '@/helpers/convertCreationDate'
+import usePhotosFromFirestore from '@/hooks/usePhotosFromFirestore'
+import { selectUser } from '@/store/slices/userSlice'
+import { PostWithId } from '@/types/postType'
+import ConfirmForm from '@/UI/ConfirmForm'
+import PostBookmark from '@/UI/PostBookmark'
+import PostLikes from '@/UI/PostLikes'
+import PostReaction from '@/UI/PostReaction'
+import PostViews from '@/UI/PostViews'
 
-import DynamicAvatar from '../Avatars/DynamicAvatar';
+import DynamicAvatar from '../Avatars/DynamicAvatar'
 
-import * as S from './styled';
+import * as S from './styled'
 
 const Post = ({ id, postData }: PostWithId) => {
   const {
@@ -40,20 +40,20 @@ const Post = ({ id, postData }: PostWithId) => {
     views,
     comments,
     visibility,
-  } = postData;
+  } = postData
 
-  const { email: currentUserEmail } = useSelector(selectUser);
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const [areCommentsVisible, setAreCommentsVisible] = useState(false);
-  const router = useRouter();
+  const { email: currentUserEmail } = useSelector(selectUser)
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
+  const [areCommentsVisible, setAreCommentsVisible] = useState(false)
+  const router = useRouter()
 
-  const fileLinks = usePhotosFromFirestore(files);
+  const fileLinks = usePhotosFromFirestore(files)
 
-  const openPost = () => router.push(`/dashboard/${id}`);
-  const handleOpenModal = () => setIsConfirmModalOpen(true);
-  const handleCloseModal = () => setIsConfirmModalOpen(false);
-  const handleDeletePost = () => deletePost(id);
-  const handleToggleComments = () => setAreCommentsVisible((prevVisible) => !prevVisible);
+  const openPost = () => router.push(`/dashboard/${id}`)
+  const handleOpenModal = () => setIsConfirmModalOpen(true)
+  const handleCloseModal = () => setIsConfirmModalOpen(false)
+  const handleDeletePost = () => deletePost(id)
+  const handleToggleComments = () => setAreCommentsVisible((prevVisible) => !prevVisible)
 
   return (
     <>
@@ -111,7 +111,7 @@ const Post = ({ id, postData }: PostWithId) => {
         />
       )}
     </>
-  );
-};
+  )
+}
 
-export default memo(Post);
+export default memo(Post)

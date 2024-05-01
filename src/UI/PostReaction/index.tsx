@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { Count, Icon, ReactionWrapper } from './styled';
-import { PostReactionType } from './types';
+import { Count, Icon, ReactionWrapper } from './styled'
+import { PostReactionType } from './types'
 
 const PostReaction = ({ reactionsCount, icon, onClick }: PostReactionType) => {
   return (
@@ -11,7 +11,7 @@ const PostReaction = ({ reactionsCount, icon, onClick }: PostReactionType) => {
       <Icon src={icon} alt={`reaction-${icon}`} width={20} height={20} />
       {reactionsCount !== 0 && <Count>{reactionsCount}</Count>}
     </ReactionWrapper>
-  );
-};
+  )
+}
 
-export default memo(PostReaction);
+export default memo(PostReaction)

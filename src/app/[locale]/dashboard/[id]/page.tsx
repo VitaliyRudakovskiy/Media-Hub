@@ -1,5 +1,5 @@
 const Post = () => {
-  return <div>I am post</div>;
-};
+  return <div>I am post</div>
+}
 
-export default Post;
+export default Post

@@ -11,6 +11,6 @@ const searchCheckboxes = [
     id: 'tags',
     name: 'tags',
   },
-];
+]
 
-export default searchCheckboxes;
+export default searchCheckboxes

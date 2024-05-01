@@ -1,38 +1,38 @@
-'use client';
+'use client'
 
-import { ChangeEvent, memo, SyntheticEvent, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { ChangeEvent, memo, SyntheticEvent, useState } from 'react'
+import { useSelector } from 'react-redux'
 
-import Submit from '@/assets/images/submit.png';
-import addComment from '@/firebase/api/addComment';
-import { selectUser } from '@/store/slices/userSlice';
-import CurrentAvatar from '@/UI/Avatars/CurrentAvatar';
+import Submit from '@/assets/images/submit.png'
+import addComment from '@/firebase/api/addComment'
+import { selectUser } from '@/store/slices/userSlice'
+import CurrentAvatar from '@/UI/Avatars/CurrentAvatar'
 
-import * as S from './styled';
-import { NewCommentProps } from './types';
+import * as S from './styled'
+import { NewCommentProps } from './types'
 
 const NewComment = ({ postId }: NewCommentProps) => {
-  const [comment, setComment] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const { email, name, secondName } = useSelector(selectUser);
+  const [comment, setComment] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const { email, name, secondName } = useSelector(selectUser)
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => setComment(e.target.value);
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => setComment(e.target.value)
 
   const handleCreateComment = async (e: SyntheticEvent) => {
-    e.preventDefault();
-    if (!comment) return;
-    const fullName = `${name} ${secondName}`;
+    e.preventDefault()
+    if (!comment) return
+    const fullName = `${name} ${secondName}`
 
     try {
-      setIsLoading(true);
-      await addComment(postId, comment, fullName, email);
+      setIsLoading(true)
+      await addComment(postId, comment, fullName, email)
     } catch (error) {
-      throw Error(`Error in Create Post component: ${error}`);
+      throw Error(`Error in Create Post component: ${error}`)
     } finally {
-      setIsLoading(false);
-      setComment('');
+      setIsLoading(false)
+      setComment('')
     }
-  };
+  }
 
   return (
     <S.CommentSection>
@@ -48,7 +48,7 @@ const NewComment = ({ postId }: NewCommentProps) => {
         </S.SubmitButton>
       </S.CommentForm>
     </S.CommentSection>
-  );
-};
+  )
+}
 
-export default memo(NewComment);
+export default memo(NewComment)

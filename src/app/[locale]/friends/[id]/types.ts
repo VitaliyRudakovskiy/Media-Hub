@@ -1,6 +1,6 @@
 export type UserProfileProps = {
   params: {
-    locale: string;
-    id: string;
-  };
-};
+    locale: string
+    id: string
+  }
+}

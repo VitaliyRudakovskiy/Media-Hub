@@ -1,5 +1,5 @@
-import searchCheckboxes from '@/constants/searchCheckboxes';
+import searchCheckboxes from '@/constants/searchCheckboxes'
 
 export const defineInitialSearchOptions = () => {
-  return searchCheckboxes.map((item) => item.name);
-};
+  return searchCheckboxes.map((item) => item.name)
+}

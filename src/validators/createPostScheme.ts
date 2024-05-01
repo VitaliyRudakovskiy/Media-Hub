@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 export const createPostScheme = z
   .object({
@@ -9,6 +9,6 @@ export const createPostScheme = z
     category: z.string(),
     tags: z.string(),
   })
-  .required();
+  .required()
 
-export type CreatePostType = z.infer<typeof createPostScheme>;
+export type CreatePostType = z.infer<typeof createPostScheme>

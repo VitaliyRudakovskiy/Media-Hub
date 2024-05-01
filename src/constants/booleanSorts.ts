@@ -11,6 +11,6 @@ const booleanSorts = [
     id: 'likedByMe',
     name: 'likedByMe',
   },
-];
+]
 
-export default booleanSorts;
+export default booleanSorts

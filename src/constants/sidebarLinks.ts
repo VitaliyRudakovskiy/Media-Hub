@@ -24,6 +24,6 @@ const sidebarLinks = [
     path: '/support',
     icon: '',
   },
-];
+]
 
-export default sidebarLinks;
+export default sidebarLinks

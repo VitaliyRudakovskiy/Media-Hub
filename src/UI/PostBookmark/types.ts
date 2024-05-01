@@ -1,4 +1,4 @@
 export type PostBookmarkProps = {
-  id: string;
-  bookmarks: string[];
-};
+  id: string
+  bookmarks: string[]
+}

@@ -1,3 +1,3 @@
 export type NewCommentProps = {
-  postId: string;
-};
+  postId: string
+}

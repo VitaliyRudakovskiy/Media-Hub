@@ -1,18 +1,18 @@
-'use client';
+'use client'
 
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react'
 
-import CurrentAvatar from '@/UI/Avatars/CurrentAvatar';
-import Button from '@/UI/Button';
+import CurrentAvatar from '@/UI/Avatars/CurrentAvatar'
+import Button from '@/UI/Button'
 
-import * as S from './styled';
-import { EditAvatarProps } from './types';
+import * as S from './styled'
+import { EditAvatarProps } from './types'
 
 const EditAvatar = ({ setFile }: EditAvatarProps) => {
   const handleUploadFile = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files === null) return;
-    setFile(e.target.files[0]);
-  };
+    if (e.target.files === null) return
+    setFile(e.target.files[0])
+  }
 
   return (
     <S.EditAvatarContainer>
@@ -28,7 +28,7 @@ const EditAvatar = ({ setFile }: EditAvatarProps) => {
         </S.UploadFileLabel>
       </Button>
     </S.EditAvatarContainer>
-  );
-};
+  )
+}
 
-export default EditAvatar;
+export default EditAvatar

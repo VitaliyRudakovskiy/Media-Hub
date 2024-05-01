@@ -1,14 +1,14 @@
-import Image from 'next/image';
-import styled, { css } from 'styled-components';
+import Image from 'next/image'
+import styled, { css } from 'styled-components'
 
-import { IArrowStyledProps, IStyledsSelectProps } from './types';
+import { IArrowStyledProps, IStyledsSelectProps } from './types'
 
 export const StyledSelectContainer = styled.div<IStyledsSelectProps>`
   position: relative;
   width: ${({ $width }) => $width};
   display: flex;
   align-items: center;
-`;
+`
 
 export const StyledSelect = styled.select`
   font-family: inherit;
@@ -21,9 +21,9 @@ export const StyledSelect = styled.select`
   appearance: none;
   width: 100%;
   cursor: pointer;
-`;
+`
 
-export const StyledOption = styled.option``;
+export const StyledOption = styled.option``
 
 export const ArrowImage = styled(Image)<IArrowStyledProps>`
   position: absolute;
@@ -36,4 +36,4 @@ export const ArrowImage = styled(Image)<IArrowStyledProps>`
     css`
       transform: rotate(180deg);
     `}
-`;
+`

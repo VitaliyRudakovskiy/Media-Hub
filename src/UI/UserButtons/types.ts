@@ -1,3 +1,3 @@
-import { UserWithId } from '@/types/user';
+import { UserWithId } from '@/types/user'
 
-export type UserButtonsProps = UserWithId & { isSmall?: boolean };
+export type UserButtonsProps = UserWithId & { isSmall?: boolean }

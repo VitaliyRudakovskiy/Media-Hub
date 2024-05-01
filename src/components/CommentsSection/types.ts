@@ -1,4 +1,4 @@
 export type CommentsSectionProps = {
-  commentsIds: string[];
-  postId: string;
-};
+  commentsIds: string[]
+  postId: string
+}

@@ -1,6 +1,6 @@
-import { VisibilityType } from '@/types/visibilityType';
+import { VisibilityType } from '@/types/visibilityType'
 
 export type PostViewsProps = {
-  visibility: VisibilityType;
-  views: number;
-};
+  visibility: VisibilityType
+  views: number
+}

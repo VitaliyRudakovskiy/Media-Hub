@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import StarsRating from 'react-star-rate';
+import StarsRating from 'react-star-rate'
 
-import { StarRatingType } from './types';
+import { StarRatingType } from './types'
 
 const StarRating = ({ starValue, setStarValue }: StarRatingType) => {
   return (
@@ -13,12 +13,12 @@ const StarRating = ({ starValue, setStarValue }: StarRatingType) => {
         count={10}
         value={starValue}
         onChange={(value) => {
-          setStarValue(value);
+          setStarValue(value)
         }}
       />
       <span>Rating: {starValue}</span>
     </div>
-  );
-};
+  )
+}
 
-export default StarRating;
+export default StarRating

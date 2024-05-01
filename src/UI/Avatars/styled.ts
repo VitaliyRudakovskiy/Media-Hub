@@ -1,9 +1,9 @@
-import Image from 'next/image';
-import styled from 'styled-components';
+import Image from 'next/image'
+import styled from 'styled-components'
 
-import { flexCenter } from '@/theme/styles/mixins';
+import { flexCenter } from '@/theme/styles/mixins'
 
-import { StyledAvatarContainerProps, StyledAvatarProps, StyledInitialsProps } from './types';
+import { StyledAvatarContainerProps, StyledAvatarProps, StyledInitialsProps } from './types'
 
 export const AvatarContainer = styled.div<StyledAvatarContainerProps>`
   ${flexCenter};
@@ -14,14 +14,14 @@ export const AvatarContainer = styled.div<StyledAvatarContainerProps>`
   height: ${({ $height }) => $height}px;
   min-height: ${({ $width }) => $width}px;
   min-width: ${({ $height }) => $height}px;
-`;
+`
 
 export const AvatarPhoto = styled(Image)<StyledAvatarProps>`
   border-radius: 50%;
   border: ${({ theme, $isBordered }) => $isBordered && `4px solid ${theme.sectionColor}`};
-`;
+`
 
 export const Initials = styled.p<StyledInitialsProps>`
   font-size: ${({ $initialsFontSize }) => $initialsFontSize};
   font-weight: 500;
-`;
+`

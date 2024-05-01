@@ -1,6 +1,6 @@
-import { UserCredential } from 'firebase/auth';
+import { UserCredential } from 'firebase/auth'
 
-import { UserType } from '@/types/user';
+import { UserType } from '@/types/user'
 
 const createUser = (
   credentials: UserCredential,
@@ -20,7 +20,7 @@ const createUser = (
     sentRequests: [],
     friends: [],
     role: 'user',
-  };
-};
+  }
+}
 
-export default createUser;
+export default createUser

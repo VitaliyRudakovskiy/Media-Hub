@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { flexCenter } from '@/theme/styles/mixins';
+import { flexCenter } from '@/theme/styles/mixins'
 
-import { StyledButtonProps } from './types';
+import { StyledButtonProps } from './types'
 
 const StyledButton = styled.button<StyledButtonProps>`
   ${flexCenter};
@@ -34,6 +34,6 @@ const StyledButton = styled.button<StyledButtonProps>`
   &:active {
     filter: brightness(90%);
   }
-`;
+`
 
-export default StyledButton;
+export default StyledButton

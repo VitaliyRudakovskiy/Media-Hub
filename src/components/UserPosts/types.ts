@@ -1,3 +1,3 @@
 export type UserPostsProps = {
-  userEmail: string;
-};
+  userEmail: string
+}

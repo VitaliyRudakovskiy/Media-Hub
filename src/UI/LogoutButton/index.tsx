@@ -1,16 +1,16 @@
-'use client';
+'use client'
 
-import { logout } from '@/firebase';
-import { useAppDispatch } from '@/store/hooks';
-import { setCurrentUser } from '@/store/slices/userSlice';
+import { logout } from '@/firebase'
+import { useAppDispatch } from '@/store/hooks'
+import { setCurrentUser } from '@/store/slices/userSlice'
 
-import StyledButton from './styled';
+import StyledButton from './styled'
 
 const LogoutButton = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
   const handleLogout = async () => {
-    await logout();
+    await logout()
 
     dispatch(
       setCurrentUser({
@@ -21,10 +21,10 @@ const LogoutButton = () => {
         phone: '',
         token: null,
       })
-    );
-  };
+    )
+  }
 
-  return <StyledButton onClick={handleLogout}>Log out</StyledButton>;
-};
+  return <StyledButton onClick={handleLogout}>Log out</StyledButton>
+}
 
-export default LogoutButton;
+export default LogoutButton

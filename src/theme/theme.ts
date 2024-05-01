@@ -1,7 +1,7 @@
-import { DefaultTheme } from 'styled-components';
+import { DefaultTheme } from 'styled-components'
 
-import COLORS from './styles/colors';
-import SIZES from './styles/sizes';
+import COLORS from './styles/colors'
+import SIZES from './styles/sizes'
 
 const BASE_THEME = {
   colors: {
@@ -10,7 +10,7 @@ const BASE_THEME = {
   sizes: {
     ...SIZES,
   },
-};
+}
 
 export const darkTheme: DefaultTheme = {
   ...BASE_THEME,
@@ -30,7 +30,7 @@ export const darkTheme: DefaultTheme = {
   secondaryButtonTextColor: COLORS.gray300,
   redButtonColor: COLORS.red,
   activeButtonColor: COLORS.blue100,
-};
+}
 
 export const lightTheme: DefaultTheme = {
   ...BASE_THEME,
@@ -50,4 +50,4 @@ export const lightTheme: DefaultTheme = {
   secondaryButtonTextColor: COLORS.blue300,
   redButtonColor: COLORS.red,
   activeButtonColor: COLORS.blue300,
-};
+}

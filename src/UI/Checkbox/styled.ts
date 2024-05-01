@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-export const CheckboxWrapper = styled.div``;
+export const CheckboxWrapper = styled.div``
 
 export const Label = styled.label`
   cursor: pointer;
-`;
+`
 
 export const Checkbox = styled.input`
   position: absolute;
@@ -45,4 +45,4 @@ export const Checkbox = styled.input`
   &:focus:not(:checked) + ${Label}::before {
     border-color: #c3c3c3;
   }
-`;
+`

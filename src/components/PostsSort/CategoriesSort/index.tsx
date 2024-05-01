@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import CATEGORIES from '@/constants/categories';
+import CATEGORIES from '@/constants/categories'
 
-import CategoryCard from './CategoryCard';
-import * as S from './styled';
+import CategoryCard from './CategoryCard'
+import * as S from './styled'
 
 const CategoriesSort = () => {
   return (
@@ -12,7 +12,7 @@ const CategoriesSort = () => {
         <CategoryCard key={category} category={category} />
       ))}
     </S.CategoriesContainer>
-  );
-};
+  )
+}
 
-export default CategoriesSort;
+export default CategoriesSort

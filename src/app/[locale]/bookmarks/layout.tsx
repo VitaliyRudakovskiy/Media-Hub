@@ -1,5 +1,5 @@
-import { ChildrenProps } from '@/types/childrenType';
-import Header from '@/UI/Header';
+import { ChildrenProps } from '@/types/childrenType'
+import Header from '@/UI/Header'
 
 const BookmarksLayout = ({ children }: ChildrenProps) => {
   return (
@@ -7,7 +7,7 @@ const BookmarksLayout = ({ children }: ChildrenProps) => {
       <Header />
       {children}
     </>
-  );
-};
+  )
+}
 
-export default BookmarksLayout;
+export default BookmarksLayout

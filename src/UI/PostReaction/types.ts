@@ -1,11 +1,11 @@
-import { StaticImageData } from 'next/image';
+import { StaticImageData } from 'next/image'
 
 export type PostReactionType = {
-  reactionsCount: number;
-  icon: StaticImageData;
-  onClick?: () => void;
-};
+  reactionsCount: number
+  icon: StaticImageData
+  onClick?: () => void
+}
 
 export type StyledProps = {
-  $count: number;
-};
+  $count: number
+}

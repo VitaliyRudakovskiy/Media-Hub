@@ -1,10 +1,10 @@
-import { addDoc } from 'firebase/firestore';
+import { addDoc } from 'firebase/firestore'
 
-import { register } from '@/firebase';
-import createUser from '@/helpers/createUser';
-import { UserWithId } from '@/types/user';
+import { register } from '@/firebase'
+import createUser from '@/helpers/createUser'
+import { UserWithId } from '@/types/user'
 
-import { USERS } from '../collections';
+import { USERS } from '../collections'
 
 const setUserToFirestore = async (
   name: string,
@@ -12,12 +12,12 @@ const setUserToFirestore = async (
   email: string,
   password: string
 ): Promise<Omit<UserWithId, 'id'>> => {
-  const credentials = await register(email, password);
-  const token = await credentials.user.getIdToken();
-  const userData = createUser(credentials, name, secondName, email);
+  const credentials = await register(email, password)
+  const token = await credentials.user.getIdToken()
+  const userData = createUser(credentials, name, secondName, email)
 
-  await addDoc(USERS, userData);
-  return { userData: { ...userData, token } };
-};
+  await addDoc(USERS, userData)
+  return { userData: { ...userData, token } }
+}
 
-export default setUserToFirestore;
+export default setUserToFirestore

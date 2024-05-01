@@ -1,3 +1,3 @@
 export type StringType = {
-  [key: string]: string;
-};
+  [key: string]: string
+}

@@ -1,4 +1,4 @@
-import { StringType } from '@/types/stringType';
+import { StringType } from '@/types/stringType'
 
 const COLORS: StringType = {
   red: '#DC3545',
@@ -27,6 +27,6 @@ const COLORS: StringType = {
   gray525: '#818C99', // search input background
   blue300: '#2688EB', // primary background color
   black: '#000000', // text
-};
+}
 
-export default COLORS;
+export default COLORS

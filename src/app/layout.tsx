@@ -1,7 +1,7 @@
-import { ChildrenProps } from '@/types/childrenType';
+import { ChildrenProps } from '@/types/childrenType'
 
 const RootLayout = ({ children }: ChildrenProps) => {
-  return children;
-};
+  return children
+}
 
-export default RootLayout;
+export default RootLayout

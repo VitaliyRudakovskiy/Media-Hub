@@ -1,4 +1,4 @@
-import { EditPasswordElementsType } from '@/types/editPasswordElements';
+import { EditPasswordElementsType } from '@/types/editPasswordElements'
 
 export const editPasswordElements: EditPasswordElementsType[] = [
   {
@@ -17,11 +17,11 @@ export const editPasswordElements: EditPasswordElementsType[] = [
     placeholder: 'Confirm new password',
     name: 'confirmPassword',
   },
-];
+]
 
 export const defaultEditPasswordValues = {
   email: '',
   oldPassword: '',
   newPassword: '',
   confirmPassword: '',
-};
+}

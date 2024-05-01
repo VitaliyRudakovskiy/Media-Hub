@@ -1,17 +1,17 @@
-'use client';
+'use client'
 
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
-import { useAppDispatch } from '@/store/hooks';
-import { selectTheme, toggleTheme } from '@/store/slices/themeSlice';
+import { useAppDispatch } from '@/store/hooks'
+import { selectTheme, toggleTheme } from '@/store/slices/themeSlice'
 
-import { Input, Label, Slider, ToggleContainer } from './styled';
+import { Input, Label, Slider, ToggleContainer } from './styled'
 
 const ThemeToggler = () => {
-  const theme = useSelector(selectTheme);
-  const dispatch = useAppDispatch();
+  const theme = useSelector(selectTheme)
+  const dispatch = useAppDispatch()
 
-  const handleToggleTheme = () => dispatch(toggleTheme());
+  const handleToggleTheme = () => dispatch(toggleTheme())
 
   return (
     <ToggleContainer>
@@ -20,7 +20,7 @@ const ThemeToggler = () => {
         <Slider />
       </Label>
     </ToggleContainer>
-  );
-};
+  )
+}
 
-export default ThemeToggler;
+export default ThemeToggler

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { flexColumn } from '@/theme/styles/mixins';
+import { flexColumn } from '@/theme/styles/mixins'
 
 export const SortContainer = styled.section`
   ${flexColumn};
@@ -10,6 +10,6 @@ export const SortContainer = styled.section`
   max-width: ${({ theme }) => theme.sizes.maxSearchSectionWidth};
   border-radius: 12px;
   padding: 16px;
-`;
+`
 
-export const SortTitle = styled.h3``;
+export const SortTitle = styled.h3``

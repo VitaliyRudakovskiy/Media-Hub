@@ -1,4 +1,4 @@
-import { FormInput, SignupFormType } from '@/types/authFormType';
+import { FormInput, SignupFormType } from '@/types/authFormType'
 
 export const signupInputs: FormInput[] = [
   { placeholder: 'Name', type: 'text', name: 'name' },
@@ -9,11 +9,11 @@ export const signupInputs: FormInput[] = [
     type: 'password',
     name: 'password',
   },
-];
+]
 
 export const signupDefaultValues: SignupFormType = {
   name: '',
   secondName: '',
   email: '',
   password: '',
-};
+}

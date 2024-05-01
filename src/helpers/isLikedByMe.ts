@@ -1,3 +1,3 @@
-const isLikedByMe = (usersLikedBy: string[], userId: string) => usersLikedBy.includes(userId);
+const isLikedByMe = (usersLikedBy: string[], userId: string) => usersLikedBy.includes(userId)
 
-export default isLikedByMe;
+export default isLikedByMe

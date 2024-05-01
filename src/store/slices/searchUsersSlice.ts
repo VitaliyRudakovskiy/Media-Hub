@@ -1,36 +1,35 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { UsersVariants } from '@/constants/usersSortTiles';
+import { UsersVariants } from '@/constants/usersSortTiles'
 
-import { SearchUsersType } from '../types';
+import { SearchUsersType } from '../types'
 
 const initialState: SearchUsersType = {
   searchUsersText: '',
   activeTile: UsersVariants.FRIENDS,
-};
+}
 
 const searchUsersSlice = createSlice({
   name: 'searchUsers',
   initialState,
   reducers: {
     setUsersSearchText: (state, action: PayloadAction<string>) => {
-      state.searchUsersText = action.payload;
+      state.searchUsersText = action.payload
     },
     removeUsersSearchText: (state) => {
-      state.searchUsersText = '';
+      state.searchUsersText = ''
     },
     setActiveTile: (state, action: PayloadAction<string>) => {
-      state.activeTile = action.payload;
+      state.activeTile = action.payload
     },
   },
-});
+})
 
-export const { setUsersSearchText, removeUsersSearchText, setActiveTile } =
-  searchUsersSlice.actions;
+export const { setUsersSearchText, removeUsersSearchText, setActiveTile } = searchUsersSlice.actions
 
 export const selectUsersSearchText = (state: { searchUsers: SearchUsersType }): string =>
-  state.searchUsers.searchUsersText;
+  state.searchUsers.searchUsersText
 export const selectActiveTile = (state: { searchUsers: SearchUsersType }): string =>
-  state.searchUsers.activeTile;
+  state.searchUsers.activeTile
 
-export default searchUsersSlice.reducer;
+export default searchUsersSlice.reducer

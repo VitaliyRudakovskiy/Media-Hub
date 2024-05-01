@@ -1,21 +1,21 @@
-'use client';
+'use client'
 
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
 
-import Logo from '@/assets/images/logo.png';
-import * as Styled from '@/constants/formStyles';
-import ROUTES from '@/constants/routes';
-import { signupDefaultValues, signupInputs } from '@/constants/signupElements';
-import setUserToFirestore from '@/firebase/api/setUserToFirestore';
-import { useAppDispatch } from '@/store/hooks';
-import { setCurrentUser } from '@/store/slices/userSlice';
-import { SignupFormType } from '@/types/authFormType';
-import { UserWithId } from '@/types/user';
-import Button from '@/UI/Button';
-import Input from '@/UI/Input';
-import { signupScheme } from '@/validators/signupScheme';
+import Logo from '@/assets/images/logo.png'
+import * as Styled from '@/constants/formStyles'
+import ROUTES from '@/constants/routes'
+import { signupDefaultValues, signupInputs } from '@/constants/signupElements'
+import setUserToFirestore from '@/firebase/api/setUserToFirestore'
+import { useAppDispatch } from '@/store/hooks'
+import { setCurrentUser } from '@/store/slices/userSlice'
+import { SignupFormType } from '@/types/authFormType'
+import { UserWithId } from '@/types/user'
+import Button from '@/UI/Button'
+import Input from '@/UI/Input'
+import { signupScheme } from '@/validators/signupScheme'
 
 const SignupForm = () => {
   const {
@@ -27,10 +27,10 @@ const SignupForm = () => {
     resolver: zodResolver(signupScheme),
     defaultValues: signupDefaultValues,
     mode: 'onChange',
-  });
+  })
 
-  const dispatch = useAppDispatch();
-  const router = useRouter();
+  const dispatch = useAppDispatch()
+  const router = useRouter()
 
   const onSubmit: SubmitHandler<SignupFormType> = async ({
     name,
@@ -44,15 +44,15 @@ const SignupForm = () => {
         secondName,
         email,
         password
-      );
-      dispatch(setCurrentUser({ ...userData }));
-      router.push(ROUTES.HOME);
+      )
+      dispatch(setCurrentUser({ ...userData }))
+      router.push(ROUTES.HOME)
     } catch (error) {
-      throw new Error(`An error occured while submitting form: ${error}`);
+      throw new Error(`An error occured while submitting form: ${error}`)
     } finally {
-      reset();
+      reset()
     }
-  };
+  }
 
   return (
     <Styled.Form onSubmit={handleSubmit(onSubmit)}>
@@ -70,7 +70,7 @@ const SignupForm = () => {
         Create new account
       </Button>
     </Styled.Form>
-  );
-};
+  )
+}
 
-export default SignupForm;
+export default SignupForm

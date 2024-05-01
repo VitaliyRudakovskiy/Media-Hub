@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import styled from 'styled-components';
+import Image from 'next/image'
+import Link from 'next/link'
+import styled from 'styled-components'
 
-import { flexCenter, flexColumn } from '@/theme/styles/mixins';
+import { flexCenter, flexColumn } from '@/theme/styles/mixins'
 
 export const PoterntialFriendWrapper = styled.div`
   display: flex;
@@ -10,14 +10,14 @@ export const PoterntialFriendWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   padding: 8px 0;
-`;
+`
 
 export const FriendLeftContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
   width: 78%;
-`;
+`
 
 export const FriendTextContainer = styled.div`
   ${flexColumn};
@@ -25,7 +25,7 @@ export const FriendTextContainer = styled.div`
   line-height: 1.2;
   gap: 5px;
   text-align: justify;
-`;
+`
 
 export const FriendNameLink = styled(Link)`
   text-decoration: none;
@@ -37,14 +37,14 @@ export const FriendNameLink = styled(Link)`
   &:hover {
     color: ${({ theme }) => theme.secondaryTextColor};
   }
-`;
+`
 
 export const FriendDescription = styled.p`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-`;
+`
 
 export const AddFriendButton = styled.div`
   ${flexCenter};
@@ -59,6 +59,6 @@ export const AddFriendButton = styled.div`
     background-color: ${({ theme }) => theme.hoverColor};
     box-shadow: 0px 1px 13px 2px ${({ theme }) => theme.hoverColor};
   }
-`;
+`
 
-export const AddFriendPicture = styled(Image)``;
+export const AddFriendPicture = styled(Image)``

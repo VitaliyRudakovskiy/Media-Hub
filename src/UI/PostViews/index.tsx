@@ -1,10 +1,10 @@
-'use client';
+'use client'
 
-import EyeIcon from '@/assets/images/eye.png';
-import CrossedEyeIcon from '@/assets/images/eye-crossed.png';
+import EyeIcon from '@/assets/images/eye.png'
+import CrossedEyeIcon from '@/assets/images/eye-crossed.png'
 
-import { Eye, ViewContainer } from './styled';
-import { PostViewsProps } from './types';
+import { Eye, ViewContainer } from './styled'
+import { PostViewsProps } from './types'
 
 const PostViews = ({ visibility, views }: PostViewsProps) => {
   return (
@@ -21,7 +21,7 @@ const PostViews = ({ visibility, views }: PostViewsProps) => {
         </>
       )}
     </ViewContainer>
-  );
-};
+  )
+}
 
-export default PostViews;
+export default PostViews

@@ -1,3 +1,3 @@
-const CATEGORIES = ['Film', 'Book', 'Game', 'Cartoon', 'Series'];
+const CATEGORIES = ['Film', 'Book', 'Game', 'Cartoon', 'Series']
 
-export default CATEGORIES;
+export default CATEGORIES

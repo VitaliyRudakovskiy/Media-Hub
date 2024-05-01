@@ -1,3 +1,3 @@
 export type EditPasswordModalProps = {
-  onClose: () => void;
-};
+  onClose: () => void
+}

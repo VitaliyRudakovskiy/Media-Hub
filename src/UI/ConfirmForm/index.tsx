@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import { useRef } from 'react';
-import { createPortal } from 'react-dom';
+import { useRef } from 'react'
+import { createPortal } from 'react-dom'
 
-import useOnClickOutside from '@/hooks/useClickOutside';
-import Button from '@/UI/Button';
+import useOnClickOutside from '@/hooks/useClickOutside'
+import Button from '@/UI/Button'
 
-import * as S from './styled';
-import { ConfirmFormProps } from './types';
+import * as S from './styled'
+import { ConfirmFormProps } from './types'
 
 const ConfirmForm = ({
   title = 'Подтверждение удаления',
@@ -17,8 +17,8 @@ const ConfirmForm = ({
   closeModal,
   onConfirm,
 }: ConfirmFormProps) => {
-  const modalRef = useRef(null);
-  useOnClickOutside(modalRef, closeModal);
+  const modalRef = useRef(null)
+  useOnClickOutside(modalRef, closeModal)
 
   return createPortal(
     <S.ModalOverlay>
@@ -36,7 +36,7 @@ const ConfirmForm = ({
     </S.ModalOverlay>,
 
     document.body
-  );
-};
+  )
+}
 
-export default ConfirmForm;
+export default ConfirmForm

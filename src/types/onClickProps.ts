@@ -1,3 +1,3 @@
 export type onClickProps = {
-  onClick: () => void;
-};
+  onClick: () => void
+}

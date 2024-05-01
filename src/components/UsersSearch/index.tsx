@@ -1,32 +1,32 @@
-'use client';
+'use client'
 
-import { ChangeEvent } from 'react';
-import { useSelector } from 'react-redux';
+import { ChangeEvent } from 'react'
+import { useSelector } from 'react-redux'
 
-import Cross from '@/assets/images/cross.png';
-import Lupa from '@/assets/images/lupa.png';
-import { useAppDispatch } from '@/store/hooks';
+import Cross from '@/assets/images/cross.png'
+import Lupa from '@/assets/images/lupa.png'
+import { useAppDispatch } from '@/store/hooks'
 import {
   removeUsersSearchText,
   selectUsersSearchText,
   setUsersSearchText,
-} from '@/store/slices/searchUsersSlice';
-import { selectReadonlyUsers, setUsers } from '@/store/slices/usersSlice';
+} from '@/store/slices/searchUsersSlice'
+import { selectReadonlyUsers, setUsers } from '@/store/slices/usersSlice'
 
-import * as S from './styled';
+import * as S from './styled'
 
 const UsersSearch = () => {
-  const usersSearchText = useSelector(selectUsersSearchText);
-  const readOnlyUsers = useSelector(selectReadonlyUsers);
-  const dispatch = useAppDispatch();
+  const usersSearchText = useSelector(selectUsersSearchText)
+  const readOnlyUsers = useSelector(selectReadonlyUsers)
+  const dispatch = useAppDispatch()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
-    dispatch(setUsersSearchText(e.target.value));
+    dispatch(setUsersSearchText(e.target.value))
 
   const handleClearSearch = () => {
-    dispatch(removeUsersSearchText());
-    dispatch(setUsers(readOnlyUsers));
-  };
+    dispatch(removeUsersSearchText())
+    dispatch(setUsers(readOnlyUsers))
+  }
 
   return (
     <S.SearchContainer>
@@ -50,7 +50,7 @@ const UsersSearch = () => {
         </S.SearchButton>
       </S.InputContainer>
     </S.SearchContainer>
-  );
-};
+  )
+}
 
-export default UsersSearch;
+export default UsersSearch

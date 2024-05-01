@@ -1,4 +1,4 @@
-import { LoginFormInput, LoginFormType } from '@/types/authFormType';
+import { LoginFormInput, LoginFormType } from '@/types/authFormType'
 
 export const loginInputs: LoginFormInput[] = [
   {
@@ -11,9 +11,9 @@ export const loginInputs: LoginFormInput[] = [
     type: 'password',
     name: 'password',
   },
-];
+]
 
 export const loginDefaultValues: LoginFormType = {
   email: '',
   password: '',
-};
+}

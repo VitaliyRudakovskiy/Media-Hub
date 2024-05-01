@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import { FileContainer, FileName, RemoveButton } from './styled';
-import { UploadedFileProps } from './types';
+import { FileContainer, FileName, RemoveButton } from './styled'
+import { UploadedFileProps } from './types'
 
 const UploadedFile = ({ filename, index, onRemove }: UploadedFileProps) => {
   return (
@@ -9,7 +9,7 @@ const UploadedFile = ({ filename, index, onRemove }: UploadedFileProps) => {
       <FileName>{filename}</FileName>
       <RemoveButton onClick={() => onRemove(index)}>&times;</RemoveButton>
     </FileContainer>
-  );
-};
+  )
+}
 
-export default UploadedFile;
+export default UploadedFile

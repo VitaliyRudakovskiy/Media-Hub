@@ -1,5 +1,5 @@
-import { PostType } from '@/types/postType';
-import { VisibilityType } from '@/types/visibilityType';
+import { PostType } from '@/types/postType'
+import { VisibilityType } from '@/types/visibilityType'
 
 const createPost = (
   title: string,
@@ -28,7 +28,7 @@ const createPost = (
     repostTimes: 0,
     comments: [],
     visibility,
-  };
-};
+  }
+}
 
-export default createPost;
+export default createPost

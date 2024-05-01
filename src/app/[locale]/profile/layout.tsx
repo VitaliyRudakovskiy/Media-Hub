@@ -1,5 +1,5 @@
-import { ChildrenProps } from '@/types/childrenType';
-import Header from '@/UI/Header';
+import { ChildrenProps } from '@/types/childrenType'
+import Header from '@/UI/Header'
 
 const ProfileLayout = ({ children }: ChildrenProps) => {
   return (
@@ -7,7 +7,7 @@ const ProfileLayout = ({ children }: ChildrenProps) => {
       <Header />
       {children}
     </>
-  );
-};
+  )
+}
 
-export default ProfileLayout;
+export default ProfileLayout

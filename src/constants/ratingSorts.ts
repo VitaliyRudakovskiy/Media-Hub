@@ -7,6 +7,6 @@ const ratingSorts = [
     id: 'highToLow',
     name: 'highToLow',
   },
-];
+]
 
-export default ratingSorts;
+export default ratingSorts

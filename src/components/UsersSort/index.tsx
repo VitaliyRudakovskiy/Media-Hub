@@ -1,16 +1,16 @@
-'use client';
+'use client'
 
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
-import usersSortTiles from '@/constants/usersSortTiles';
-import { useAppDispatch } from '@/store/hooks';
-import { selectActiveTile, setActiveTile } from '@/store/slices/searchUsersSlice';
+import usersSortTiles from '@/constants/usersSortTiles'
+import { useAppDispatch } from '@/store/hooks'
+import { selectActiveTile, setActiveTile } from '@/store/slices/searchUsersSlice'
 
-import { Tile, UsersSortSection } from './styled';
+import { Tile, UsersSortSection } from './styled'
 
 const UsersSort = () => {
-  const activeTile = useSelector(selectActiveTile);
-  const dispatch = useAppDispatch();
+  const activeTile = useSelector(selectActiveTile)
+  const dispatch = useAppDispatch()
 
   return (
     <UsersSortSection>
@@ -24,7 +24,7 @@ const UsersSort = () => {
         </Tile>
       ))}
     </UsersSortSection>
-  );
-};
+  )
+}
 
-export default UsersSort;
+export default UsersSort

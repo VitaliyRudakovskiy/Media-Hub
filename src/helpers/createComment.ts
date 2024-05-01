@@ -1,4 +1,4 @@
-import { CommentType } from '@/types/commentType';
+import { CommentType } from '@/types/commentType'
 
 const createComment = (text: string, name: string, email: string): CommentType => {
   return {
@@ -7,7 +7,7 @@ const createComment = (text: string, name: string, email: string): CommentType =
     name,
     email,
     likedBy: [],
-  };
-};
+  }
+}
 
-export default createComment;
+export default createComment

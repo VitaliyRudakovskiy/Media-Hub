@@ -1,39 +1,39 @@
-import { PostWithId } from '@/types/postType';
-import { UserWithId } from '@/types/user';
+import { PostWithId } from '@/types/postType'
+import { UserWithId } from '@/types/user'
 
 export type IThemeState = {
-  mode: 'dark' | 'light';
-};
+  mode: 'dark' | 'light'
+}
 
 export type AuthType = {
-  isAuth: boolean;
-};
+  isAuth: boolean
+}
 
 export type PostsType = {
-  posts: PostWithId[];
-  readonlyPosts: PostWithId[];
-};
+  posts: PostWithId[]
+  readonlyPosts: PostWithId[]
+}
 
 export type SearchOptionsType = {
-  searchText: string;
-  selectedOptions: string[];
-};
+  searchText: string
+  selectedOptions: string[]
+}
 
 export type SortPostsType = {
-  categories: string[];
-  isWithPictures: boolean;
-  isWithComments: boolean;
-  isLikedByMe: boolean;
-  isBookmarkedByMe: boolean;
-  rating: string | null;
-};
+  categories: string[]
+  isWithPictures: boolean
+  isWithComments: boolean
+  isLikedByMe: boolean
+  isBookmarkedByMe: boolean
+  rating: string | null
+}
 
 export type UsersType = {
-  users: UserWithId[];
-  readonlyUsers: UserWithId[];
-};
+  users: UserWithId[]
+  readonlyUsers: UserWithId[]
+}
 
 export type SearchUsersType = {
-  searchUsersText: string;
-  activeTile: string;
-};
+  searchUsersText: string
+  activeTile: string
+}

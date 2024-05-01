@@ -1,22 +1,22 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-import getUserPosts from '@/helpers/getUserPosts';
-import usePosts from '@/hooks/usePosts';
-import { PostWithId } from '@/types/postType';
-import Post from '@/UI/Post';
+import getUserPosts from '@/helpers/getUserPosts'
+import usePosts from '@/hooks/usePosts'
+import { PostWithId } from '@/types/postType'
+import Post from '@/UI/Post'
 
-import { NoPosts, UserPostsContainer } from './styled';
-import { UserPostsProps } from './types';
+import { NoPosts, UserPostsContainer } from './styled'
+import { UserPostsProps } from './types'
 
 const UserPosts = ({ userEmail }: UserPostsProps) => {
-  const posts = usePosts();
-  const [userPosts, setUserPosts] = useState<PostWithId[]>([]);
+  const posts = usePosts()
+  const [userPosts, setUserPosts] = useState<PostWithId[]>([])
 
   useEffect(() => {
-    setUserPosts(getUserPosts(userEmail, posts));
-  }, [posts, userEmail]);
+    setUserPosts(getUserPosts(userEmail, posts))
+  }, [posts, userEmail])
 
   return (
     <UserPostsContainer>
@@ -26,7 +26,7 @@ const UserPosts = ({ userEmail }: UserPostsProps) => {
         <NoPosts>This user doesn`t have any posts yet.</NoPosts>
       )}
     </UserPostsContainer>
-  );
-};
+  )
+}
 
-export default UserPosts;
+export default UserPosts

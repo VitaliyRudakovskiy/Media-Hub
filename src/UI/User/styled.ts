@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import styled from 'styled-components';
+import Link from 'next/link'
+import styled from 'styled-components'
 
-import { flexColumn } from '@/theme/styles/mixins';
+import { flexColumn } from '@/theme/styles/mixins'
 
 export const UserWrapper = styled.div`
   display: flex;
@@ -14,20 +14,20 @@ export const UserWrapper = styled.div`
   &:last-child {
     border-bottom: none;
   }
-`;
+`
 
 export const LeftContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
   width: 75%;
-`;
+`
 
 export const TextContainer = styled.div`
   ${flexColumn};
   gap: 5px;
   text-align: justify;
-`;
+`
 
 export const UserNameLink = styled(Link)`
   text-decoration: none;
@@ -39,11 +39,11 @@ export const UserNameLink = styled(Link)`
   &:hover {
     color: ${({ theme }) => theme.secondaryTextColor};
   }
-`;
+`
 
 export const UserDescription = styled.p`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-`;
+`

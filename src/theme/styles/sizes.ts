@@ -1,4 +1,4 @@
-import { StringType } from '@/types/stringType';
+import { StringType } from '@/types/stringType'
 
 const SIZES: StringType = {
   px400: '400px',
@@ -9,6 +9,6 @@ const SIZES: StringType = {
   px1040: '1040px',
   px1230: '1230px',
   px1440: '1440px',
-};
+}
 
-export default SIZES;
+export default SIZES

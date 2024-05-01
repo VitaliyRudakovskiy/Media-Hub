@@ -1,6 +1,6 @@
-import { DocumentData } from 'firebase/firestore';
+import { DocumentData } from 'firebase/firestore'
 
 export type UserProfileProps = {
-  userData: DocumentData | null;
-  userId: string;
-};
+  userData: DocumentData | null
+  userId: string
+}

@@ -1,19 +1,19 @@
-'use client';
+'use client'
 
-import { memo, useRef } from 'react';
-import { createPortal } from 'react-dom';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { memo, useRef } from 'react'
+import { createPortal } from 'react-dom'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-import { defaultEditPasswordValues, editPasswordElements } from '@/constants/editPasswordElements';
-import updatePassword from '@/firebase/api/updatePasswors';
-import useOnClickOutside from '@/hooks/useClickOutside';
-import Button from '@/UI/Button';
-import Input from '@/UI/Input';
-import { editPasswordScheme, EditPasswordSchemeType } from '@/validators/editPasswordScheme';
+import { defaultEditPasswordValues, editPasswordElements } from '@/constants/editPasswordElements'
+import updatePassword from '@/firebase/api/updatePasswors'
+import useOnClickOutside from '@/hooks/useClickOutside'
+import Button from '@/UI/Button'
+import Input from '@/UI/Input'
+import { editPasswordScheme, EditPasswordSchemeType } from '@/validators/editPasswordScheme'
 
-import * as S from './styled';
-import { EditPasswordModalProps } from './types';
+import * as S from './styled'
+import { EditPasswordModalProps } from './types'
 
 const EditProfileModal = ({ onClose }: EditPasswordModalProps) => {
   const {
@@ -25,21 +25,21 @@ const EditProfileModal = ({ onClose }: EditPasswordModalProps) => {
     resolver: zodResolver(editPasswordScheme),
     defaultValues: defaultEditPasswordValues,
     mode: 'onChange',
-  });
+  })
 
-  const formRef = useRef(null);
-  useOnClickOutside(formRef, onClose);
+  const formRef = useRef(null)
+  useOnClickOutside(formRef, onClose)
 
   const onSubmit = async (data: EditPasswordSchemeType) => {
     try {
-      await updatePassword(data);
+      await updatePassword(data)
     } catch (error) {
-      throw new Error(`An error occured while changing password: ${error}`);
+      throw new Error(`An error occured while changing password: ${error}`)
     } finally {
-      reset();
-      onClose();
+      reset()
+      onClose()
     }
-  };
+  }
 
   return createPortal(
     <S.ModalOverlay>
@@ -68,7 +68,7 @@ const EditProfileModal = ({ onClose }: EditPasswordModalProps) => {
     </S.ModalOverlay>,
 
     document.body
-  );
-};
+  )
+}
 
-export default memo(EditProfileModal);
+export default memo(EditProfileModal)

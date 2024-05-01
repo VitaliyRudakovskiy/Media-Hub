@@ -1,6 +1,6 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
-import { FAVOURITES } from '@/constants/regulars';
+import { FAVOURITES } from '@/constants/regulars'
 
 export const editProfileScheme = z.object({
   name: z
@@ -22,6 +22,6 @@ export const editProfileScheme = z.object({
     .regex(FAVOURITES, 'This field should contain only Cyrillic and Latin letters and comma')
     .optional()
     .or(z.literal('')),
-});
+})
 
-export type EditProfileSchemeType = z.infer<typeof editProfileScheme>;
+export type EditProfileSchemeType = z.infer<typeof editProfileScheme>

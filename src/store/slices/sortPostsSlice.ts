@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { SortPostsType } from '../types';
+import { SortPostsType } from '../types'
 
 const initialState: SortPostsType = {
   categories: [],
@@ -9,35 +9,35 @@ const initialState: SortPostsType = {
   isLikedByMe: false,
   isBookmarkedByMe: false,
   rating: null,
-};
+}
 
 const sortPostsSlice = createSlice({
   name: 'sortPosts',
   initialState,
   reducers: {
     addCategory: (state, action: PayloadAction<string>) => {
-      state.categories.push(action.payload);
+      state.categories.push(action.payload)
     },
     removeCategory: (state, action: PayloadAction<string>) => {
-      state.categories = state.categories.filter((category) => category !== action.payload);
+      state.categories = state.categories.filter((category) => category !== action.payload)
     },
     setIsWithPictures: (state, action: PayloadAction<boolean>) => {
-      state.isWithPictures = action.payload;
+      state.isWithPictures = action.payload
     },
     setIsWithComments: (state, action: PayloadAction<boolean>) => {
-      state.isWithComments = action.payload;
+      state.isWithComments = action.payload
     },
     setIsLikedByMe: (state, action: PayloadAction<boolean>) => {
-      state.isLikedByMe = action.payload;
+      state.isLikedByMe = action.payload
     },
     setIsBookmarkedByMe: (state, action: PayloadAction<boolean>) => {
-      state.isBookmarkedByMe = action.payload;
+      state.isBookmarkedByMe = action.payload
     },
     setRating: (state, action: PayloadAction<string | null>) => {
-      state.rating = action.payload;
+      state.rating = action.payload
     },
   },
-});
+})
 
 export const {
   addCategory,
@@ -47,19 +47,19 @@ export const {
   setIsLikedByMe,
   setIsBookmarkedByMe,
   setRating,
-} = sortPostsSlice.actions;
+} = sortPostsSlice.actions
 
 export const selectCategories = (state: { sortPosts: SortPostsType }): string[] =>
-  state.sortPosts.categories;
+  state.sortPosts.categories
 export const selectIsWithPictures = (state: { sortPosts: SortPostsType }): boolean =>
-  state.sortPosts.isWithPictures;
+  state.sortPosts.isWithPictures
 export const selectIsWithComments = (state: { sortPosts: SortPostsType }): boolean =>
-  state.sortPosts.isWithComments;
+  state.sortPosts.isWithComments
 export const selectIsLikedByMe = (state: { sortPosts: SortPostsType }): boolean =>
-  state.sortPosts.isLikedByMe;
+  state.sortPosts.isLikedByMe
 export const selectIsBookmarkedByMe = (state: { sortPosts: SortPostsType }): boolean =>
-  state.sortPosts.isBookmarkedByMe;
+  state.sortPosts.isBookmarkedByMe
 export const selectRatingSort = (state: { sortPosts: SortPostsType }): string | null =>
-  state.sortPosts.rating;
+  state.sortPosts.rating
 
-export default sortPostsSlice.reducer;
+export default sortPostsSlice.reducer

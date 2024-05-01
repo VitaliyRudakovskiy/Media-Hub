@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import styled from 'styled-components';
+import Image from 'next/image'
+import styled from 'styled-components'
 
-import { flexCenter } from '@/theme/styles/mixins';
+import { flexCenter } from '@/theme/styles/mixins'
 
 export const LikesContainer = styled.div`
   ${flexCenter};
@@ -15,8 +15,8 @@ export const LikesContainer = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.inputBackgroundColor};
   }
-`;
+`
 
-export const LikesImage = styled(Image)``;
+export const LikesImage = styled(Image)``
 
-export const Count = styled.span``;
+export const Count = styled.span``

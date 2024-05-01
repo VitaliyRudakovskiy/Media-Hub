@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react'
 
-import { FileType } from '@/types/fileType';
+import { FileType } from '@/types/fileType'
 
 export type EditAvatarProps = {
-  setFile: Dispatch<SetStateAction<FileType | null>>;
-};
+  setFile: Dispatch<SetStateAction<FileType | null>>
+}

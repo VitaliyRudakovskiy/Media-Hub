@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const StyledInput = styled.input`
   font-family: inherit;
@@ -21,6 +21,6 @@ const StyledInput = styled.input`
     box-shadow: 0px 8px 18px -7px rgba(34, 60, 80, 0.26);
     border-color: blue;
   }
-`;
+`
 
-export default StyledInput;
+export default StyledInput

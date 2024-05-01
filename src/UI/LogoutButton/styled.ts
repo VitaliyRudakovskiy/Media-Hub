@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { flexCenter } from '@/theme/styles/mixins';
+import { flexCenter } from '@/theme/styles/mixins'
 
 const StyledButton = styled.button`
   ${flexCenter};
@@ -18,6 +18,6 @@ const StyledButton = styled.button`
   &:hover {
     background-color: #98520f;
   }
-`;
+`
 
-export default StyledButton;
+export default StyledButton

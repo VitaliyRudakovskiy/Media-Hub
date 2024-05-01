@@ -22,6 +22,6 @@ const usersSortTiles = [
     id: UsersVariants.ALL_USERS,
     text: 'Все пользователи',
   },
-];
+]
 
-export default usersSortTiles;
+export default usersSortTiles

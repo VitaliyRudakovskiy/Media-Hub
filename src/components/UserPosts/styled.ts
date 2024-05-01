@@ -1,5 +1,5 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-export const UserPostsContainer = styled.section``;
+export const UserPostsContainer = styled.section``
 
-export const NoPosts = styled.p``;
+export const NoPosts = styled.p``

@@ -1,1 +1,1 @@
-export type VisibilityType = 'public' | 'private';
+export type VisibilityType = 'public' | 'private'

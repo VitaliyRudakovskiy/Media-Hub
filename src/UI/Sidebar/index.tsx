@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import sidebarLinks from '@/constants/sidebarLinks';
+import sidebarLinks from '@/constants/sidebarLinks'
 
-import SidebarLink from './SidebarLink';
-import { SidebarWrapper } from './styled';
+import SidebarLink from './SidebarLink'
+import { SidebarWrapper } from './styled'
 
 const Sidebar = () => {
   return (
@@ -12,7 +12,7 @@ const Sidebar = () => {
         <SidebarLink key={path} title={title} path={path} icon={icon} />
       ))}
     </SidebarWrapper>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

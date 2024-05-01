@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { flexCenter } from '@/theme/styles/mixins';
+import { flexCenter } from '@/theme/styles/mixins'
 
 export const ModalOverlay = styled.section`
   ${flexCenter};
@@ -10,7 +10,7 @@ export const ModalOverlay = styled.section`
   width: 100vw;
   height: 100dvh;
   background-color: rgba(0, 0, 0, 0.5);
-`;
+`
 
 export const EditProfileForm = styled.form`
   position: relative;
@@ -21,12 +21,12 @@ export const EditProfileForm = styled.form`
   margin: 0 auto;
   width: 100%;
   max-width: 820px;
-`;
+`
 
 export const FormTitle = styled.h2`
   text-align: center;
   margin-bottom: 15px;
-`;
+`
 
 export const CloseButton = styled.button`
   position: absolute;
@@ -42,14 +42,14 @@ export const CloseButton = styled.button`
   &:hover {
     color: red;
   }
-`;
+`
 
 export const InputContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr;
   align-items: center;
-`;
+`
 
-export const ErrorContainer = styled.div``;
+export const ErrorContainer = styled.div``
 
-export const Error = styled.p``;
+export const Error = styled.p``

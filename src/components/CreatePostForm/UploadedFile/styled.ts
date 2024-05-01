@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { flexCenter } from '@/theme/styles/mixins';
+import { flexCenter } from '@/theme/styles/mixins'
 
 export const FileContainer = styled.div`
   ${flexCenter};
   gap: 10px;
-`;
+`
 
-export const FileName = styled.p``;
+export const FileName = styled.p``
 
 export const RemoveButton = styled.button`
   ${flexCenter};
@@ -25,4 +25,4 @@ export const RemoveButton = styled.button`
     background-color: ${({ theme }) => theme.inputBackgroundColor};
     color: ${({ theme }) => theme.inputPlaceholderColor};
   }
-`;
+`

@@ -1,15 +1,15 @@
-import { getDownloadURL, ref } from 'firebase/storage';
+import { getDownloadURL, ref } from 'firebase/storage'
 
-import { storage } from '@/firebase';
+import { storage } from '@/firebase'
 
 const getPhotoURL = async (avatarName: string | null) => {
-  let photoURL = '';
+  let photoURL = ''
 
   if (avatarName) {
-    photoURL = await getDownloadURL(ref(storage, avatarName));
+    photoURL = await getDownloadURL(ref(storage, avatarName))
   }
 
-  return photoURL;
-};
+  return photoURL
+}
 
-export default getPhotoURL;
+export default getPhotoURL

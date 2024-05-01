@@ -1,1 +1,1 @@
-export type FileType = Blob | Uint8Array | ArrayBuffer;
+export type FileType = Blob | Uint8Array | ArrayBuffer

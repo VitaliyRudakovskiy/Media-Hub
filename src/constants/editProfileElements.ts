@@ -1,4 +1,4 @@
-import { EditProfileElementsType } from '@/types/editProfileElements';
+import { EditProfileElementsType } from '@/types/editProfileElements'
 
 export const editProfileElements: EditProfileElementsType[] = [
   {
@@ -17,4 +17,4 @@ export const editProfileElements: EditProfileElementsType[] = [
     placeholder: 'Enter your favourite content',
     name: 'favourites',
   },
-];
+]

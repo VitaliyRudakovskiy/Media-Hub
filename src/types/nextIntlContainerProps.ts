@@ -1,7 +1,7 @@
-import { AbstractIntlMessages } from 'next-intl';
+import { AbstractIntlMessages } from 'next-intl'
 
 export type ContainerProps = {
-  locale: string;
-  messages: AbstractIntlMessages;
-  timeZone: string;
-};
+  locale: string
+  messages: AbstractIntlMessages
+  timeZone: string
+}

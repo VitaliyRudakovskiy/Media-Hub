@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { UserType } from '@/types/user';
+import { UserType } from '@/types/user'
 
 const initialState: UserType = {
   id: '',
@@ -15,7 +15,7 @@ const initialState: UserType = {
   sentRequests: [],
   friends: [],
   token: null,
-};
+}
 
 const userSlice = createSlice({
   name: 'user',
@@ -32,10 +32,10 @@ const userSlice = createSlice({
       ...action.payload,
     }),
   },
-});
+})
 
-export const { setCurrentUser, removeCurrentUser, updateCurrentUser } = userSlice.actions;
+export const { setCurrentUser, removeCurrentUser, updateCurrentUser } = userSlice.actions
 
-export const selectUser = (state: { user: UserType }) => state.user;
+export const selectUser = (state: { user: UserType }) => state.user
 
-export default userSlice.reducer;
+export default userSlice.reducer

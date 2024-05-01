@@ -3,6 +3,6 @@ const ROUTES = {
   LOGIN: '/login',
   SIGNUP: '/signup',
   EN: '/en',
-};
+}
 
-export default ROUTES;
+export default ROUTES

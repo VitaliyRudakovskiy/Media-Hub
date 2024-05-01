@@ -1,4 +1,4 @@
 export type IInputProps = {
-  placeholder: string;
-  type?: string;
-};
+  placeholder: string
+  type?: string
+}

@@ -1,26 +1,26 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
-import { selectUser } from '@/store/slices/userSlice';
-import CurrentAvatar from '@/UI/Avatars/CurrentAvatar';
-import Button from '@/UI/Button';
+import { selectUser } from '@/store/slices/userSlice'
+import CurrentAvatar from '@/UI/Avatars/CurrentAvatar'
+import Button from '@/UI/Button'
 
-import EditPasswordModal from '../EditPasswordModal';
-import EditProfileModal from '../EditProfileModal';
+import EditPasswordModal from '../EditPasswordModal'
+import EditProfileModal from '../EditProfileModal'
 
-import * as S from './styled';
+import * as S from './styled'
 
 const Profile = () => {
-  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
-  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
-  const { name, secondName } = useSelector(selectUser);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false)
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false)
+  const { name, secondName } = useSelector(selectUser)
 
-  const handleOpenProfileModal = () => setIsProfileModalOpen(true);
-  const handleCloseProfileModal = () => setIsProfileModalOpen(false);
-  const handleOpenPasswordModal = () => setIsPasswordModalOpen(true);
-  const handleClosePasswordModal = () => setIsPasswordModalOpen(false);
+  const handleOpenProfileModal = () => setIsProfileModalOpen(true)
+  const handleCloseProfileModal = () => setIsProfileModalOpen(false)
+  const handleOpenPasswordModal = () => setIsPasswordModalOpen(true)
+  const handleClosePasswordModal = () => setIsPasswordModalOpen(false)
 
   return (
     <>
@@ -51,7 +51,7 @@ const Profile = () => {
       {isProfileModalOpen && <EditProfileModal onClose={handleCloseProfileModal} />}
       {isPasswordModalOpen && <EditPasswordModal onClose={handleClosePasswordModal} />}
     </>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile
