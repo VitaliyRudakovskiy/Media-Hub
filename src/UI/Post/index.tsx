@@ -10,6 +10,7 @@ import Remove from '@/assets/images/remove.png'
 import CommentsSection from '@/components/CommentsSection'
 import NewComment from '@/components/NewComment'
 import deletePost from '@/firebase/api/deletePost'
+import getUserIdByEmail from '@/firebase/api/getUserIdFromEmail'
 import convertCreationDate from '@/helpers/convertCreationDate'
 import usePhotosFromFirestore from '@/hooks/usePhotosFromFirestore'
 import { selectUser } from '@/store/slices/userSlice'
@@ -55,13 +56,20 @@ const Post = ({ id, postData }: PostWithId) => {
   const handleDeletePost = () => deletePost(id)
   const handleToggleComments = () => setAreCommentsVisible((prevVisible) => !prevVisible)
 
+  const handleUserNameClick = async () => {
+    const userId = await getUserIdByEmail(email)
+    router.push(`/friends/${userId}`)
+  }
+
   return (
     <>
       <S.PostWrapper>
         <S.TopSection>
-          <DynamicAvatar email={email} width={50} height={50} initialsFontSize='20px' />
+          <S.AvatarContainer>
+            <DynamicAvatar email={email} width={50} height={50} initialsFontSize='20px' />
+          </S.AvatarContainer>
           <S.PostInfo>
-            <S.UserName>{name}</S.UserName>
+            <S.UserName onClick={handleUserNameClick}>{name}</S.UserName>
             <S.Date>{convertCreationDate(createdAt)}</S.Date>
           </S.PostInfo>
           <PostBookmark id={id} bookmarks={bookmarks} />

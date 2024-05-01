@@ -17,15 +17,23 @@ export const TopSection = styled.div`
   ${flexBetween};
 `
 
-export const Avatar = styled(Image)`
-  border-radius: 50%;
+export const AvatarContainer = styled.div`
+  margin-right: 10px;
 `
 
 export const PostInfo = styled.div`
   flex: 1;
 `
 
-export const UserName = styled.p``
+export const UserName = styled.span`
+  font-weight: 500;
+  transition: opacity 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`
 
 export const Date = styled.p`
   color: ${({ theme }) => theme.secondaryTextColor};
@@ -42,10 +50,13 @@ export const MainSection = styled.div`
   padding: 8px 0 4px 0;
 `
 
-export const Title = styled.h2``
+export const Title = styled.h2`
+  overflow-wrap: break-word;
+`
 
 export const MainText = styled.div`
   line-height: 1.6;
+  overflow-wrap: break-word;
   margin-bottom: 10px;
 `
 

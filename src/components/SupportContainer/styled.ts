@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
-import { flexColumn, PageContainer } from '@/theme/styles/mixins'
+import { flexBetween, PageContainer } from '@/theme/styles/mixins'
 
 export const SupportWrapper = styled.section`
   ${PageContainer};
 `
 
 export const CenterSection = styled.div`
-  ${flexColumn};
-  align-items: center;
+  ${flexBetween};
+  align-items: flex-start;
   gap: 10px 0;
   width: 100%;
 `
