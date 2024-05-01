@@ -82,6 +82,7 @@ const Post = ({ id, postData }: PostWithId) => {
           <S.Title>{title}</S.Title>
           <S.Category>{category}</S.Category>
           <p>{rating}</p>
+          <p>{tags}</p>
           <S.MainText>{feedback}</S.MainText>
           {fileLinks && fileLinks.length > 0 && (
             <S.ImageSection>
