@@ -14,11 +14,17 @@ const LogoutButton = () => {
 
     dispatch(
       setCurrentUser({
+        avatarName: null,
         id: '',
         name: '',
         secondName: '',
+        description: '',
+        favourites: '',
+        requests: [],
+        sentRequests: [],
+        friends: [],
         email: '',
-        phone: '',
+        role: 'user',
         token: null,
       })
     )
