@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 
 export type LocaleLayoutProps = {
-  children: ReactNode;
+  children: ReactNode
   params: {
-    locale: string;
-  };
-};
+    locale: string
+  }
+}
