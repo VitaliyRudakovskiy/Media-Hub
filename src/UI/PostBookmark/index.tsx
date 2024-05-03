@@ -4,11 +4,11 @@ import { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import bookmarkPost from '@/firebase/api/bookmarkPost'
-import defineBookmarkIcon from '@/helpers/defineBookmarkIcon'
 import isBookmarkedByMe from '@/helpers/isBookmarkedByMe'
 import { selectTheme } from '@/store/slices/themeSlice'
 import { selectUser } from '@/store/slices/userSlice'
 
+import defineBookmarkIcon from './defineBookmarkIcon'
 import { BookmarkIcon } from './styled'
 import { PostBookmarkProps } from './types'
 
@@ -27,8 +27,8 @@ const PostBookmark = ({ id, bookmarks }: PostBookmarkProps) => {
       src={defineBookmarkIcon(isBookmarked, theme)}
       alt='bookmark icon'
       onClick={handleBookmarkPost}
-      width={20}
-      height={20}
+      width={24}
+      height={24}
     />
   )
 }

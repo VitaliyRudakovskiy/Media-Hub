@@ -1,10 +1,11 @@
-import LikeOutline from '@/assets/images/like.png'
-import RedLike from '@/assets/images/like-red.png'
+import LikeFill from '@/assets/icons/likes/like-fill-red.svg'
+import LikeOutlineBlack from '@/assets/icons/likes/like-outline-black.svg'
+import LikeOutlineWhite from '@/assets/icons/likes/like-outline-white.svg'
 
 const defineLikeIcon = (isLiked: boolean, theme: 'dark' | 'light') => {
-  if (isLiked) return RedLike
-  if (theme === 'light') return LikeOutline
-  return LikeOutline
+  if (isLiked) return LikeFill
+  if (theme === 'light') return LikeOutlineBlack
+  return LikeOutlineWhite
 }
 
 export default defineLikeIcon

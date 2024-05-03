@@ -1,3 +1,3 @@
-const CATEGORIES = ['Film', 'Book', 'Game', 'Cartoon', 'Series']
+const CATEGORIES = ['Book', 'Cartoon', 'Film', 'Game', 'Series', 'Other']
 
 export default CATEGORIES

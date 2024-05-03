@@ -49,7 +49,7 @@ const Comment = ({ id, commentData, postId }: CommentProps) => {
             <S.LikesContainer onClick={handleLikeTweet}>
               <S.LikeImage
                 src={defineLikeIcon(isLiked, theme)}
-                alt='like icon'
+                alt='heart like icon'
                 width={15}
                 height={15}
               />

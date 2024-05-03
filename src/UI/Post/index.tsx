@@ -2,17 +2,17 @@
 
 import { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-import Comment from '@/assets/images/comment.png'
-import Goto from '@/assets/images/goto.png'
-import Remove from '@/assets/images/remove.png'
+import Star from '@/assets/icons/star.webp'
 import CommentsSection from '@/components/CommentsSection'
 import NewComment from '@/components/NewComment'
 import deletePost from '@/firebase/api/deletePost'
 import getUserIdByEmail from '@/firebase/api/getUserIdFromEmail'
 import convertCreationDate from '@/helpers/convertCreationDate'
 import usePhotosFromFirestore from '@/hooks/usePhotosFromFirestore'
+import { selectTheme } from '@/store/slices/themeSlice'
 import { selectUser } from '@/store/slices/userSlice'
 import { PostWithId } from '@/types/postType'
 import ConfirmForm from '@/UI/ConfirmForm'
@@ -22,7 +22,10 @@ import PostReaction from '@/UI/PostReaction'
 import PostViews from '@/UI/PostViews'
 
 import DynamicAvatar from '../Avatars/DynamicAvatar'
+import PostCategory from '../PostCategory'
+import PostTags from '../PostTags'
 
+import { defineCommentIcon, defineDeleteIcon, defineGoToPostIcon } from './helpers'
 import * as S from './styled'
 
 const Post = ({ id, postData }: PostWithId) => {
@@ -38,7 +41,6 @@ const Post = ({ id, postData }: PostWithId) => {
     files,
     likedBy,
     bookmarks,
-    views,
     comments,
     visibility,
   } = postData
@@ -47,6 +49,7 @@ const Post = ({ id, postData }: PostWithId) => {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
   const [areCommentsVisible, setAreCommentsVisible] = useState(false)
   const router = useRouter()
+  const theme = useSelector(selectTheme)
 
   const fileLinks = usePhotosFromFirestore(files)
 
@@ -65,24 +68,47 @@ const Post = ({ id, postData }: PostWithId) => {
     <>
       <S.PostWrapper>
         <S.TopSection>
-          <S.AvatarContainer>
-            <DynamicAvatar email={email} width={50} height={50} initialsFontSize='20px' />
-          </S.AvatarContainer>
-          <S.PostInfo>
-            <S.UserName onClick={handleUserNameClick}>{name}</S.UserName>
-            <S.Date>{convertCreationDate(createdAt)}</S.Date>
-          </S.PostInfo>
-          <PostBookmark id={id} bookmarks={bookmarks} />
-          {currentUserEmail === email && (
-            <S.Icon src={Remove} alt='remove icon' onClick={handleOpenModal} />
-          )}
-          <S.Icon src={Goto} alt='go to post icon' onClick={openPost} />
+          <S.UserSection>
+            <S.AvatarContainer>
+              <DynamicAvatar email={email} width={50} height={50} initialsFontSize='20px' />
+            </S.AvatarContainer>
+            <S.PostInfo>
+              <S.UserName onClick={handleUserNameClick}>{name}</S.UserName>
+              <S.Date>{convertCreationDate(createdAt)}</S.Date>
+            </S.PostInfo>
+          </S.UserSection>
+          <S.TopIconsSection>
+            <PostBookmark id={id} bookmarks={bookmarks} />
+            {currentUserEmail === email && (
+              <S.Icon
+                src={defineDeleteIcon(theme)}
+                alt='remove icon'
+                title='Remove the post'
+                width={24}
+                height={24}
+                onClick={handleOpenModal}
+              />
+            )}
+            <S.Icon
+              src={defineGoToPostIcon(theme)}
+              alt='go to post icon'
+              title='Go to the post'
+              onClick={openPost}
+              width={24}
+              height={24}
+            />
+          </S.TopIconsSection>
         </S.TopSection>
         <S.MainSection>
           <S.Title>{title}</S.Title>
-          <S.Category>{category}</S.Category>
-          <p>{rating}</p>
-          <p>{tags}</p>
+          <S.InfoContainer>
+            <S.RatingContainer>
+              <S.Rating>{rating}</S.Rating>
+              <Image src={Star} alt='rating star' width={22} height={22} />
+            </S.RatingContainer>
+            <PostCategory category={category} />
+          </S.InfoContainer>
+          <PostTags tags={tags} />
           <S.MainText>{feedback}</S.MainText>
           {fileLinks && fileLinks.length > 0 && (
             <S.ImageSection>
@@ -96,12 +122,12 @@ const Post = ({ id, postData }: PostWithId) => {
           <S.ReactionsSection>
             <PostLikes id={id} likedBy={likedBy} />
             <PostReaction
-              icon={Comment}
+              icon={defineCommentIcon(theme)}
               reactionsCount={comments.length}
               onClick={handleToggleComments}
             />
           </S.ReactionsSection>
-          <PostViews visibility={visibility} views={views} />
+          <PostViews visibility={visibility} />
         </S.NumbersSection>
 
         {areCommentsVisible && (

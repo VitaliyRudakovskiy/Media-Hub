@@ -24,7 +24,12 @@ const PostLikes = ({ id, likedBy }: PostLikesProps) => {
 
   return (
     <LikesContainer onClick={handleLikeTweet}>
-      <LikesImage src={defineLikeIcon(isLiked, theme)} alt='like heart' width={20} height={20} />
+      <LikesImage
+        src={defineLikeIcon(isLiked, theme)}
+        alt='like heart icon'
+        width={20}
+        height={20}
+      />
       {likedBy.length !== 0 && <Count>{likedBy.length}</Count>}
     </LikesContainer>
   )

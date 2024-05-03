@@ -24,7 +24,6 @@ const createPost = (
     files,
     likedBy: [],
     bookmarks: [],
-    views: 0,
     repostTimes: 0,
     comments: [],
     visibility,

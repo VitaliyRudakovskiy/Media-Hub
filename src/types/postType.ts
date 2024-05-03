@@ -12,7 +12,6 @@ export type PostType = {
   files: Array<string>
   likedBy: Array<string>
   bookmarks: Array<string>
-  views: number
   repostTimes: number
   comments: Array<string>
   visibility: VisibilityType

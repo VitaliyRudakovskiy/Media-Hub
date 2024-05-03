@@ -15,6 +15,18 @@ export const PostWrapper = styled.div`
 
 export const TopSection = styled.div`
   ${flexBetween};
+  align-items: flex-start;
+`
+
+export const TopIconsSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`
+
+export const UserSection = styled.div`
+  display: flex;
+  align-items: center;
 `
 
 export const AvatarContainer = styled.div`
@@ -41,8 +53,6 @@ export const Date = styled.p`
 `
 
 export const Icon = styled(Image)`
-  width: 20px;
-  height: 20px;
   cursor: pointer;
 `
 
@@ -52,6 +62,7 @@ export const MainSection = styled.div`
 
 export const Title = styled.h2`
   overflow-wrap: break-word;
+  margin-bottom: 10px;
 `
 
 export const MainText = styled.div`
@@ -60,7 +71,23 @@ export const MainText = styled.div`
   margin-bottom: 10px;
 `
 
-export const Category = styled.p``
+export const InfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+`
+
+export const Rating = styled.span`
+  font-weight: 600;
+  font-size: 18px;
+  margin-right: 5px;
+`
+
+export const RatingContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
 
 export const ImageSection = styled.div``
 

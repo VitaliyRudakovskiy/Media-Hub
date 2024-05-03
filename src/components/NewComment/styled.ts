@@ -15,7 +15,7 @@ export const CommentForm = styled.form`
   background-color: ${({ theme }) => theme.sectionColor};
   border: 1px solid ${({ theme }) => theme.sectionBorderColor};
   border-radius: 8px;
-  padding: 5px;
+  padding: 5px 10px 5px 5px;
   width: 100%;
 `
 
@@ -40,4 +40,5 @@ export const SubmitButton = styled.button`
 
 export const SubmitIcon = styled(Image)`
   cursor: pointer;
+  margin-top: 3px;
 `

@@ -140,6 +140,9 @@ const CreatePostForm = () => {
               <Select {...register('category')} placeholder='Категория' options={CATEGORIES} />
               <StarRating starValue={starValue} setStarValue={setStarValue} />
               <S.TagsInput {...register('tags')} placeholder='Введите тэги через запятую' />
+              {errors && errors['tags'] && (
+                <S.ErrorMessage>{errors['tags']?.message}</S.ErrorMessage>
+              )}
             </>
           )}
         </S.InfoContainer>

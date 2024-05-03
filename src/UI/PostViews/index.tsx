@@ -1,26 +1,29 @@
 'use client'
 
-import EyeIcon from '@/assets/images/eye.png'
-import CrossedEyeIcon from '@/assets/images/eye-crossed.png'
+import { useSelector } from 'react-redux'
+import Image from 'next/image'
 
-import { Eye, ViewContainer } from './styled'
+import { selectTheme } from '@/store/slices/themeSlice'
+
+import defineEyeIcon from './defineEyeIcon'
 import { PostViewsProps } from './types'
 
-const PostViews = ({ visibility, views }: PostViewsProps) => {
+const PostViews = ({ visibility }: PostViewsProps) => {
+  const theme = useSelector(selectTheme)
+
   return (
-    <ViewContainer>
-      {visibility === 'public' ? (
-        <>
-          <Eye src={EyeIcon} alt='eye icon' />
-          <span>{views}</span>
-        </>
-      ) : (
-        <>
-          <Eye src={CrossedEyeIcon} alt='crossed eye icon' />
-          <span>Private</span>
-        </>
-      )}
-    </ViewContainer>
+    <>
+      {visibility === 'private' ? (
+        <Image
+          src={defineEyeIcon(theme)}
+          alt='eye icon'
+          title='This post is private'
+          quality={100}
+          width={20}
+          height={20}
+        />
+      ) : null}
+    </>
   )
 }
 
