@@ -14,7 +14,7 @@ const COLORS: StringType = {
   gray700: '#262626', // hover color
   gray800: '#222222', // section background
   gray900: '#141414', // background
-  blue100: '#272980', // primary background color
+  blue100: '#2729FF', // primary background color
 
   // ----------light theme----------
   white: '#FFFFFF', // section background

@@ -5,12 +5,12 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import Clip from '@/assets/images/clip.png'
 import Exchange from '@/assets/images/exchange.png'
 import CATEGORIES from '@/constants/categories'
 import { createPostDefaultValues } from '@/constants/createPostDefaultValues'
 import uploadPost from '@/firebase/api/uploadPost'
 import useOnClickOutside from '@/hooks/useClickOutside'
+import { selectTheme } from '@/store/slices/themeSlice'
 import { selectUser } from '@/store/slices/userSlice'
 import { CreatePostFormType } from '@/types/authFormType'
 import { VisibilityType } from '@/types/visibilityType'
@@ -19,6 +19,7 @@ import Select from '@/UI/Select'
 import StarRating from '@/UI/StarRating'
 import { createPostScheme } from '@/validators/createPostScheme'
 
+import defineClipIcon from './defineClipIcon'
 import * as S from './styled'
 import UploadedFile from './UploadedFile'
 
@@ -45,6 +46,7 @@ const CreatePostForm = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
   const formRef = useRef<HTMLFormElement | null>(null)
   const { name, secondName, email } = useSelector(selectUser)
+  const theme = useSelector(selectTheme)
 
   useEffect(() => {
     if (!textareaRef.current) return
@@ -148,7 +150,12 @@ const CreatePostForm = () => {
         </S.InfoContainer>
 
         <S.UploadFileLabel>
-          <S.UploadFile src={Clip} alt='upload image clip' width={20} height={20} />
+          <S.UploadFile
+            src={defineClipIcon(theme)}
+            alt='upload image clip'
+            width={20}
+            height={20}
+          />
           <S.InputForFile
             id='upload-file'
             type='file'

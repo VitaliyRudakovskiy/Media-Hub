@@ -24,6 +24,7 @@ import PostViews from '@/UI/PostViews'
 import DynamicAvatar from '../Avatars/DynamicAvatar'
 import PostCategory from '../PostCategory'
 import PostTags from '../PostTags'
+import PostText from '../PostText'
 
 import { defineCommentIcon, defineDeleteIcon, defineGoToPostIcon } from './helpers'
 import * as S from './styled'
@@ -109,7 +110,7 @@ const Post = ({ id, postData }: PostWithId) => {
             <PostCategory category={category} />
           </S.InfoContainer>
           <PostTags tags={tags} />
-          <S.MainText>{feedback}</S.MainText>
+          <PostText postId={id} feedback={feedback} />
           {fileLinks && fileLinks.length > 0 && (
             <S.ImageSection>
               {fileLinks.map((file) => (

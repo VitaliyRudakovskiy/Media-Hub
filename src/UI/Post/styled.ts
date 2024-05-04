@@ -65,12 +65,6 @@ export const Title = styled.h2`
   margin-bottom: 10px;
 `
 
-export const MainText = styled.div`
-  line-height: 1.6;
-  overflow-wrap: break-word;
-  margin-bottom: 10px;
-`
-
 export const InfoContainer = styled.div`
   display: flex;
   align-items: center;
