@@ -148,7 +148,6 @@ const CreatePostForm = () => {
             </>
           )}
         </S.InfoContainer>
-
         <S.UploadFileLabel>
           <S.UploadFile
             src={defineClipIcon(theme)}

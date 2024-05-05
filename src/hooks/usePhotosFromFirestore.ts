@@ -1,23 +1,17 @@
 import { useEffect, useState } from 'react'
-import { getDownloadURL, ref } from 'firebase/storage'
 
-import { storage } from '@/firebase'
+import getFilesFromStorage from '@/firebase/api/getFilesFromStorage'
 
-const usePhotosFromFirestore = (photoLinks: Array<string>) => {
+const usePhotosFromFirestore = (photoLinks: string[]) => {
   const [photos, setPhotos] = useState<string[]>([])
 
   useEffect(() => {
-    const getFile = async () => {
-      const filePromises = photoLinks.map(async (photoLink) => {
-        const file = await getDownloadURL(ref(storage, photoLink))
-        return file
-      })
-
-      const downloadedFiles = await Promise.all(filePromises)
+    const getFiles = async () => {
+      const downloadedFiles = await getFilesFromStorage(photoLinks)
       setPhotos(downloadedFiles)
     }
 
-    getFile()
+    getFiles()
   }, [photoLinks])
 
   return photos

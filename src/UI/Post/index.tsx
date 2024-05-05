@@ -3,30 +3,23 @@
 import { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 
 import Star from '@/assets/icons/star.webp'
 import CommentsSection from '@/components/CommentsSection'
 import NewComment from '@/components/NewComment'
-import deletePost from '@/firebase/api/deletePost'
-import getUserIdByEmail from '@/firebase/api/getUserIdFromEmail'
-import convertCreationDate from '@/helpers/convertCreationDate'
 import usePhotosFromFirestore from '@/hooks/usePhotosFromFirestore'
 import { selectTheme } from '@/store/slices/themeSlice'
-import { selectUser } from '@/store/slices/userSlice'
 import { PostWithId } from '@/types/postType'
-import ConfirmForm from '@/UI/ConfirmForm'
-import PostBookmark from '@/UI/PostBookmark'
 import PostLikes from '@/UI/PostLikes'
 import PostReaction from '@/UI/PostReaction'
 import PostViews from '@/UI/PostViews'
 
-import DynamicAvatar from '../Avatars/DynamicAvatar'
 import PostCategory from '../PostCategory'
 import PostTags from '../PostTags'
 import PostText from '../PostText'
+import PostTopSection from '../PostTopSection'
 
-import { defineCommentIcon, defineDeleteIcon, defineGoToPostIcon } from './helpers'
+import { defineCommentIcon } from './helpers'
 import * as S from './styled'
 
 const Post = ({ id, postData }: PostWithId) => {
@@ -46,60 +39,23 @@ const Post = ({ id, postData }: PostWithId) => {
     visibility,
   } = postData
 
-  const { email: currentUserEmail } = useSelector(selectUser)
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
   const [areCommentsVisible, setAreCommentsVisible] = useState(false)
-  const router = useRouter()
   const theme = useSelector(selectTheme)
 
   const fileLinks = usePhotosFromFirestore(files)
 
-  const openPost = () => router.push(`/dashboard/${id}`)
-  const handleOpenModal = () => setIsConfirmModalOpen(true)
-  const handleCloseModal = () => setIsConfirmModalOpen(false)
-  const handleDeletePost = () => deletePost(id)
   const handleToggleComments = () => setAreCommentsVisible((prevVisible) => !prevVisible)
-
-  const handleUserNameClick = async () => {
-    const userId = await getUserIdByEmail(email)
-    router.push(`/friends/${userId}`)
-  }
 
   return (
     <>
       <S.PostWrapper>
-        <S.TopSection>
-          <S.UserSection>
-            <S.AvatarContainer>
-              <DynamicAvatar email={email} width={50} height={50} initialsFontSize='20px' />
-            </S.AvatarContainer>
-            <S.PostInfo>
-              <S.UserName onClick={handleUserNameClick}>{name}</S.UserName>
-              <S.Date>{convertCreationDate(createdAt)}</S.Date>
-            </S.PostInfo>
-          </S.UserSection>
-          <S.TopIconsSection>
-            <PostBookmark id={id} bookmarks={bookmarks} />
-            {currentUserEmail === email && (
-              <S.Icon
-                src={defineDeleteIcon(theme)}
-                alt='remove icon'
-                title='Remove the post'
-                width={24}
-                height={24}
-                onClick={handleOpenModal}
-              />
-            )}
-            <S.Icon
-              src={defineGoToPostIcon(theme)}
-              alt='go to post icon'
-              title='Go to the post'
-              onClick={openPost}
-              width={24}
-              height={24}
-            />
-          </S.TopIconsSection>
-        </S.TopSection>
+        <PostTopSection
+          id={id}
+          createdAt={createdAt}
+          email={email}
+          name={name}
+          bookmarks={bookmarks}
+        />
         <S.MainSection>
           <S.Title>{title}</S.Title>
           <S.InfoContainer>
@@ -138,14 +94,6 @@ const Post = ({ id, postData }: PostWithId) => {
           </>
         )}
       </S.PostWrapper>
-
-      {isConfirmModalOpen && (
-        <ConfirmForm
-          subtitle='Вы уверены, что хотите удалить этот пост?'
-          closeModal={handleCloseModal}
-          onConfirm={handleDeletePost}
-        />
-      )}
     </>
   )
 }
