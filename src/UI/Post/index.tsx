@@ -23,39 +23,18 @@ import { defineCommentIcon } from './helpers'
 import * as S from './styled'
 
 const Post = ({ id, postData }: PostWithId) => {
-  const {
-    createdAt,
-    title,
-    feedback,
-    category,
-    rating,
-    tags,
-    email,
-    name,
-    files,
-    likedBy,
-    bookmarks,
-    comments,
-    visibility,
-  } = postData
+  const { title, feedback, category, rating, tags, files, likedBy, comments, visibility } = postData
 
-  const [areCommentsVisible, setAreCommentsVisible] = useState(false)
+  const [areCommentsVisible, setCommentsVisible] = useState(false)
   const theme = useSelector(selectTheme)
-
   const fileLinks = usePhotosFromFirestore(files)
 
-  const handleToggleComments = () => setAreCommentsVisible((prevVisible) => !prevVisible)
+  const handleToggleComments = () => setCommentsVisible((prevVisible) => !prevVisible)
 
   return (
     <>
       <S.PostWrapper>
-        <PostTopSection
-          id={id}
-          createdAt={createdAt}
-          email={email}
-          name={name}
-          bookmarks={bookmarks}
-        />
+        <PostTopSection id={id} postData={postData} />
         <S.MainSection>
           <S.Title>{title}</S.Title>
           <S.InfoContainer>

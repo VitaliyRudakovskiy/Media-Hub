@@ -3,6 +3,7 @@
 import Logo from '@/assets/images/logo.png'
 import ThemeToggler from '@/UI/ThemeToggler'
 
+import LocaleSwitcher from '../LocaleSwitcher'
 import LogoutButton from '../LogoutButton'
 
 import { HeaderWrapper, LeftPart, RightPart, StyledImage } from './styled'
@@ -15,6 +16,7 @@ const Header = () => {
         <h1>Media Hub</h1>
       </LeftPart>
       <RightPart>
+        <LocaleSwitcher />
         <LogoutButton />
         <ThemeToggler />
       </RightPart>

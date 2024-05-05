@@ -66,7 +66,6 @@ const EditProfileModal = ({ onClose }: EditPasswordModalProps) => {
         </Button>
       </S.EditProfileForm>
     </S.ModalOverlay>,
-
     document.body
   )
 }

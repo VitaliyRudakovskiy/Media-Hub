@@ -3,6 +3,8 @@ import Link from 'next/link'
 import styled from 'styled-components'
 
 export const StyledLink = styled(Link)`
+  display: flex;
+  align-items: center;
   text-decoration: none;
   padding: 10px;
   color: ${({ theme }) => theme.textColor};
@@ -12,4 +14,6 @@ export const StyledLink = styled(Link)`
   }
 `
 
-export const StyledImage = styled(Image)``
+export const StyledImage = styled(Image)`
+  margin-right: 10px;
+`

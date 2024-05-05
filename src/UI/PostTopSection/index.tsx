@@ -4,29 +4,34 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/navigation'
 
+import EditPostForm from '@/components/EditPostForm'
 import deletePost from '@/firebase/api/deletePost'
 import getUserIdByEmail from '@/firebase/api/getUserIdFromEmail'
 import convertCreationDate from '@/helpers/convertCreationDate'
 import { selectTheme } from '@/store/slices/themeSlice'
 import { selectUser } from '@/store/slices/userSlice'
+import { PostWithId } from '@/types/postType'
 
 import DynamicAvatar from '../Avatars/DynamicAvatar'
 import ConfirmForm from '../ConfirmForm'
 import PostBookmark from '../PostBookmark'
 
-import { defineDeleteIcon, defineGoToPostIcon } from './helpers'
+import { defineDeleteIcon, defineEditIcon, defineGoToPostIcon } from './helpers'
 import * as S from './styled'
-import { PostTopSectionProps } from './types'
 
-const PostTopSection = ({ id, email, name, createdAt, bookmarks }: PostTopSectionProps) => {
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
-  const router = useRouter()
+const PostTopSection = ({ id, postData }: PostWithId) => {
+  const { email, name, createdAt, bookmarks } = postData
   const { email: currentUserEmail } = useSelector(selectUser)
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
+  const [isEditModalOpen, setEditModalOpen] = useState(false)
   const theme = useSelector(selectTheme)
+  const router = useRouter()
 
   const openPost = () => router.push(`/dashboard/${id}`)
-  const handleOpenModal = () => setIsConfirmModalOpen(true)
-  const handleCloseModal = () => setIsConfirmModalOpen(false)
+  const handleOpenDeleteModal = () => setIsConfirmModalOpen(true)
+  const handleCloseDeleteModal = () => setIsConfirmModalOpen(false)
+  const handleOpenEditModal = () => setEditModalOpen(true)
+  const handleCloseEditModal = () => setEditModalOpen(false)
   const handleDeletePost = () => deletePost(id)
 
   const handleUserNameClick = async () => {
@@ -49,14 +54,24 @@ const PostTopSection = ({ id, email, name, createdAt, bookmarks }: PostTopSectio
         <S.TopIconsSection>
           <PostBookmark id={id} bookmarks={bookmarks} />
           {currentUserEmail === email && (
-            <S.Icon
-              src={defineDeleteIcon(theme)}
-              alt='remove icon'
-              title='Remove the post'
-              width={24}
-              height={24}
-              onClick={handleOpenModal}
-            />
+            <>
+              <S.Icon
+                src={defineDeleteIcon(theme)}
+                alt='remove icon'
+                title='Remove the post'
+                width={24}
+                height={24}
+                onClick={handleOpenDeleteModal}
+              />
+              <S.Icon
+                src={defineEditIcon(theme)}
+                alt='edit post icon'
+                title='Edit post data'
+                onClick={handleOpenEditModal}
+                width={24}
+                height={24}
+              />
+            </>
           )}
           <S.Icon
             src={defineGoToPostIcon(theme)}
@@ -72,10 +87,12 @@ const PostTopSection = ({ id, email, name, createdAt, bookmarks }: PostTopSectio
       {isConfirmModalOpen && (
         <ConfirmForm
           subtitle='Вы уверены, что хотите удалить этот пост?'
-          closeModal={handleCloseModal}
+          closeModal={handleCloseDeleteModal}
           onConfirm={handleDeletePost}
         />
       )}
+
+      {isEditModalOpen && <EditPostForm postData={postData} handleClose={handleCloseEditModal} />}
     </>
   )
 }
