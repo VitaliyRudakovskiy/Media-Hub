@@ -92,7 +92,9 @@ const PostTopSection = ({ id, postData }: PostWithId) => {
         />
       )}
 
-      {isEditModalOpen && <EditPostForm postData={postData} handleClose={handleCloseEditModal} />}
+      {isEditModalOpen && (
+        <EditPostForm postId={id} postData={postData} handleClose={handleCloseEditModal} />
+      )}
     </>
   )
 }

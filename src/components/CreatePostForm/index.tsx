@@ -17,11 +17,11 @@ import { VisibilityType } from '@/types/visibilityType'
 import CurrentAvatar from '@/UI/Avatars/CurrentAvatar'
 import Select from '@/UI/Select'
 import StarRating from '@/UI/StarRating'
+import UploadedFile from '@/UI/UploadedFile'
 import { createPostScheme } from '@/validators/createPostScheme'
 
 import defineClipIcon from './defineClipIcon'
 import * as S from './styled'
-import UploadedFile from './UploadedFile'
 
 const CreatePostForm = () => {
   const {
