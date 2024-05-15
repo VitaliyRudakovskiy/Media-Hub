@@ -1,24 +1,53 @@
 'use client'
 
-import Logo from '@/assets/images/logo.png'
+import { useEffect, useState } from 'react'
+
+import Logo from '@/assets/images/logo.webp'
 import ThemeToggler from '@/UI/ThemeToggler'
 
+import CurrentAvatar from '../Avatars/CurrentAvatar'
 import LocaleSwitcher from '../LocaleSwitcher'
 import LogoutButton from '../LogoutButton'
 
 import { HeaderWrapper, LeftPart, RightPart, StyledImage } from './styled'
 
 const Header = () => {
+  const [opacity, setOpacity] = useState(1)
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY
+    if (currentScrollY > 40) setOpacity(0.8)
+    else setOpacity(1)
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <HeaderWrapper>
+    <HeaderWrapper
+      $opacity={opacity}
+      onMouseEnter={() => setOpacity(1)}
+      onMouseLeave={handleScroll}
+    >
       <LeftPart>
-        <StyledImage src={Logo} alt='site logo' unoptimized />
+        <StyledImage
+          src={Logo}
+          alt='site logo'
+          width={60}
+          height={60}
+          unoptimized
+          quality={100}
+          priority
+        />
         <h1>Media Hub</h1>
       </LeftPart>
       <RightPart>
         <LocaleSwitcher />
         <LogoutButton />
         <ThemeToggler />
+        <CurrentAvatar width={50} height={50} initialsFontSize='18px' />
       </RightPart>
     </HeaderWrapper>
   )

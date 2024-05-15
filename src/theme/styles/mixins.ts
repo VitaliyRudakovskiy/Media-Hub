@@ -6,7 +6,7 @@ export const PageContainer = css`
   margin: 0 auto;
   max-width: 1220px;
   width: 100%;
-  padding-top: 10px;
+  padding-top: 90px;
 `
 
 export const flexCenter = css`

@@ -18,6 +18,7 @@ const CurrentAvatar = ({
 }: AvatarProps) => {
   const { avatarName, name, secondName } = useSelector(selectUser)
   const avatarURL = usePhoto(avatarName)
+
   const initials = `${name[0]?.toUpperCase()}${secondName[0]?.toUpperCase()}`
 
   return (
@@ -26,10 +27,11 @@ const CurrentAvatar = ({
         <AvatarPhoto
           src={avatarURL}
           alt='User avatar'
+          title={`${name} ${secondName}`}
           width={width}
           height={height}
-          $isBordered={isBordered}
           unoptimized={unoptimized}
+          $isBordered={isBordered}
         />
       ) : (
         <Initials $initialsFontSize={initialsFontSize}>{initials}</Initials>

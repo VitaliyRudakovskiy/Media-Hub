@@ -12,6 +12,7 @@ import { selectTheme } from '@/store/slices/themeSlice'
 import { selectUser } from '@/store/slices/userSlice'
 import { PostWithId } from '@/types/postType'
 
+import CurrentAvatar from '../Avatars/CurrentAvatar'
 import DynamicAvatar from '../Avatars/DynamicAvatar'
 import ConfirmForm from '../ConfirmForm'
 import PostBookmark from '../PostBookmark'
@@ -44,7 +45,11 @@ const PostTopSection = ({ id, postData }: PostWithId) => {
       <S.TopSection>
         <S.UserSection>
           <S.AvatarContainer>
-            <DynamicAvatar email={email} width={50} height={50} initialsFontSize='20px' />
+            {currentUserEmail === email ? (
+              <CurrentAvatar width={50} height={50} initialsFontSize='20px' />
+            ) : (
+              <DynamicAvatar email={email} width={50} height={50} initialsFontSize='20px' />
+            )}
           </S.AvatarContainer>
           <S.PostInfo>
             <S.UserName onClick={handleUserNameClick}>{name}</S.UserName>

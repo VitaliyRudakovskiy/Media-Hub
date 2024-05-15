@@ -8,7 +8,7 @@ import getPhotoURL from '@/helpers/getPhotoUrl'
 import { AvatarContainer, AvatarPhoto, Initials } from '../styled'
 import { DynamicAvatarProps, DynamicUserType } from '../types'
 
-const CurrentAvatar = ({
+const DynamicAvatar = ({
   email,
   width = 35,
   height = 35,
@@ -36,10 +36,11 @@ const CurrentAvatar = ({
         <AvatarPhoto
           src={user.avatarName}
           alt='User avatar'
+          title={`${user.name} ${user.secondName}`}
           width={width}
           height={height}
-          $isBordered={isBordered}
           unoptimized={unoptimized}
+          $isBordered={isBordered}
         />
       ) : (
         <Initials $initialsFontSize={initialsFontSize}>{initials}</Initials>
@@ -48,4 +49,4 @@ const CurrentAvatar = ({
   )
 }
 
-export default memo(CurrentAvatar)
+export default memo(DynamicAvatar)

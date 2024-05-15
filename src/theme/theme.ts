@@ -30,6 +30,8 @@ export const darkTheme: DefaultTheme = {
   secondaryButtonTextColor: COLORS.gray300,
   redButtonColor: COLORS.red,
   activeButtonColor: COLORS.blue100,
+  errorColor: COLORS.orange,
+  linkColor: COLORS.blue100,
 }
 
 export const lightTheme: DefaultTheme = {
@@ -50,4 +52,6 @@ export const lightTheme: DefaultTheme = {
   secondaryButtonTextColor: COLORS.blue300,
   redButtonColor: COLORS.red,
   activeButtonColor: COLORS.blue300,
+  errorColor: COLORS.red100,
+  linkColor: COLORS.blue300,
 }

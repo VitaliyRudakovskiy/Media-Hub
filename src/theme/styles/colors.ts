@@ -2,6 +2,8 @@ import { StringType } from '@/types/stringType'
 
 const COLORS: StringType = {
   red: '#DC3545',
+  red100: '#FF4200',
+  orange: '#FECC00',
 
   // ----------dark theme----------
   gray300: '#E1E3E6', // text

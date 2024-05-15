@@ -2,10 +2,11 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-import Logo from '@/assets/images/logo.png'
-import * as Styled from '@/constants/formStyles'
+import Logo from '@/assets/images/logo.webp'
+import * as S from '@/constants/formStyles'
 import { loginDefaultValues, loginInputs } from '@/constants/loginElements'
 import ROUTES from '@/constants/routes'
 import getUserDataAndLogin from '@/firebase/api/getUserDataAndLogin'
@@ -50,21 +51,30 @@ const LoginForm = () => {
   }
 
   return (
-    <Styled.Form onSubmit={handleSubmit(onSubmit)}>
-      <Styled.Picture src={Logo} alt='site logo' />
-      <Styled.Header>Sign Up for Media Hub</Styled.Header>
-      <Styled.InputsContainer>
+    <S.Form onSubmit={handleSubmit(onSubmit)}>
+      <Image
+        src={Logo}
+        alt='site logo'
+        width={120}
+        height={120}
+        unoptimized
+        quality={100}
+        priority
+      />
+      <S.Header>Sign Up for Media Hub</S.Header>
+      <S.InputsContainer>
         {loginInputs.map(({ placeholder, type, name }) => (
-          <Styled.InputWrapper key={name}>
+          <S.InputWrapper key={name}>
             <Input {...register(name)} placeholder={placeholder} type={type} />
-            {errors && errors[name] && <Styled.Error>{errors[name]?.message}</Styled.Error>}
-          </Styled.InputWrapper>
+            {errors && errors[name] && <S.Error>{errors[name]?.message}</S.Error>}
+          </S.InputWrapper>
         ))}
-      </Styled.InputsContainer>
+      </S.InputsContainer>
       <Button variant='primary' type='submit' disabled={!isDirty || !isValid || isSubmitting}>
         Log In to account
       </Button>
-    </Styled.Form>
+      <S.LinkToOtherForm href={ROUTES.SIGNUP}>Dont`t have an account? Sign Up</S.LinkToOtherForm>
+    </S.Form>
   )
 }
 

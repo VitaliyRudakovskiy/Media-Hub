@@ -48,7 +48,15 @@ const EditProfileModal = ({ onClose }: EditProfileModalProps) => {
 
   const onSubmit = async (newData: Partial<EditProfileType>) => {
     try {
-      await updateProfile(user.id, newData, file, dispatch)
+      await updateProfile(
+        user.id,
+        newData,
+        file,
+        editProfileDefaultValues.name,
+        editProfileDefaultValues.secondName,
+        user.email,
+        dispatch
+      )
     } catch (error) {
       throw Error(`An error occured while changing profile data: ${error}`)
     } finally {

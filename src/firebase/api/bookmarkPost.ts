@@ -3,20 +3,20 @@ import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore'
 import { POSTS } from '../collections'
 
 const bookmarkPost = async (postId: string, userId: string, isBookmarked: boolean) => {
-  const tweetRef = doc(POSTS, postId)
+  const postRef = doc(POSTS, postId)
 
   try {
     if (isBookmarked) {
-      await updateDoc(tweetRef, {
+      await updateDoc(postRef, {
         bookmarks: arrayRemove(userId),
       })
     } else {
-      await updateDoc(tweetRef, {
+      await updateDoc(postRef, {
         bookmarks: arrayUnion(userId),
       })
     }
   } catch (error) {
-    throw new Error(`Error occured while bookmarking tweet: ${error}`)
+    throw new Error(`Error occured while bookmarking post: ${error}`)
   }
 }
 
