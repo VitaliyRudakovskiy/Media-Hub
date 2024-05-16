@@ -45,7 +45,7 @@ const NewComment = ({ postId }: NewCommentProps) => {
           value={comment}
           onChange={handleInputChange}
         />
-        <S.SubmitButton type='submit'>
+        <S.SubmitButton type='submit' disabled={isLoading}>
           <S.SubmitIcon
             src={defineSubmitIcon(theme)}
             alt='submit comment icon'

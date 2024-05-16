@@ -21,6 +21,7 @@ export const EditPostFormWrapper = styled.form`
   border-radius: 12px;
   margin: 0 auto;
   width: 90%;
+  max-width: 600px;
 `
 
 export const FormTitle = styled.h2`
@@ -42,4 +43,19 @@ export const CloseButton = styled.button`
   &:hover {
     color: red;
   }
+`
+
+export const StarContainer = styled.div`
+  margin-top: 10px;
+`
+
+export const Label = styled.p`
+  color: ${({ theme }) => theme.secondaryTextColor};
+  margin-bottom: 5px;
+  margin-top: 10px;
+`
+
+export const Error = styled.p`
+  margin-top: 5px;
+  color: ${({ theme }) => theme.errorColor};
 `

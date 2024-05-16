@@ -14,6 +14,7 @@ export const editPostScheme = z.object({
     .regex(TAGS, 'This field should contain only letters, numbers and comma')
     .optional()
     .or(z.literal('')),
+  visibility: z.string(),
 })
 
 export type EditPostType = z.infer<typeof editPostScheme>

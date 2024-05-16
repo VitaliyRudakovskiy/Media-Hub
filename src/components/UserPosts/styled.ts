@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
-export const UserPostsContainer = styled.section``
+import { flexCenter } from '@/theme/styles/mixins'
+
+export const UserPostsContainer = styled.section`
+  ${flexCenter};
+  width: 100%;
+`
 
 export const NoPosts = styled.p``

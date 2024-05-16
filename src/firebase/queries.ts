@@ -7,6 +7,7 @@ export const publicPostsQueryOrderedByCreatedAt = query(
   where('visibility', '==', 'public'),
   orderBy('createdAt', 'desc')
 )
+export const postsQueryOrderedByCreatedAt = query(POSTS, orderBy('createdAt', 'desc'))
 export const userPostsQuery = (userEmail: string) => query(POSTS, where('email', '==', userEmail))
 export const usersQueryOrderedByEmail = query(USERS, orderBy('email', 'asc'))
 export const commentsQuery = query(COMMENTS)

@@ -1,8 +1,13 @@
 'use client'
 
 import { memo } from 'react'
+import { A11y, Scrollbar } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
-import { FilesContainer, StyledImage, StyledImageWrapper } from './styled'
+import 'swiper/css'
+import 'swiper/css/scrollbar'
+
+import { FilesContainer, Label, StyledImage, StyledImageWrapper } from './styled'
 import { EditPostFilesProps } from './types'
 
 const EditPostFiles = ({ fileLinks, updatedFiles, setUpdatedFiles }: EditPostFilesProps) => {
@@ -21,31 +26,37 @@ const EditPostFiles = ({ fileLinks, updatedFiles, setUpdatedFiles }: EditPostFil
   }
 
   return (
-    <>
-      <p>Click on file to remove</p>
-      <FilesContainer>
+    <FilesContainer>
+      <Label>Click on file to remove</Label>
+      <Swiper
+        modules={[Scrollbar, A11y]}
+        spaceBetween={50}
+        slidesPerView={4}
+        scrollbar={{ draggable: true }}
+      >
         {fileLinks.map((file, index) => {
           const isFileMarkedToDelete = updatedFiles.some(
             (f) => f.status === 'toDelete' && f.fileIndexToDelete === index
           )
           return (
-            <StyledImageWrapper
-              key={file}
-              onClick={() => handleDeletePhoto(index)}
-              $toDelete={isFileMarkedToDelete}
-            >
-              <StyledImage
-                src={file}
-                alt={`post image ${file}`}
-                title={`post file with link ${file}`}
-                width={150}
-                height={100}
-              />
-            </StyledImageWrapper>
+            <SwiperSlide key={file}>
+              <StyledImageWrapper
+                onClick={() => handleDeletePhoto(index)}
+                $toDelete={isFileMarkedToDelete}
+              >
+                <StyledImage
+                  src={file}
+                  alt={`post image ${file}`}
+                  title={`post file with link ${file}`}
+                  width={150}
+                  height={100}
+                />
+              </StyledImageWrapper>
+            </SwiperSlide>
           )
         })}
-      </FilesContainer>
-    </>
+      </Swiper>
+    </FilesContainer>
   )
 }
 

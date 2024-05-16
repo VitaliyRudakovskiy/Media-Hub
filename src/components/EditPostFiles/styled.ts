@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import { StyledImageProps } from './types'
 
 export const FilesContainer = styled.div`
-  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `
 
 export const StyledImageWrapper = styled.div<StyledImageProps>`
@@ -30,4 +31,9 @@ export const StyledImageWrapper = styled.div<StyledImageProps>`
 
 export const StyledImage = styled(Image)`
   margin-right: 10px;
+`
+
+export const Label = styled.p`
+  color: ${({ theme }) => theme.secondaryTextColor};
+  margin-bottom: 5px;
 `

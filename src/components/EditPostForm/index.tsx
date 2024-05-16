@@ -12,6 +12,7 @@ import updatePost from '@/firebase/api/updatePost'
 import useOnClickOutside from '@/hooks/useClickOutside'
 import { selectUser } from '@/store/slices/userSlice'
 import { PostType } from '@/types/postType'
+import { VisibilityType } from '@/types/visibilityType'
 import Button from '@/UI/Button'
 import StarRating from '@/UI/StarRating'
 import { editPostScheme, EditPostType } from '@/validators/editPostScheme'
@@ -19,18 +20,20 @@ import { editPostScheme, EditPostType } from '@/validators/editPostScheme'
 import AddNewFile from '../AddNewFile'
 import EditPostFiles from '../EditPostFiles'
 
+import { VISIBILITIES } from './constants'
 import defineResultFiles from './helpers'
 import * as S from './styled'
 import { EditPostFormProps, NewFileType } from './types'
 
 const EditPostForm = ({ postId, postData, handleClose }: EditPostFormProps) => {
-  const { feedback, category, title, tags, rating, files } = postData
+  const { feedback, category, title, tags, rating, visibility, files } = postData
 
   const editPostDefaultValues = {
     title: title,
     feedback: feedback,
     category: category,
     tags: tags,
+    visibility: visibility,
   }
 
   const {
@@ -72,6 +75,8 @@ const EditPostForm = ({ postId, postData, handleClose }: EditPostFormProps) => {
     if (data.category !== editPostDefaultValues.category) updatedValues.category = data.category
     if (data.feedback !== editPostDefaultValues.feedback) updatedValues.feedback = data.feedback
     if (data.tags !== editPostDefaultValues.tags) updatedValues.tags = data.tags
+    if (data.visibility !== editPostDefaultValues.visibility)
+      updatedValues.visibility = data.visibility as VisibilityType
     if (isRatingChanged) updatedValues.rating = starRating
 
     const { filesToDelete, filesToAdd } = defineResultFiles(updatedFiles)
@@ -92,30 +97,34 @@ const EditPostForm = ({ postId, postData, handleClose }: EditPostFormProps) => {
       <S.EditPostFormWrapper ref={formRef} onSubmit={handleSubmit(onSubmit)}>
         <S.FormTitle>Редактирование поста</S.FormTitle>
 
-        <p>VISIBILITY</p>
-        <p>TO DO</p>
-
-        <p>Title</p>
+        <S.Label>Title</S.Label>
         <input {...register('title')} placeholder='Title value' />
-        {errors && errors['title'] && <p>{errors['title']?.message}</p>}
+        {errors && errors['title'] && <S.Error>{errors['title']?.message}</S.Error>}
 
-        <p>Feedback</p>
-        <textarea {...register('feedback')} placeholder='Feedback value' rows={10} cols={60} />
-        {errors && errors['feedback'] && <p>{errors['feedback']?.message}</p>}
+        <S.Label>Feedback</S.Label>
+        <input {...register('feedback')} placeholder='Feedback value' />
 
-        <p>Category</p>
+        <S.Label>Category</S.Label>
         <select {...register('category')}>
           {CATEGORIES.map((item) => (
             <option key={item}>{item}</option>
           ))}
         </select>
 
-        <p>Rating</p>
-        <StarRating starValue={starRating} setStarValue={setStarRating} />
+        <S.StarContainer>
+          <StarRating starValue={starRating} setStarValue={setStarRating} />
+        </S.StarContainer>
 
-        <p>Tags</p>
+        <S.Label>Tags</S.Label>
         <input {...register('tags')} placeholder='Tags' />
-        {errors && errors['tags'] && <p>{errors['tags']?.message}</p>}
+        {errors && errors['tags'] && <S.Error>{errors['tags']?.message}</S.Error>}
+
+        <S.Label>Visibility</S.Label>
+        <select {...register('visibility')}>
+          {VISIBILITIES.map((item) => (
+            <option key={item}>{item}</option>
+          ))}
+        </select>
 
         {fileLinks && fileLinks.length > 0 && (
           <EditPostFiles
@@ -131,13 +140,6 @@ const EditPostForm = ({ postId, postData, handleClose }: EditPostFormProps) => {
           updatedFiles={updatedFiles}
           setUpdatedFiles={setUpdatedFiles}
         />
-        <div>
-          {updatedFiles
-            .filter((item) => item.status === 'new')
-            .map(({ file }) => (
-              <p key={file}>{file}</p>
-            ))}
-        </div>
 
         <Button
           type='submit'
