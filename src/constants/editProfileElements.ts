@@ -2,19 +2,23 @@ import { EditProfileElementsType } from '@/types/editProfileElements'
 
 export const editProfileElements: EditProfileElementsType[] = [
   {
-    placeholder: 'Enter name',
+    placeholder: 'Updated name',
+    label: 'Enter new name',
     name: 'name',
   },
   {
-    placeholder: 'Enter second name',
+    placeholder: 'Updated second name',
+    label: 'Enter new second name',
     name: 'secondName',
   },
   {
-    placeholder: 'Enter short description',
+    placeholder: 'Short description',
+    label: 'Enter description about yourself',
     name: 'description',
   },
   {
-    placeholder: 'Enter your favourite content',
+    placeholder: 'e.g. Harry Potter, The Witcher, Dune',
+    label: 'Enter your favourite content',
     name: 'favourites',
   },
 ]

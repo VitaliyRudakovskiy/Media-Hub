@@ -1,3 +1,4 @@
+import { ToastContainer } from 'react-toastify'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import { NextIntlClientProvider, useMessages, useTimeZone } from 'next-intl'
@@ -8,6 +9,8 @@ import StoreProvider from '@/providers/StoreProvider'
 import StyledComponentsProvider from '@/providers/StyledComponentsProvider'
 import ThemeProvider from '@/providers/ThemeProvider'
 import UserGateProvider from '@/providers/UserGateProvider'
+
+import 'react-toastify/dist/ReactToastify.css'
 
 import { LocaleLayoutProps } from './types'
 
@@ -39,6 +42,17 @@ const LocaleLayout = ({ children, params: { locale } }: LocaleLayoutProps) => {
               <UserGateProvider>
                 <NextIntlClientProvider timeZone={timeZone} messages={messages}>
                   {children}
+                  <ToastContainer
+                    position='top-right'
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                  />
                 </NextIntlClientProvider>
               </UserGateProvider>
             </ThemeProvider>

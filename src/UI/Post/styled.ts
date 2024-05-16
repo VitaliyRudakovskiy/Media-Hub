@@ -2,13 +2,14 @@ import styled from 'styled-components'
 
 import { flexBetween } from '@/theme/styles/mixins'
 
+import { StyledImageContainerProps } from './types'
+
 export const PostWrapper = styled.div`
   background-color: ${({ theme }) => theme.sectionColor};
   border: 1px solid ${({ theme }) => theme.sectionBorderColor};
   padding: 16px 20px;
   border-radius: 12px;
   width: 100%;
-  max-width: ${({ theme }) => theme.sizes.maxMainSectionWidth};
   margin-bottom: 10px;
 `
 
@@ -39,11 +40,37 @@ export const RatingContainer = styled.div`
   align-items: center;
 `
 
-export const ImageSection = styled.div``
+export const ImageSection = styled.div<StyledImageContainerProps>`
+  display: grid;
+  gap: 5px;
+  margin-bottom: 10px;
+
+  ${({ $filesLength }) => {
+    switch ($filesLength) {
+      case 1:
+        return `
+          grid-template-columns: 1fr;
+        `
+      case 2:
+        return `
+          grid-template-columns: 1fr 1fr;
+        `
+      case 3:
+        return `
+          grid-template-columns: 1fr 1fr;
+        `
+      default:
+        return `
+          grid-template-columns: 1fr 1fr;
+        `
+    }
+  }}
+`
 
 export const SingleImage = styled.img`
   width: 100%;
   height: auto;
+  max-height: 400px;
 `
 
 export const NumbersSection = styled.div`

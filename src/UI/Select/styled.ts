@@ -8,6 +8,7 @@ export const StyledSelectContainer = styled.div<IStyledsSelectProps>`
   width: ${({ $width }) => $width};
   display: flex;
   align-items: center;
+  margin-bottom: 15px;
 `
 
 export const StyledSelect = styled.select`
@@ -23,8 +24,6 @@ export const StyledSelect = styled.select`
   cursor: pointer;
 `
 
-export const StyledOption = styled.option``
-
 export const ArrowImage = styled(Image)<IArrowStyledProps>`
   position: absolute;
   right: 10px;
@@ -36,4 +35,9 @@ export const ArrowImage = styled(Image)<IArrowStyledProps>`
     css`
       transform: rotate(180deg);
     `}
+`
+
+export const SelectLabel = styled.p`
+  margin: 15px 0 5px 0;
+  color: ${({ theme }) => theme.secondaryTextColor};
 `

@@ -10,6 +10,7 @@ export const EditPostFormOverlay = styled.section`
   width: 100vw;
   height: 100dvh;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 11;
 `
 
 export const EditPostFormWrapper = styled.form`

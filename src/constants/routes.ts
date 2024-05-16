@@ -1,6 +1,5 @@
 const ROUTES = {
   HOME: '/dashboard',
-  POST: '/dashboard/:id',
   FRIENDS: '/friends',
   FRIEND: '/friends/:id',
   BOOKMARKS: '/bookmarks',

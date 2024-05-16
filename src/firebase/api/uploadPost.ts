@@ -30,7 +30,7 @@ const uploadPost = async (
   try {
     await addDoc(POSTS, post)
   } catch (error) {
-    throw new Error(`An error occured while uploading tweet: ${error}`)
+    throw new Error(`An error occured while uploading post: ${error}`)
   } finally {
     setLoadingState(false)
   }

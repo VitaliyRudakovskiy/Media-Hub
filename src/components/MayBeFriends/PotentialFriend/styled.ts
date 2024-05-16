@@ -2,12 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
 
-import { flexCenter, flexColumn } from '@/theme/styles/mixins'
+import { flexBetween, flexCenter, flexColumn } from '@/theme/styles/mixins'
 
 export const PoterntialFriendWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  ${flexBetween};
+  gap: 10px;
   width: 100%;
   padding: 8px 0;
 `
@@ -16,7 +15,7 @@ export const FriendLeftContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 78%;
+  flex: 1;
 `
 
 export const FriendTextContainer = styled.div`
@@ -41,7 +40,7 @@ export const FriendNameLink = styled(Link)`
 
 export const FriendDescription = styled.p`
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 `

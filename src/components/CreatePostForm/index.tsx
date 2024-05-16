@@ -5,7 +5,6 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import Exchange from '@/assets/images/exchange.png'
 import CATEGORIES from '@/constants/categories'
 import { createPostDefaultValues } from '@/constants/createPostDefaultValues'
 import uploadPost from '@/firebase/api/uploadPost'
@@ -18,9 +17,10 @@ import CurrentAvatar from '@/UI/Avatars/CurrentAvatar'
 import Select from '@/UI/Select'
 import StarRating from '@/UI/StarRating'
 import UploadedFile from '@/UI/UploadedFile'
+import { createPostFormErrorToast, createPostFormSuccessToast } from '@/utils/toastManager'
 import { createPostScheme } from '@/validators/createPostScheme'
 
-import defineClipIcon from './defineClipIcon'
+import { defineClipIcon, defineSwapIcon } from './helpers'
 import * as S from './styled'
 
 const CreatePostForm = () => {
@@ -50,7 +50,6 @@ const CreatePostForm = () => {
 
   useEffect(() => {
     if (!textareaRef.current) return
-
     textareaRef.current.style.height = 'auto'
     textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
   }, [postText])
@@ -59,6 +58,7 @@ const CreatePostForm = () => {
     if (postText || selectedFiles.length) return
     setIsFormFocused(false)
   }
+
   useOnClickOutside(formRef, handleUnfocusForm)
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -82,7 +82,6 @@ const CreatePostForm = () => {
 
   const handleFocusForm = () => setIsFormFocused(true)
   const handleChangeTextarea = (e: ChangeEvent<HTMLTextAreaElement>) => setPostText(e.target.value)
-
   const handleToggleVisibility = () =>
     setPostVisibility((prevVisibility) => (prevVisibility === 'private' ? 'public' : 'private'))
 
@@ -106,8 +105,9 @@ const CreatePostForm = () => {
         setIsPostLoading,
         starValue
       )
+      createPostFormSuccessToast(theme)
     } catch (error) {
-      throw Error(`Error in Create Post component: ${error}`)
+      createPostFormErrorToast(theme)
     } finally {
       reset()
       setSelectedFiles([])
@@ -123,25 +123,33 @@ const CreatePostForm = () => {
       <S.MainContent $isFormFocused={isFormFocused}>
         <CurrentAvatar />
         <S.InfoContainer>
+          {isFormFocused && <S.TitleLabel>Title</S.TitleLabel>}
           <S.TitleInput
             {...register('title')}
             placeholder='Введите название вашего ресурса'
             onFocus={handleFocusForm}
+            $isFormFocused={isFormFocused}
           />
           {isFormFocused && (
             <>
               {errors && errors['title'] && (
                 <S.ErrorMessage>{errors['title']?.message}</S.ErrorMessage>
               )}
+              <S.DescriptionLabel>Feedback</S.DescriptionLabel>
               <S.Textarea
                 ref={textareaRef}
                 value={postText}
                 onChange={handleChangeTextarea}
-                placeholder='Расскажите ваше мнение о нем'
+                placeholder='Напишите ваш отзыв о нем'
+                rows={1}
               />
               <Select {...register('category')} placeholder='Категория' options={CATEGORIES} />
               <StarRating starValue={starValue} setStarValue={setStarValue} />
-              <S.TagsInput {...register('tags')} placeholder='Введите тэги через запятую' />
+              <S.TagsLabel>Tags</S.TagsLabel>
+              <S.TagsInput
+                {...register('tags')}
+                placeholder='Например: путешествие,животные,кошка,Альпы'
+              />
               {errors && errors['tags'] && (
                 <S.ErrorMessage>{errors['tags']?.message}</S.ErrorMessage>
               )}
@@ -181,7 +189,7 @@ const CreatePostForm = () => {
           <S.ButtonsContainer>
             <S.VisibilityButton
               variant='secondary'
-              icon={Exchange}
+              icon={defineSwapIcon(theme)}
               onClick={handleToggleVisibility}
             >
               {postVisibility}
@@ -189,6 +197,7 @@ const CreatePostForm = () => {
             <S.SubmitButton
               variant='primary'
               type='submit'
+              title='You should fill name, feedback and rating fields'
               disabled={
                 (fileNames.length === 0 && !postText) ||
                 !starValue ||

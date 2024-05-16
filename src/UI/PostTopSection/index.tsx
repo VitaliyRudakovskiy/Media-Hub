@@ -17,7 +17,7 @@ import DynamicAvatar from '../Avatars/DynamicAvatar'
 import ConfirmForm from '../ConfirmForm'
 import PostBookmark from '../PostBookmark'
 
-import { defineDeleteIcon, defineEditIcon, defineGoToPostIcon } from './helpers'
+import { defineDeleteIcon, defineEditIcon } from './helpers'
 import * as S from './styled'
 
 const PostTopSection = ({ id, postData }: PostWithId) => {
@@ -28,7 +28,6 @@ const PostTopSection = ({ id, postData }: PostWithId) => {
   const theme = useSelector(selectTheme)
   const router = useRouter()
 
-  const openPost = () => router.push(`/dashboard/${id}`)
   const handleOpenDeleteModal = () => setIsConfirmModalOpen(true)
   const handleCloseDeleteModal = () => setIsConfirmModalOpen(false)
   const handleOpenEditModal = () => setEditModalOpen(true)
@@ -78,20 +77,13 @@ const PostTopSection = ({ id, postData }: PostWithId) => {
               />
             </>
           )}
-          <S.Icon
-            src={defineGoToPostIcon(theme)}
-            alt='go to post icon'
-            title='Go to the post'
-            onClick={openPost}
-            width={24}
-            height={24}
-          />
         </S.TopIconsSection>
       </S.TopSection>
 
       {isConfirmModalOpen && (
         <ConfirmForm
           subtitle='Вы уверены, что хотите удалить этот пост?'
+          theme={theme}
           closeModal={handleCloseDeleteModal}
           onConfirm={handleDeletePost}
         />

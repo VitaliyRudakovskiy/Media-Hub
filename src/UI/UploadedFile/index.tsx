@@ -7,7 +7,9 @@ const UploadedFile = ({ filename, index, onRemove }: UploadedFileProps) => {
   return (
     <FileContainer>
       <FileName>{filename}</FileName>
-      <RemoveButton onClick={() => onRemove(index)}>&times;</RemoveButton>
+      <RemoveButton type='button' onClick={() => onRemove(index)}>
+        &times;
+      </RemoveButton>
     </FileContainer>
   )
 }

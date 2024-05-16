@@ -11,6 +11,7 @@ const Button = ({
   disabled = false,
   type = 'button',
   width = 'fit-content',
+  title = '',
   icon,
   onClick,
   isSmall = false,
@@ -22,6 +23,7 @@ const Button = ({
       $isSmall={isSmall}
       disabled={disabled}
       type={type}
+      title={title}
       onClick={onClick}
     >
       {children}

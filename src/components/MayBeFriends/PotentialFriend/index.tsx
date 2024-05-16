@@ -2,7 +2,6 @@
 
 import { UserWithId } from '@/types/user'
 import DynamicAvatar from '@/UI/Avatars/DynamicAvatar'
-import UserButtons from '@/UI/UserButtons'
 
 import * as S from './styled'
 
@@ -20,7 +19,6 @@ const PotentialFriend = ({ id, userData }: UserWithId) => {
           <S.FriendDescription>{description}</S.FriendDescription>
         </S.FriendTextContainer>
       </S.FriendLeftContainer>
-      <UserButtons id={id} userData={userData} isSmall />
     </S.PoterntialFriendWrapper>
   )
 }

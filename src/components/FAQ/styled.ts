@@ -7,7 +7,7 @@ import { StyledActiveProps } from './types'
 
 export const FAQContainer = styled.section`
   ${flexColumn};
-  max-width: ${({ theme }) => theme.sizes.px500};
+  max-width: ${({ theme }) => theme.sizes.maxMainSectionWidth};
   gap: 15px;
   margin-bottom: 15px;
 `
@@ -33,7 +33,6 @@ export const ChevronImage = styled(Image)<StyledActiveProps>`
 
 export const Answer = styled.p<StyledActiveProps>`
   padding: 20px;
-  transition: all 1s;
   display: ${({ $isActive }) => ($isActive ? 'flex' : 'none')};
   max-height: ${({ $isActive }) => ($isActive ? 200 : 0)}px;
   opacity: ${({ $isActive }) => ($isActive ? 1 : 0)};

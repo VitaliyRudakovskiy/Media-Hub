@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { onSnapshot } from 'firebase/firestore'
 
-import { postsQueryOrderedByCreatedAt } from '@/firebase/queries'
+import { publicPostsQueryOrderedByCreatedAt } from '@/firebase/queries'
 import { PostWithId } from '@/types/postType'
 
 const usePosts = () => {
   const [posts, setPosts] = useState<PostWithId[]>([])
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(postsQueryOrderedByCreatedAt, (snapshot) => {
+    const unsubscribe = onSnapshot(publicPostsQueryOrderedByCreatedAt, (snapshot) => {
       const postData = snapshot.docs.map((doc) => ({
         id: doc.id,
         postData: doc.data(),

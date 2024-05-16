@@ -10,12 +10,13 @@ import { editProfileElements } from '@/constants/editProfileElements'
 import updateProfile from '@/firebase/api/updateProfile'
 import useOnClickOutside from '@/hooks/useClickOutside'
 import { useAppDispatch } from '@/store/hooks'
+import { selectTheme } from '@/store/slices/themeSlice'
 import { selectUser } from '@/store/slices/userSlice'
-import { EditProfileType } from '@/types/editProfileElements'
 import { FileType } from '@/types/fileType'
 import Button from '@/UI/Button'
 import Input from '@/UI/Input'
-import { editProfileScheme } from '@/validators/editProfileScheme'
+import { editProfileErrorToast } from '@/utils/toastManager'
+import { editProfileScheme, EditProfileSchemeType } from '@/validators/editProfileScheme'
 
 import EditAvatar from './EditAvatar'
 import * as S from './styled'
@@ -23,7 +24,10 @@ import { EditProfileModalProps } from './types'
 
 const EditProfileModal = ({ onClose }: EditProfileModalProps) => {
   const [file, setFile] = useState<FileType | null>(null)
+  const [fileRemovedTrigger, setFileRemovedTrigger] = useState(false)
+  const [fileName, setFileName] = useState('')
   const user = useSelector(selectUser)
+  const theme = useSelector(selectTheme)
   const dispatch = useAppDispatch()
 
   const editProfileDefaultValues = {
@@ -36,8 +40,8 @@ const EditProfileModal = ({ onClose }: EditProfileModalProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
-  } = useForm({
+    formState: { errors, isDirty, isValid, isSubmitting },
+  } = useForm<EditProfileSchemeType>({
     resolver: zodResolver(editProfileScheme),
     defaultValues: editProfileDefaultValues,
     mode: 'onChange',
@@ -46,19 +50,30 @@ const EditProfileModal = ({ onClose }: EditProfileModalProps) => {
   const formRef = useRef(null)
   useOnClickOutside(formRef, onClose)
 
-  const onSubmit = async (newData: Partial<EditProfileType>) => {
+  const onSubmit = async (newData: Partial<EditProfileSchemeType>) => {
+    const updatedValues: Partial<EditProfileSchemeType> = {}
+
+    updatedValues.name = newData.name
+    updatedValues.secondName = newData.secondName
+    if (newData.description !== editProfileDefaultValues.description)
+      updatedValues.description = newData.description
+    if (newData.favourites !== editProfileDefaultValues.favourites)
+      updatedValues.favourites = newData.favourites
+
     try {
       await updateProfile(
         user.id,
-        newData,
+        updatedValues,
         file,
+        fileRemovedTrigger,
         editProfileDefaultValues.name,
         editProfileDefaultValues.secondName,
         user.email,
-        dispatch
+        dispatch,
+        theme
       )
     } catch (error) {
-      throw Error(`An error occured while changing profile data: ${error}`)
+      editProfileErrorToast(theme)
     } finally {
       onClose()
     }
@@ -67,11 +82,17 @@ const EditProfileModal = ({ onClose }: EditProfileModalProps) => {
   return createPortal(
     <S.ModalOverlay>
       <S.EditProfileForm ref={formRef} onSubmit={handleSubmit(onSubmit)}>
-        <S.FormTitle>Редактирование профиля</S.FormTitle>
-        <EditAvatar setFile={setFile} />
-        {editProfileElements.map(({ placeholder, name }) => (
+        <S.FormTitle>Updating profile</S.FormTitle>
+        <EditAvatar
+          setFile={setFile}
+          fileName={fileName}
+          setFileName={setFileName}
+          fileRemovedTrigger={fileRemovedTrigger}
+          setFileRemovedTrigger={setFileRemovedTrigger}
+        />
+        {editProfileElements.map(({ placeholder, label, name }) => (
           <S.InputContainer key={name}>
-            <p>{name}</p>
+            <S.InputLabel>{label}</S.InputLabel>
             <S.ErrorContainer>
               <Input {...register(name)} placeholder={placeholder} />
               {errors && errors[name] && <S.Error>{errors[name]?.message}</S.Error>}
@@ -81,8 +102,12 @@ const EditProfileModal = ({ onClose }: EditProfileModalProps) => {
         <S.CloseButton type='button' onClick={onClose}>
           &times;
         </S.CloseButton>
-        <Button type='submit' variant='primary' disabled={!isValid}>
-          Сохранить изменения
+        <Button
+          type='submit'
+          variant='primary'
+          disabled={!isValid || isSubmitting || (!isDirty && !file && !fileRemovedTrigger)}
+        >
+          {isSubmitting ? 'Loading...' : 'Save changes'}
         </Button>
       </S.EditProfileForm>
     </S.ModalOverlay>,

@@ -2,12 +2,13 @@
 
 import StarsRating from 'react-star-rate'
 
+import { StarRatingLabel } from './styled'
 import { StarRatingType } from './types'
 
 const StarRating = ({ starValue, setStarValue }: StarRatingType) => {
   return (
     <div>
-      <p>Specify the rating on a scale (0-10)</p>
+      <StarRatingLabel>Rating{starValue !== 0 && <span> - {starValue}</span>}</StarRatingLabel>
       <StarsRating
         allowHalf={false}
         count={10}
@@ -16,7 +17,6 @@ const StarRating = ({ starValue, setStarValue }: StarRatingType) => {
           setStarValue(value)
         }}
       />
-      <span>Rating: {starValue}</span>
     </div>
   )
 }

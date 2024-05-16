@@ -28,3 +28,7 @@ export const RightPart = styled.div`
   ${flexCenter};
   gap: 20px;
 `
+
+export const AvatarContainer = styled.div`
+  cursor: pointer;
+`

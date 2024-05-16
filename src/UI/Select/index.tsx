@@ -5,7 +5,7 @@ import defineArrowIcon from '@/helpers/defineArrowIcon'
 import useOnClickOutside from '@/hooks/useClickOutside'
 import { selectTheme } from '@/store/slices/themeSlice'
 
-import { ArrowImage, StyledOption, StyledSelect, StyledSelectContainer } from './styled'
+import { ArrowImage, SelectLabel, StyledSelect, StyledSelectContainer } from './styled'
 import { SelectProps } from './types'
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
@@ -23,26 +23,25 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     }
 
     return (
-      <StyledSelectContainer $width={width} ref={selectRef}>
-        <StyledSelect onClick={handleToggle} defaultValue='' {...props} ref={ref}>
-          <StyledOption value='' disabled>
-            {placeholder}
-          </StyledOption>
-
-          {options.map((option) => (
-            <StyledOption key={option} value={option}>
-              {option}
-            </StyledOption>
-          ))}
-        </StyledSelect>
-        <ArrowImage
-          src={defineArrowIcon(theme)}
-          alt='dropdown arrow'
-          $isOpened={isOpened}
-          height={15}
-          width={15}
-        />
-      </StyledSelectContainer>
+      <>
+        <SelectLabel>{placeholder}</SelectLabel>
+        <StyledSelectContainer $width={width} ref={selectRef}>
+          <StyledSelect onClick={handleToggle} defaultValue={options[0]} {...props} ref={ref}>
+            {options.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </StyledSelect>
+          <ArrowImage
+            src={defineArrowIcon(theme)}
+            alt='dropdown arrow'
+            $isOpened={isOpened}
+            height={15}
+            width={15}
+          />
+        </StyledSelectContainer>
+      </>
     )
   }
 )

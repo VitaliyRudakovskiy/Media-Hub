@@ -8,6 +8,7 @@ export type ButtonProps = {
   type?: 'button' | 'submit' | 'reset'
   width?: string
   icon?: StaticImageData
+  title?: string
   onClick?: () => void
   isSmall?: boolean
 }

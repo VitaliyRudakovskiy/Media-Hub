@@ -58,9 +58,12 @@ const Comment = ({ id, commentData, postId }: CommentProps) => {
           </S.BottomContent>
         </S.MainContent>
       </S.CommentContainer>
+
       {isConfirmModalOpen && (
         <ConfirmForm
           subtitle='Вы уверены, что хотите удалить этот комментарий?'
+          theme={theme}
+          notificationText='Your comment was successfully deleted!'
           closeModal={handleCloseModal}
           onConfirm={handleDeleteComment}
         />

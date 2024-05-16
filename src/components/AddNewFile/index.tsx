@@ -19,13 +19,11 @@ const AddNewFile = ({ newFiles, setNewFiles, updatedFiles, setUpdatedFiles }: Ad
     }
   }
 
-  console.log(newFiles)
-
-  // const handleRemoveFile = (index: number) => {
-  //   const newFilesArray = [...newFiles]
-  //   newFilesArray.splice(index, 1)
-  //   setNewFiles(newFilesArray)
-  // }
+  const handleRemoveFile = (index: number) => {
+    const newFilesArray = [...newFiles]
+    newFilesArray.splice(index, 1)
+    setNewFiles(newFilesArray)
+  }
 
   return (
     <Button variant='secondary'>

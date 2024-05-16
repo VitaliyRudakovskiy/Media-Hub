@@ -4,6 +4,7 @@ import { flexColumn } from '@/theme/styles/mixins'
 
 export const SidebarWrapper = styled.aside`
   ${flexColumn}
-  position: fixed;
+  position: sticky;
+  top: 90px;
   z-index: 10;
 `

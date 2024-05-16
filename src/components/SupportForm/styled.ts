@@ -4,7 +4,8 @@ import { flexColumn } from '@/theme/styles/mixins'
 
 export const SupportForm = styled.form`
   ${flexColumn};
-  width: ${({ theme }) => theme.sizes.maxMainSectionWidth};
+  max-width: ${({ theme }) => theme.sizes.maxMainSectionWidth};
+  width: 100%;
 `
 
 export const TopicSelect = styled.select`
@@ -13,10 +14,10 @@ export const TopicSelect = styled.select`
   padding: 8px 16px;
   border-radius: 8px;
   margin-bottom: 10px;
-  cursor: pointer;
   background-color: ${({ theme }) => theme.sectionColor};
   color: ${({ theme }) => theme.textColor};
   border: 1px solid ${({ theme }) => theme.sectionBorderColor};
+  cursor: pointer;
 `
 
 export const Label = styled.p`
@@ -40,6 +41,6 @@ export const Title = styled.h2`
   margin-bottom: 15px;
 `
 
-export const SubTitle = styled.h3`
+export const SubTitle = styled.h4`
   margin-bottom: 15px;
 `

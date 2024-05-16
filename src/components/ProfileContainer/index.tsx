@@ -16,7 +16,7 @@ import MayBeFriends from '../MayBeFriends'
 import Profile from '../Profile'
 import UserPosts from '../UserPosts'
 
-import { CenterSection, MainContent, ProfileSectionWrapper } from './styled'
+import { CenterSection, LeftSection, MainContent, ProfileSectionWrapper } from './styled'
 
 const ProfileContainer = ({ locale, messages, timeZone }: ContainerProps) => {
   const isAuth = useSelector(selectIsAuth)
@@ -34,10 +34,10 @@ const ProfileContainer = ({ locale, messages, timeZone }: ContainerProps) => {
         <CenterSection>
           <Profile />
           <MainContent>
-            <div>
+            <LeftSection>
               <CreatePostForm />
               <UserPosts userEmail={email} />
-            </div>
+            </LeftSection>
             <MayBeFriends />
           </MainContent>
         </CenterSection>

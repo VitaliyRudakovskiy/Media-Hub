@@ -7,8 +7,9 @@ import { PostTextProps } from './types'
 
 const MAX_TEXT_SIZE = 250
 
-const PostText = ({ postId, feedback }: PostTextProps) => {
+const PostText = ({ feedback }: PostTextProps) => {
   const [isTextLong, setTextLong] = useState(false)
+  const [isExpanded, setExpanded] = useState(false)
   const [shortFeedback, setShortFeedback] = useState('')
 
   useEffect(() => {
@@ -21,10 +22,14 @@ const PostText = ({ postId, feedback }: PostTextProps) => {
     }
   }, [feedback])
 
+  const toggleExpanded = () => setExpanded(!isExpanded)
+
   return (
     <FeedbackContainer>
-      <Feedback>{shortFeedback}</Feedback>
-      {isTextLong && <ShowMore href={`/dashboard/${postId}`}>Show more...</ShowMore>}
+      <Feedback>{isExpanded ? feedback : shortFeedback}</Feedback>
+      {isTextLong && (
+        <ShowMore onClick={toggleExpanded}>{isExpanded ? 'Show less...' : 'Show more...'}</ShowMore>
+      )}
     </FeedbackContainer>
   )
 }

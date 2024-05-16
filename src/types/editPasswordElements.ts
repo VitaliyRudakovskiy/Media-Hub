@@ -1,5 +1,6 @@
 export type EditPasswordElementsType = {
   placeholder: string
+  label: string
   name: 'email' | 'oldPassword' | 'newPassword' | 'confirmPassword'
 }
 

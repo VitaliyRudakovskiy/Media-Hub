@@ -8,6 +8,7 @@ export const CommentContainer = styled.div`
   font-size: 14px;
   gap: 10px;
   width: 100%;
+  margin-top: 10px;
 
   &:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.sectionBorderColor};

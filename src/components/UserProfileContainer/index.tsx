@@ -60,7 +60,9 @@ const UserProfileContainer = ({
             <>
               <UserProfile userData={userData} userId={userId} />
               <S.PostsContainer>
-                <UserPosts userEmail={userData?.email} />
+                <S.FeedWrapper>
+                  <UserPosts userEmail={userData?.email} />
+                </S.FeedWrapper>
                 <MayBeFriends />
               </S.PostsContainer>
             </>

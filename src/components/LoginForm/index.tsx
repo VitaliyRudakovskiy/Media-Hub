@@ -1,6 +1,7 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
+import { useSelector } from 'react-redux'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -11,11 +12,17 @@ import { loginDefaultValues, loginInputs } from '@/constants/loginElements'
 import ROUTES from '@/constants/routes'
 import getUserDataAndLogin from '@/firebase/api/getUserDataAndLogin'
 import { useAppDispatch } from '@/store/hooks'
+import { selectTheme } from '@/store/slices/themeSlice'
 import { setCurrentUser } from '@/store/slices/userSlice'
 import { LoginFormType } from '@/types/authFormType'
 import { UserType } from '@/types/user'
 import Button from '@/UI/Button'
 import Input from '@/UI/Input'
+import {
+  loginErrorCredentialsToast,
+  loginErrorToast,
+  loginSuccessToast,
+} from '@/utils/toastManager'
 import loginScheme from '@/validators/loginScheme'
 
 const LoginForm = () => {
@@ -24,6 +31,7 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors, isValid, isDirty, isSubmitting },
     reset,
+    setValue,
   } = useForm({
     resolver: zodResolver(loginScheme),
     defaultValues: loginDefaultValues,
@@ -31,6 +39,7 @@ const LoginForm = () => {
   })
 
   const dispatch = useAppDispatch()
+  const theme = useSelector(selectTheme)
   const router = useRouter()
 
   const onSubmit = async ({ email, password }: LoginFormType) => {
@@ -40,13 +49,13 @@ const LoginForm = () => {
       if (token) {
         dispatch(setCurrentUser({ ...(userData as UserType), token }))
         router.push(ROUTES.HOME)
-      } else {
-        throw new Error('User not found')
-      }
-    } catch (error) {
-      throw new Error(`An error occured while submitting login form: ${error}`)
-    } finally {
+        loginSuccessToast(theme, userData?.name)
+      } else loginErrorToast(theme)
+
       reset()
+    } catch (error) {
+      loginErrorCredentialsToast(theme)
+      setValue('password', '')
     }
   }
 

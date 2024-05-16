@@ -8,7 +8,6 @@ export const CommonContainer = styled.section`
   padding: 16px 20px 0;
   border-radius: 12px;
   width: 100%;
-  max-width: 750px;
 `
 
 export const UsersFeedWrapper = styled.div`

@@ -4,6 +4,7 @@ import { flexColumn, PageContainer } from '@/theme/styles/mixins'
 
 export const FriendsWrapper = styled.section`
   ${PageContainer};
+  gap: 10px;
 `
 
 export const CenterSection = styled.div`

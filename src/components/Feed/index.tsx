@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { onSnapshot } from 'firebase/firestore'
 
-import { postsQueryOrderedByCreatedAt } from '@/firebase/queries'
+import { publicPostsQueryOrderedByCreatedAt } from '@/firebase/queries'
 import { useAppDispatch } from '@/store/hooks'
 import { selectPosts, setPosts, setReadonlyPosts } from '@/store/slices/postsSlice'
 import { PostWithId } from '@/types/postType'
@@ -20,7 +20,7 @@ const Feed = () => {
   useEffect(() => {
     setIsLoading(true)
 
-    const unsubscribe = onSnapshot(postsQueryOrderedByCreatedAt, (snapshot) => {
+    const unsubscribe = onSnapshot(publicPostsQueryOrderedByCreatedAt, (snapshot) => {
       const postData = snapshot.docs.map((doc) => ({
         id: doc.id,
         postData: doc.data(),

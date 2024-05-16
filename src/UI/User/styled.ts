@@ -20,7 +20,7 @@ export const LeftContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
-  width: 75%;
+  width: 78%;
 `
 
 export const TextContainer = styled.div`

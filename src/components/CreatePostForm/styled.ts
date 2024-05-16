@@ -13,7 +13,6 @@ export const CreateForm = styled.form`
   border-radius: 12px;
   padding: 12px 16px 12px 12px;
   width: 100%;
-  max-width: ${({ theme }) => theme.sizes.maxMainSectionWidth};
   margin-bottom: 10px;
 `
 
@@ -39,7 +38,6 @@ export const InfoContainer = styled.div`
 export const Textarea = styled.textarea`
   font-family: inherit;
   font-size: 16px;
-  margin-top: 20px;
   resize: none;
   overflow: hidden;
   border: none;
@@ -51,14 +49,27 @@ export const Textarea = styled.textarea`
   }
 `
 
+export const DescriptionLabel = styled.p`
+  margin: 15px 0 5px 0;
+  color: ${({ theme }) => theme.secondaryTextColor};
+`
+
 export const TagsInput = styled.input`
-  margin-top: 20px;
-  padding: 10px 0;
   font-family: inherit;
   font-size: 16px;
   border: none;
   background-color: inherit;
+  padding: 10px 0;
   color: inherit;
+
+  &::placeholder {
+    color: ${({ theme }) => theme.inputPlaceholderColor};
+  }
+`
+
+export const TagsLabel = styled.p`
+  margin: 15px 0 5px 0;
+  color: ${({ theme }) => theme.secondaryTextColor};
 `
 
 export const ButtonsContainer = styled.div`
@@ -70,17 +81,22 @@ export const SubmitButton = styled(Button)``
 
 export const VisibilityButton = styled(Button)``
 
-export const TitleInput = styled.input`
+export const TitleInput = styled.input<FormFocused>`
   font-family: inherit;
   font-weight: 500;
   font-size: 19px;
   border: none;
   background-color: inherit;
   color: inherit;
+  padding-top: ${({ $isFormFocused }) => ($isFormFocused ? 6 : 0)}px;
 
   &::placeholder {
     color: ${({ theme }) => theme.inputPlaceholderColor};
   }
+`
+
+export const TitleLabel = styled.p`
+  color: ${({ theme }) => theme.secondaryTextColor};
 `
 
 export const FilesContainer = styled.div`
@@ -103,4 +119,7 @@ export const UploadFile = styled(Image)`
   cursor: pointer;
 `
 
-export const ErrorMessage = styled.p``
+export const ErrorMessage = styled.p`
+  margin-top: 10px;
+  color: ${({ theme }) => theme.errorColor};
+`

@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import styled from 'styled-components'
 
 import { flexColumn } from '@/theme/styles/mixins'
@@ -13,8 +12,9 @@ export const Feedback = styled.p`
   overflow-wrap: break-word;
 `
 
-export const ShowMore = styled(Link)`
-  text-decoration: none;
+export const ShowMore = styled.p`
   font-weight: 500;
+  margin-top: 5px;
   color: ${({ theme }) => theme.activeButtonColor};
+  cursor: pointer;
 `

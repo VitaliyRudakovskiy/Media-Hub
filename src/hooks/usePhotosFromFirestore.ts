@@ -10,7 +10,6 @@ const usePhotosFromFirestore = (photoLinks: string[]) => {
       const downloadedFiles = await getFilesFromStorage(photoLinks)
       setPhotos(downloadedFiles)
     }
-
     getFiles()
   }, [photoLinks])
 

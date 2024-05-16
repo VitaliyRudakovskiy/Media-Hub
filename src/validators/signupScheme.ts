@@ -10,7 +10,7 @@ export const signupScheme = z
       .string()
       .min(2, 'Second name should have at least 2 symbols')
       .max(25, 'Second name should be not more than 30 symbols'),
-    email: z.string().email("This email doesn't exist"),
+    email: z.string().email('Email should match testemail@domain.com'),
     password: z.string().min(8, 'Password should have at least 8 symbols'),
   })
   .required()

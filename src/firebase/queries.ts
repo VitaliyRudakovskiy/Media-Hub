@@ -2,7 +2,11 @@ import { orderBy, query, where } from 'firebase/firestore'
 
 import { COMMENTS, POSTS, USERS } from './collections'
 
-export const postsQueryOrderedByCreatedAt = query(POSTS, orderBy('createdAt', 'desc'))
+export const publicPostsQueryOrderedByCreatedAt = query(
+  POSTS,
+  where('visibility', '==', 'public'),
+  orderBy('createdAt', 'desc')
+)
 export const userPostsQuery = (userEmail: string) => query(POSTS, where('email', '==', userEmail))
 export const usersQueryOrderedByEmail = query(USERS, orderBy('email', 'asc'))
 export const commentsQuery = query(COMMENTS)

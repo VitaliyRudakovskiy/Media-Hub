@@ -3,14 +3,14 @@
 import { ChangeEvent } from 'react'
 import { useSelector } from 'react-redux'
 
-import Cross from '@/assets/images/cross.png'
-import Lupa from '@/assets/images/lupa.png'
+import { defineCrossIcon, defineSearchIcon } from '@/helpers/defineIconsForSearch'
 import { useAppDispatch } from '@/store/hooks'
 import {
   removeUsersSearchText,
   selectUsersSearchText,
   setUsersSearchText,
 } from '@/store/slices/searchUsersSlice'
+import { selectTheme } from '@/store/slices/themeSlice'
 import { selectReadonlyUsers, setUsers } from '@/store/slices/usersSlice'
 
 import * as S from './styled'
@@ -18,6 +18,7 @@ import * as S from './styled'
 const UsersSearch = () => {
   const usersSearchText = useSelector(selectUsersSearchText)
   const readOnlyUsers = useSelector(selectReadonlyUsers)
+  const theme = useSelector(selectTheme)
   const dispatch = useAppDispatch()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -38,15 +39,15 @@ const UsersSearch = () => {
         />
         {usersSearchText && (
           <S.CrossIcon
-            src={Cross}
+            src={defineCrossIcon(theme)}
             alt='remove text icon'
-            width={20}
-            height={20}
+            width={18}
+            height={18}
             onClick={handleClearSearch}
           />
         )}
         <S.SearchButton>
-          <S.Icon src={Lupa} alt='search button icon' width={30} height={30} />
+          <S.Icon src={defineSearchIcon(theme)} alt='search button icon' width={22} height={22} />
         </S.SearchButton>
       </S.InputContainer>
     </S.SearchContainer>

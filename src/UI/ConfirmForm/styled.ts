@@ -9,8 +9,8 @@ export const ModalOverlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100dvh;
-  z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 15;
 `
 
 export const ModalContainer = styled.div`
@@ -73,5 +73,10 @@ export const ConfirmButton = styled.button`
 
   &:active {
     filter: brightness(90%);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
   }
 `

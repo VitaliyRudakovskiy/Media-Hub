@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { flexCenter } from '@/theme/styles/mixins'
+import { flexCenter, flexColumn } from '@/theme/styles/mixins'
 
 export const ModalOverlay = styled.section`
   ${flexCenter};
@@ -10,6 +10,7 @@ export const ModalOverlay = styled.section`
   width: 100vw;
   height: 100dvh;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 11;
 `
 
 export const EditProfileForm = styled.form`
@@ -19,8 +20,8 @@ export const EditProfileForm = styled.form`
   padding: 16px 20px;
   border-radius: 12px;
   margin: 0 auto;
-  width: 100%;
-  max-width: 820px;
+  width: 90%;
+  max-width: ${({ theme }) => theme.sizes.maxMainSectionWidth};
 `
 
 export const FormTitle = styled.h2`
@@ -45,11 +46,28 @@ export const CloseButton = styled.button`
 `
 
 export const InputContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  align-items: center;
+  ${flexColumn};
+  gap: 10px;
+  margin-bottom: 10px;
+
+  &:nth-child(5) {
+    margin-bottom: 20px;
+  }
+`
+
+export const InputLabel = styled.p`
+  color: ${({ theme }) => theme.secondaryTextColor};
 `
 
 export const ErrorContainer = styled.div``
 
-export const Error = styled.p``
+export const ButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`
+
+export const Error = styled.p`
+  margin-top: 5px;
+  color: ${({ theme }) => theme.errorColor};
+`

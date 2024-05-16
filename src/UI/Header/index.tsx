@@ -1,18 +1,21 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 import Logo from '@/assets/images/logo.webp'
+import ROUTES from '@/constants/routes'
 import ThemeToggler from '@/UI/ThemeToggler'
 
 import CurrentAvatar from '../Avatars/CurrentAvatar'
 import LocaleSwitcher from '../LocaleSwitcher'
 import LogoutButton from '../LogoutButton'
 
-import { HeaderWrapper, LeftPart, RightPart, StyledImage } from './styled'
+import { AvatarContainer, HeaderWrapper, LeftPart, RightPart, StyledImage } from './styled'
 
 const Header = () => {
   const [opacity, setOpacity] = useState(1)
+  const router = useRouter()
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY
@@ -24,6 +27,8 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const goToProfile = () => router.push(ROUTES.PROFILE)
 
   return (
     <HeaderWrapper
@@ -44,10 +49,12 @@ const Header = () => {
         <h1>Media Hub</h1>
       </LeftPart>
       <RightPart>
-        <LocaleSwitcher />
+        <AvatarContainer onClick={goToProfile}>
+          <CurrentAvatar width={50} height={50} initialsFontSize='18px' />
+        </AvatarContainer>
         <LogoutButton />
+        <LocaleSwitcher />
         <ThemeToggler />
-        <CurrentAvatar width={50} height={50} initialsFontSize='18px' />
       </RightPart>
     </HeaderWrapper>
   )

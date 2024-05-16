@@ -45,9 +45,9 @@ const Post = ({ id, postData }: PostWithId) => {
             <PostCategory category={category} />
           </S.InfoContainer>
           <PostTags tags={tags} />
-          <PostText postId={id} feedback={feedback} />
+          <PostText feedback={feedback} />
           {fileLinks && fileLinks.length > 0 && (
-            <S.ImageSection>
+            <S.ImageSection $filesLength={fileLinks?.length}>
               {fileLinks.map((file) => (
                 <S.SingleImage key={file} src={file} alt={`post image ${file}`} />
               ))}

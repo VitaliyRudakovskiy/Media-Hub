@@ -31,7 +31,7 @@ export const SearchButton = styled.button`
   border: 1px solid ${({ theme }) => theme.inputBackgroundColor};
   border-radius: 0 6px 6px 0;
   background-color: ${({ theme }) => theme.inputBackgroundColor};
-  padding: 3px;
+  padding: 7px;
   cursor: pointer;
 `
 

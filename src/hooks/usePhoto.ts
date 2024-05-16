@@ -13,7 +13,7 @@ const usePhoto = (avatarName: string | null) => {
         setPhotoURL(url)
       }
       getImageURL()
-    }
+    } else setPhotoURL('')
   }, [avatarName])
 
   return photoURL

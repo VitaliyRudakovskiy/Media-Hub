@@ -1,6 +1,7 @@
 'use client'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useSelector } from 'react-redux'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -11,11 +12,13 @@ import ROUTES from '@/constants/routes'
 import { signupDefaultValues, signupInputs } from '@/constants/signupElements'
 import setUserToFirestore from '@/firebase/api/setUserToFirestore'
 import { useAppDispatch } from '@/store/hooks'
+import { selectTheme } from '@/store/slices/themeSlice'
 import { setCurrentUser } from '@/store/slices/userSlice'
 import { SignupFormType } from '@/types/authFormType'
 import { UserWithId } from '@/types/user'
 import Button from '@/UI/Button'
 import Input from '@/UI/Input'
+import { signupErrorToast, signupSuccessToast } from '@/utils/toastManager'
 import { signupScheme } from '@/validators/signupScheme'
 
 const SignupForm = () => {
@@ -24,6 +27,7 @@ const SignupForm = () => {
     handleSubmit,
     formState: { errors, isValid, isDirty, isSubmitting },
     reset,
+    setValue,
   } = useForm({
     resolver: zodResolver(signupScheme),
     defaultValues: signupDefaultValues,
@@ -31,6 +35,7 @@ const SignupForm = () => {
   })
 
   const dispatch = useAppDispatch()
+  const theme = useSelector(selectTheme)
   const router = useRouter()
 
   const onSubmit: SubmitHandler<SignupFormType> = async ({
@@ -48,10 +53,12 @@ const SignupForm = () => {
       )
       dispatch(setCurrentUser({ ...userData }))
       router.push(ROUTES.HOME)
-    } catch (error) {
-      throw new Error(`An error occured while submitting form: ${error}`)
-    } finally {
       reset()
+      signupSuccessToast(theme, name)
+    } catch (error) {
+      signupErrorToast(theme)
+      setValue('email', '')
+      setValue('password', '')
     }
   }
 

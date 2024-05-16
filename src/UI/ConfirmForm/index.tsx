@@ -1,10 +1,11 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import useOnClickOutside from '@/hooks/useClickOutside'
 import Button from '@/UI/Button'
+import { deletePostSuccessToast } from '@/utils/toastManager'
 
 import * as S from './styled'
 import { ConfirmFormProps } from './types'
@@ -14,11 +15,21 @@ const ConfirmForm = ({
   subtitle = 'Вы уверены, что хотите удалить этот пост?',
   confirmText = 'Удалить',
   cancelText = 'Отменить удаление',
+  theme,
+  notificationText = 'Your post was successfully deleted!',
   closeModal,
   onConfirm,
 }: ConfirmFormProps) => {
+  const [loading, setLoading] = useState(false)
   const modalRef = useRef(null)
   useOnClickOutside(modalRef, closeModal)
+
+  const handleDelete = async () => {
+    setLoading(true)
+    await onConfirm()
+    setLoading(false)
+    deletePostSuccessToast(theme, notificationText)
+  }
 
   return createPortal(
     <S.ModalOverlay>
@@ -27,10 +38,12 @@ const ConfirmForm = ({
         <S.ModalSubtitle>{subtitle}</S.ModalSubtitle>
         <S.CloseButton onClick={closeModal}>&times;</S.CloseButton>
         <S.ButtonsContainer>
-          <S.ConfirmButton onClick={onConfirm}>{confirmText}</S.ConfirmButton>
           <Button variant='secondary' onClick={closeModal}>
             {cancelText}
           </Button>
+          <S.ConfirmButton onClick={handleDelete} disabled={loading}>
+            {loading ? 'Deleting...' : confirmText}
+          </S.ConfirmButton>
         </S.ButtonsContainer>
       </S.ModalContainer>
     </S.ModalOverlay>,

@@ -4,7 +4,8 @@ const StyledInput = styled.input`
   font-family: inherit;
   font-size: 18px;
   padding: 20px;
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.inputPlaceholderColor};
+  outline: none;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.inputBackgroundColor};
   color: ${({ theme }) => theme.textColor};
