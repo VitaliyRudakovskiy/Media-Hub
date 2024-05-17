@@ -70,7 +70,7 @@ const LoginForm = () => {
         quality={100}
         priority
       />
-      <S.Header>Sign Up for Media Hub</S.Header>
+      <S.Header>Log In for Media Hub</S.Header>
       <S.InputsContainer>
         {loginInputs.map(({ placeholder, type, name }) => (
           <S.InputWrapper key={name}>
