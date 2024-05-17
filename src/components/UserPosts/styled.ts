@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-import { flexCenter } from '@/theme/styles/mixins'
+import { flexColumn } from '@/theme/styles/mixins'
 
 export const UserPostsContainer = styled.section`
-  ${flexCenter};
+  ${flexColumn};
   width: 100%;
 `
 
