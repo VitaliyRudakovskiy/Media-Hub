@@ -2,6 +2,7 @@
 
 import { memo, useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useTranslations } from 'next-intl'
 
 import { UsersVariants } from '@/constants/usersSortTiles'
 import approveRequest from '@/firebase/api/approveRequest'
@@ -16,14 +17,17 @@ import Button from '@/UI/Button'
 import { UserButtonsProps } from './types'
 
 const UserButtons = ({ id, userData, isSmall = false }: UserButtonsProps) => {
+  const t = useTranslations('friends.buttons')
   const [userType, setUserType] = useState('')
   const { email: myEmail } = useSelector(selectUser)
   const { id: userId, email } = userData
 
   const fetchUser = useCallback(async () => {
     const userData = await getUserByEmail(myEmail)
-    const userAttitude = defineUserFriend(userData, userId)
-    setUserType(userAttitude)
+    if (userData) {
+      const userAttitude = defineUserFriend(userData, userId)
+      setUserType(userAttitude)
+    }
   }, [myEmail, userId])
 
   useEffect(() => {
@@ -57,19 +61,19 @@ const UserButtons = ({ id, userData, isSmall = false }: UserButtonsProps) => {
 
   switch (userType) {
     case UsersVariants.FRIENDS:
-      buttonText = 'Delete friend'
+      buttonText = 'friends'
       handleClick = handleDeleteFriend
       break
     case UsersVariants.REQUESTS:
-      buttonText = 'Approve request'
+      buttonText = 'requests'
       handleClick = handleApproveRequest
       break
     case UsersVariants.SENT_REQUESTS:
-      buttonText = 'Cancel request'
+      buttonText = 'sentRequests'
       handleClick = handleCancelFriendRequest
       break
     case UsersVariants.ALL_USERS:
-      buttonText = 'Send request'
+      buttonText = 'allUsers'
       handleClick = handleSendFriendRequest
       break
     default:
@@ -78,7 +82,7 @@ const UserButtons = ({ id, userData, isSmall = false }: UserButtonsProps) => {
 
   return (
     <Button variant='secondary' onClick={handleClick} isSmall={isSmall}>
-      {buttonText}
+      {t(buttonText)}
     </Button>
   )
 }

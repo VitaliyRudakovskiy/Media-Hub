@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 import { useAppDispatch } from '@/store/hooks'
 import { setIsLikedByMe, setIsWithComments, setIsWithPictures } from '@/store/slices/sortPostsSlice'
@@ -9,6 +10,7 @@ import Checkbox from '@/UI/Checkbox'
 import { BooleanCheckboxProps } from './types'
 
 const BooleanCheckbox = ({ id, name }: BooleanCheckboxProps) => {
+  const t = useTranslations('postsSort')
   const [isChecked, setIsChecked] = useState(false)
   const dispatch = useAppDispatch()
 
@@ -20,7 +22,7 @@ const BooleanCheckbox = ({ id, name }: BooleanCheckboxProps) => {
 
   const handleCheck = () => setIsChecked(!isChecked)
 
-  return <Checkbox id={id} name={name} isChecked={isChecked} onChange={handleCheck} />
+  return <Checkbox id={id} name={t(name)} isChecked={isChecked} onChange={handleCheck} />
 }
 
 export default BooleanCheckbox

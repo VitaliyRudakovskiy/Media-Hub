@@ -1,3 +1,68 @@
 {
-  "test": "test"
+  "sidebar": {
+    "home": "Home",
+    "friends": "Friends",
+    "bookmarks": "Bookmarks",
+    "profile": "Profile",
+    "support": "Support"
+  },
+  "createPostForm": {
+    "placeholders": {
+      "title": "Input title of media",
+      "feedback": "Enter your feedback",
+      "tags": "For example: travel,animals,cat,Alps"
+    },
+    "labels": {
+      "title": "Title",
+      "feedback": "Feedback",
+      "category": "Category",
+      "rating": "Rating",
+      "tags": "Tags"
+    }
+  },
+  "postsSort": {
+    "title": "Posts sort",
+    "withPictures": "With pictures",
+    "byComments": "With comments",
+    "likedByMe": "Liked by me",
+    "lowToHigh": "Rating ascending",
+    "highToLow": "Rating descending"
+  },
+  "postsSearch": {
+    "placeholder": "Posts search",
+    "options": {
+      "title": "Title",
+      "feedback": "Feedback",
+      "tags": "Tags"
+    }
+  },
+  "friends": {
+    "sort": {
+      "myFriends": "My friends",
+      "requests": "Friends requests",
+      "sentRequests": "Sent requests",
+      "allUsers": "All users"
+    },
+    "noUsers": {
+      "noFriends": "You don`t have any friends now",
+      "noRequests": "You don`t have friends requests yet",
+      "noSentRequests": "You don`t have any sent requests",
+      "noUsers": "You are the only user in the app"
+    },
+    "buttons": {
+      "friends": "Delete friend",
+      "requests": "Approve request",
+      "sentRequests": "Cancel request",
+      "allUsers": "Send request"
+    },
+    "search": "Users search"
+  },
+  "support": {
+    "title": "Contact us",
+    "description": "Tell us about your problem and we will help you with it",
+    "selectLabel": "Select category",
+    "placeholder": "How can we help you?",
+    "submit": "Send email",
+    "sending": "Sending..."
+  }
 }

@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useTranslations } from 'next-intl'
 
 import CATEGORIES from '@/constants/categories'
 import getFilesFromStorage from '@/firebase/api/getFilesFromStorage'
@@ -26,6 +27,8 @@ import * as S from './styled'
 import { EditPostFormProps, NewFileType } from './types'
 
 const EditPostForm = ({ postId, postData, handleClose }: EditPostFormProps) => {
+  const t = useTranslations('')
+
   const { feedback, category, title, tags, rating, visibility, files } = postData
 
   const editPostDefaultValues = {
@@ -112,7 +115,11 @@ const EditPostForm = ({ postId, postData, handleClose }: EditPostFormProps) => {
         </select>
 
         <S.StarContainer>
-          <StarRating starValue={starRating} setStarValue={setStarRating} />
+          <StarRating
+            label={t('createPostForm.labels.rating')}
+            starValue={starRating}
+            setStarValue={setStarRating}
+          />
         </S.StarContainer>
 
         <S.Label>Tags</S.Label>

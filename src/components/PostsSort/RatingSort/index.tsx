@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 import ratingSorts from '@/constants/ratingSorts'
 import { useAppDispatch } from '@/store/hooks'
@@ -10,6 +11,7 @@ import Checkbox from '@/UI/Checkbox'
 import { RatingSortContainer } from './styled'
 
 const RatingSort = () => {
+  const t = useTranslations('postsSort')
   const [activeRating, setActiveRating] = useState<string | null>(null)
   const dispatch = useAppDispatch()
 
@@ -27,7 +29,7 @@ const RatingSort = () => {
         <Checkbox
           key={id}
           id={id}
-          name={name}
+          name={t(name)}
           isChecked={activeRating === id}
           onChange={() => handleChange(id)}
         />

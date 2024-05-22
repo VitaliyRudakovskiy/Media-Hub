@@ -8,19 +8,19 @@ export enum UsersVariants {
 const usersSortTiles = [
   {
     id: UsersVariants.FRIENDS,
-    text: 'Мои друзья',
+    text: 'myFriends',
   },
   {
     id: UsersVariants.REQUESTS,
-    text: 'Заявки в друзья',
+    text: 'requests',
   },
   {
     id: UsersVariants.SENT_REQUESTS,
-    text: 'Отправленные заявки',
+    text: 'sentRequests',
   },
   {
     id: UsersVariants.ALL_USERS,
-    text: 'Все пользователи',
+    text: 'allUsers',
   },
 ]
 

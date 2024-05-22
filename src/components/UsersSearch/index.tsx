@@ -2,6 +2,7 @@
 
 import { ChangeEvent } from 'react'
 import { useSelector } from 'react-redux'
+import { useTranslations } from 'next-intl'
 
 import { defineCrossIcon, defineSearchIcon } from '@/helpers/defineIconsForSearch'
 import { useAppDispatch } from '@/store/hooks'
@@ -16,6 +17,7 @@ import { selectReadonlyUsers, setUsers } from '@/store/slices/usersSlice'
 import * as S from './styled'
 
 const UsersSearch = () => {
+  const t = useTranslations('friends')
   const usersSearchText = useSelector(selectUsersSearchText)
   const readOnlyUsers = useSelector(selectReadonlyUsers)
   const theme = useSelector(selectTheme)
@@ -32,11 +34,7 @@ const UsersSearch = () => {
   return (
     <S.SearchContainer>
       <S.InputContainer>
-        <S.SearchInput
-          placeholder='Поиск пользователей'
-          value={usersSearchText}
-          onChange={handleChange}
-        />
+        <S.SearchInput placeholder={t('search')} value={usersSearchText} onChange={handleChange} />
         {usersSearchText && (
           <S.CrossIcon
             src={defineCrossIcon(theme)}

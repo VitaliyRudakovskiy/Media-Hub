@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { onSnapshot } from 'firebase/firestore'
+import { useTranslations } from 'next-intl'
 
 import { NoUsersVariants } from '@/constants/noUsersVariants'
 import { UserTitles } from '@/constants/userTitles'
@@ -17,6 +18,7 @@ import defineConfig from './defineConfig'
 import { CommonContainer, NoUsers, UsersFeedTitle, UsersFeedWrapper } from './styled'
 
 const UsersFeed = () => {
+  const t = useTranslations('friends')
   const users = useSelector(selectUsers)
   const activeTile = useSelector(selectActiveTile)
   const [isLoading, setIsLoading] = useState(false)
@@ -54,12 +56,12 @@ const UsersFeed = () => {
 
   return (
     <CommonContainer>
-      <UsersFeedTitle>{config.title}</UsersFeedTitle>
+      <UsersFeedTitle>{t(`sort.${config.title}`)}</UsersFeedTitle>
       <UsersFeedWrapper>
         {users.length > 0 ? (
           users.map(({ id, userData }) => <User key={id} id={id} userData={userData} />)
         ) : (
-          <NoUsers>{config.noUsers}</NoUsers>
+          <NoUsers>{t(`noUsers.${config.noUsers}`)}</NoUsers>
         )}
       </UsersFeedWrapper>
     </CommonContainer>

@@ -2,6 +2,7 @@
 
 import { ChangeEvent, SyntheticEvent, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useTranslations } from 'next-intl'
 
 import { selectUser } from '@/store/slices/userSlice'
 import Button from '@/UI/Button'
@@ -12,6 +13,7 @@ import { SELECT_TOPICS } from './constants'
 import * as S from './styled'
 
 const SupportForm = () => {
+  const t = useTranslations('support')
   const [selectedTopic, setSelectedTopic] = useState(SELECT_TOPICS[0])
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -38,16 +40,16 @@ const SupportForm = () => {
 
   return (
     <S.SupportForm onSubmit={handleSendMessage}>
-      <S.Title>Contact us</S.Title>
-      <S.SubTitle>Tell us about your problem and we will help you with it</S.SubTitle>
-      <S.Label>Select category</S.Label>
+      <S.Title>{t('title')}</S.Title>
+      <S.SubTitle>{t('description')}</S.SubTitle>
+      <S.Label>{t('selectLabel')}</S.Label>
       <S.TopicSelect value={selectedTopic} onChange={handleSelectChange}>
         {SELECT_TOPICS.map((option) => (
           <option key={option}>{option}</option>
         ))}
       </S.TopicSelect>
       <S.Textarea
-        placeholder='How can we help?'
+        placeholder={t('placeholder')}
         rows={5}
         value={message}
         onChange={handleTextareaChange}
@@ -58,7 +60,7 @@ const SupportForm = () => {
         width='100%'
         disabled={message.length === 0 || isLoading}
       >
-        {isLoading ? 'Loading...' : 'Send email'}
+        {isLoading ? `${t('sending')}` : `${t('submit')}`}
       </Button>
     </S.SupportForm>
   )

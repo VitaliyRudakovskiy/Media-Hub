@@ -1,6 +1,7 @@
 'use client'
 
 import { useSelector } from 'react-redux'
+import { useTranslations } from 'next-intl'
 
 import usersSortTiles from '@/constants/usersSortTiles'
 import { useAppDispatch } from '@/store/hooks'
@@ -9,6 +10,7 @@ import { selectActiveTile, setActiveTile } from '@/store/slices/searchUsersSlice
 import { Tile, UsersSortSection } from './styled'
 
 const UsersSort = () => {
+  const t = useTranslations('friends.sort')
   const activeTile = useSelector(selectActiveTile)
   const dispatch = useAppDispatch()
 
@@ -20,7 +22,7 @@ const UsersSort = () => {
           onClick={() => dispatch(setActiveTile(id))}
           className={activeTile === id ? 'activeTile' : ''}
         >
-          {text}
+          {t(text)}
         </Tile>
       ))}
     </UsersSortSection>

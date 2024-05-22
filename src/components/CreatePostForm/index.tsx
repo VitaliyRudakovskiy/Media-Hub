@@ -4,6 +4,7 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useTranslations } from 'next-intl'
 
 import CATEGORIES from '@/constants/categories'
 import { createPostDefaultValues } from '@/constants/createPostDefaultValues'
@@ -34,6 +35,8 @@ const CreatePostForm = () => {
     defaultValues: createPostDefaultValues,
     mode: 'onChange',
   })
+
+  const t = useTranslations('createPostForm')
 
   const [isFormFocused, setIsFormFocused] = useState(false)
   const [postText, setPostText] = useState('')
@@ -123,10 +126,10 @@ const CreatePostForm = () => {
       <S.MainContent $isFormFocused={isFormFocused}>
         <CurrentAvatar />
         <S.InfoContainer>
-          {isFormFocused && <S.TitleLabel>Title</S.TitleLabel>}
+          {isFormFocused && <S.TitleLabel>{t(`labels.title`)}</S.TitleLabel>}
           <S.TitleInput
             {...register('title')}
-            placeholder='Введите название вашего ресурса'
+            placeholder={t(`placeholders.title`)}
             onFocus={handleFocusForm}
             $isFormFocused={isFormFocused}
           />
@@ -135,21 +138,26 @@ const CreatePostForm = () => {
               {errors && errors['title'] && (
                 <S.ErrorMessage>{errors['title']?.message}</S.ErrorMessage>
               )}
-              <S.DescriptionLabel>Feedback</S.DescriptionLabel>
+              <S.DescriptionLabel>{t(`labels.feedback`)}</S.DescriptionLabel>
               <S.Textarea
                 ref={textareaRef}
                 value={postText}
                 onChange={handleChangeTextarea}
-                placeholder='Напишите ваш отзыв о нем'
+                placeholder={t(`placeholders.feedback`)}
                 rows={1}
               />
-              <Select {...register('category')} placeholder='Категория' options={CATEGORIES} />
-              <StarRating starValue={starValue} setStarValue={setStarValue} />
-              <S.TagsLabel>Tags</S.TagsLabel>
-              <S.TagsInput
-                {...register('tags')}
-                placeholder='Например: путешествие,животные,кошка,Альпы'
+              <Select
+                {...register('category')}
+                placeholder={t(`labels.category`)}
+                options={CATEGORIES}
               />
+              <StarRating
+                label={t('labels.rating')}
+                starValue={starValue}
+                setStarValue={setStarValue}
+              />
+              <S.TagsLabel>{t(`labels.tags`)}</S.TagsLabel>
+              <S.TagsInput {...register('tags')} placeholder={t(`placeholders.tags`)} />
               {errors && errors['tags'] && (
                 <S.ErrorMessage>{errors['tags']?.message}</S.ErrorMessage>
               )}

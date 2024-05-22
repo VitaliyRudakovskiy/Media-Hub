@@ -11,31 +11,31 @@ import SupportWhite from '@/assets/icons/sidebarIcons/support-white.webp'
 
 const sidebarLinks = [
   {
-    title: 'Home',
+    title: 'home',
     path: '/',
     icon: HomeBlack,
     iconDark: HomeWhite,
   },
   {
-    title: 'Friends',
+    title: 'friends',
     path: '/friends',
     icon: FriendsBlack,
     iconDark: FriendsWhite,
   },
   {
-    title: 'Bookmarks',
+    title: 'bookmarks',
     path: '/bookmarks',
     icon: BookmarksBlack,
     iconDark: BookmarksWhite,
   },
   {
-    title: 'Profile',
+    title: 'profile',
     path: '/profile',
     icon: ProfileBlack,
     iconDark: ProfileWhite,
   },
   {
-    title: 'Support',
+    title: 'support',
     path: '/support',
     icon: SupportBlack,
     iconDark: SupportWhite,

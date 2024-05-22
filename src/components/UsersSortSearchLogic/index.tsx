@@ -28,7 +28,7 @@ const UsersSearchSortLogic = () => {
 
   const fetchUser = useCallback(async () => {
     const userData = await getUserByEmail(email)
-    setCurrentUser(userData)
+    if (userData) setCurrentUser(userData)
   }, [email])
 
   useEffect(() => {

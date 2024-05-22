@@ -21,9 +21,11 @@ const DynamicAvatar = ({
   useEffect(() => {
     const fetchUser = async () => {
       const user = await getUserByEmail(email)
-      const { name, secondName, avatarName } = user
-      const avatarUrl = await getPhotoURL(avatarName)
-      setUser({ name, secondName, avatarName: avatarUrl })
+      if (user) {
+        const { name, secondName, avatarName } = user
+        const avatarUrl = await getPhotoURL(avatarName)
+        setUser({ name, secondName, avatarName: avatarUrl })
+      }
     }
     fetchUser()
   }, [email])

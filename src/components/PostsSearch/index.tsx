@@ -2,6 +2,7 @@
 
 import { ChangeEvent } from 'react'
 import { useSelector } from 'react-redux'
+import { useTranslations } from 'next-intl'
 
 import { defineCrossIcon, defineSearchIcon } from '@/helpers/defineIconsForSearch'
 import { useAppDispatch } from '@/store/hooks'
@@ -14,6 +15,7 @@ import SearchOptions from '../SearchOptions'
 import * as S from './styled'
 
 const PostsSearch = () => {
+  const t = useTranslations('postsSearch')
   const searchText = useSelector(selectSearchText)
   const readOnlyPosts = useSelector(selectReadonlyPosts)
   const theme = useSelector(selectTheme)
@@ -29,7 +31,7 @@ const PostsSearch = () => {
   return (
     <S.SearchContainer>
       <S.InputContainer>
-        <S.SearchInput placeholder='Поиск постов' value={searchText} onChange={handleChange} />
+        <S.SearchInput placeholder={t('placeholder')} value={searchText} onChange={handleChange} />
         {searchText && (
           <S.CrossIcon
             src={defineCrossIcon(theme)}
